@@ -771,10 +771,10 @@ const questionBank = {
         { q: '"Hello World"[6]的值是什么？', options: ['空格', 'W', 'o', 'r'], answer: 1, code: '', explain: '字符串索引：H=0,e=1,l=2,l=3,o=4,空格=5,W=6。所以[6]是"W"。注意空格也算一个字符！' },
         { q: '"abcdef"[1:4]的值是什么？', options: ['abc', 'bcd', 'abcd', 'bcde'], answer: 1, code: '', explain: '切片[1:4]取索引1,2,3的字符："a"[0],"b"[1],"c"[2],"d"[3]→不含索引4"e"→"bcd"。' },
         { q: '"Python"[-1]的值是什么？', options: ['P', 'y', 'n', 'o'], answer: 2, code: '', explain: '负数索引从右往左：[-1]是最后一个字符"n"，[-2]是"o"，以此类推。' },
-        { q: 'len("你好Python")的结果是？', options: ['8', '9', '10', '11'], answer: 1, code: '', explain: '"你好Python"中：你(1)好(1)P(1)y(1)t(1)h(1)o(1)n(1)，共9个字符。注意中文也按字符个数计数。' },
+        { q: 'len("你好Python")的结果是？', options: ['8', '9', '10', '11'], answer: 0, code: '', explain: '"你好Python"共8个字符：你(1)好(1)P(1)y(1)t(1)h(1)o(1)n(1)。Python 3中len()按Unicode码点计数，中英文每个字符都算1个。' },
         { q: '"banana".replace("a", "o")的结果是？', options: ['banana', 'bonono', 'banono', 'bonana'], answer: 1, code: '', explain: 'replace("a","o")将所有的"a"替换为"o"。"banana"中三个a都变成o→"bonono"。' },
         { q: '"Hello".find("e")的结果是？', options: ['0', '1', '2', '-1'], answer: 1, code: '', explain: 'find()查找子串首次出现的位置。"Hello"中"e"在索引1（H=0,e=1）。如果找不到会返回-1。' },
-        { q: '" Python "[1:5].strip()的结果是？', options: ['Pyth', 'Python', '"Py"', 'ython'], answer: 0, code: '', explain: '先切片：" Python "[1:5]取索引1-4（空格,P,y,t）→"Pyt"。再strip()去两端空格，但没有空格可去→"Pyt"。等等...让我重新计算：" Python "字符串：空格=0,P=1,y=2,t=3,h=4,o=5,n=6,空格=7。[1:5]取1-4即P,y,t,h = "Pyth"。' },
+        { q: '" Python "[1:5].strip()的结果是？', options: ['Pyth', 'Python', '"Py"', 'ython'], answer: 0, code: '', explain: '" Python "字符串索引：空格=0,P=1,y=2,t=3,h=4,o=5,n=6,空格=7。[1:5]切片取索引1,2,3,4 → "Pyth"。strip()去除两端空格，"Pyth"无空格可去除，结果仍为"Pyth"。注意索引从0开始，[1:5]含左不含右（即不含索引5的"o"）。' },
     ],
     // 列表基础 (16题)
     10: [
@@ -1198,9 +1198,6 @@ function showResult() {
     const rate = Math.round((correct / total) * 100);
 
     // 更新统计
-    if (state.quizMode === null && state.quizTopicId === null) {
-        // 模拟考试
-    }
     updateStats(correct, total);
 
     // 切换到结果视图
@@ -1281,7 +1278,6 @@ function retryWrong() {
     }
 
     state.quizMode = 'practice';
-    state.quizTopicId = state.quizTopicId;
     state.quizQuestions = wrongQuestions;
     state.currentQuestionIndex = 0;
     state.userAnswers = [];
