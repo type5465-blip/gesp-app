@@ -1538,8 +1538,8 @@ function showResult() {
         const codeViewed = state.userAnswers.filter((ans, i) => state.quizQuestions[i].type === 'code' && ans !== undefined).length;
         const codeTotal = state.quizQuestions.filter(q => q.type === 'code').length;
 
-        const singleScore = Math.round((singleCorrect / singleTotal) * 30);
-        const boolScore = Math.round((boolCorrect / boolTotal) * 20);
+        const singleScore = singleTotal > 0 ? Math.round((singleCorrect / singleTotal) * 30) : 0;
+        const boolScore = boolTotal > 0 ? Math.round((boolCorrect / boolTotal) * 20) : 0;
         const totalScore = singleScore + boolScore;
 
         if (rate >= 90) { icon = '🏆'; title = '太厉害了，稳过！'; }

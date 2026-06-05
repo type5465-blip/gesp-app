@@ -1,7 +1,7 @@
 {
   "name": "Python GESP 一级助考",
   "short_name": "GESP助考",
-  "description": "Python GESP一级考级学习助手 - 知识点学习、专项练习、模拟考试",
+  "description": "Python GESP一级考级学习助手 - 知识点、练习、模拟考、真题实战、错题本",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
