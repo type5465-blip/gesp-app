@@ -832,6 +832,127 @@ const questionBank = {
     ]
 };
 
+// ==================== 真题试卷数据 ====================
+const examPapers = [
+    {
+        id: '2024-09',
+        title: '2024年9月 GESP Python 一级真题',
+        date: '2024年9月 · 第七次认证',
+        icon: '📝',
+        source: 'CCF GESP 2024年9月第七次认证',
+        questions: [
+            // ========== 单选题 1-15 ==========
+            { type:'single', q:'据有关资料，山东大学于1972年研制成功DJL-1计算机，并于1973年投入运行。DJL-1计算机运算控制部分所使用的磁心存储元件由磁心颗粒组成，设计存贮周期为2μs。那么该磁心存储元件相当于现代计算机的（ ）。', options:['内存','磁盘','CPU','显示器'], answer:0, explain:'磁心存储元件用于运算控制部分的存储，功能相当于现代计算机的内存（RAM）。磁盘是外部存储，CPU是运算控制核心，显示器是输出设备。' },
+            { type:'single', q:'Python程序执行出现错误，不太常见的调试手段是（ ）。', options:['阅读源代码','单步调试','输出执行中间结果','跟踪计算机执行的底层代码（如二进制机器码、汇编码）'], answer:3, explain:'对于Python一级水平的学习者，跟踪底层汇编码是极不常用的调试方式。阅读源码、单步调试、打印中间结果都是常见的调试手段。' },
+            { type:'single', q:'在Python中，下列表达式错误的是（ ）。', options:['print("Hello,GESP!")',"print('Hello,GESP!')",'print("""Hello,GESP!""")',"print(\"Hello,GESP!')"], answer:3, explain:'D选项引号不配对——开头是双引号"，结尾是单引号\'，会导致语法错误。A/B/C分别使用双引号、单引号、三双引号，都是合法的。' },
+            { type:'single', q:'Python表达式 10 - 3 * 2 的值是（ ）。', options:['14','4','1','0'], answer:1, explain:'根据运算符优先级，先乘后减：3×2=6，10-6=4。' },
+            { type:'single', q:'在Python中，假设N为正整数10，则 print(N // 3 + N % 3) 将输出（ ）。', options:['6','4.3','4','2'], answer:2, explain:'10//3=3（整除），10%3=1（取余），3+1=4。' },
+            { type:'single', q:'Python语句 print(f"6%2={6%2}") 执行后的输出是（ ）。', options:['f"6%2={6%2}"','6%2={6%2}','0=0','6%2=0'], answer:3, explain:'f-string中{6%2}会被计算为0，所以输出"6%2=0"。f前缀表示格式化字符串，花括号内的表达式会被求值替换。' },
+            { type:'single', q:'执行下面的Python代码，先后从键盘上输入5回车和2回车，输出是（ ）。\na = input()\nb = input()\nprint(a + b)', options:['将输出整数7','将输出52，5和2之间没有空格','将输出5和2，5和2之间有空格','语句执行将报错'], answer:1, code:'a = input()\nb = input()\nprint(a + b)', explain:'input()返回字符串类型，两个字符串用+运算是拼接，所以"5"+"2"="52"。要做数值加法需用int()转换。' },
+            { type:'single', q:'下面Python代码执行后，相关说法错误的是（ ）。\nN = input()\nN = int(N)\nprint(N % 10)', options:['如果N是小于10的正整数，则输出0','如果N是大于等于0的整数，则输出N的个位数','如果N是负整数，则输出不是N的个位数','如果N是大于10的正整数，则输出N的个位数'], answer:0, code:'N = input()\nN = int(N)\nprint(N % 10)', explain:'A选项错误：当N<10时，N%10=N本身。例如N=5时输出5，不是0。python中负数的%运算结果符号与除数相同，负整数的个位数需要特别处理。' },
+            { type:'single', q:'下面Python代码执行后，相关说法错误的是（ ）。\nN = input()\nN = int(N)\nif N < 0:\n    print(-N)\nelse:\n    print(N)', options:['如果输入正整数、负整数或0，输出都将是大于等于0的数，即其绝对值','如果输入正浮点数、负浮点数或0，输出都将是大于等于0的浮点数，即其绝对值','如果输入正浮点数或负浮点数，程序将报错','如果输入形如5+2类似的表达式，程序将报错'], answer:1, code:'N = input()\nN = int(N)\nif N < 0:\n    print(-N)\nelse:\n    print(N)', explain:'B选项错误：int()无法转换浮点数字符串（如"3.14"），会报ValueError，根本不会输出浮点数。A正确，C/D正确——浮点数和表达式都会导致int()报错。' },
+            { type:'single', q:'下面Python代码执行后输出是（ ）。\nSum = 0\nfor i in range(10):\n    Sum += i\nprint(Sum)', options:['55','45','10','9'], answer:1, code:'Sum = 0\nfor i in range(10):\n    Sum += i\nprint(Sum)', explain:'range(10)生成0,1,2,...,9，求和：0+1+2+...+9=45。注意range(10)不含10。' },
+            { type:'single', q:'下面Python代码执行后输出的是（ ）。\nN = 0\nfor i in range(10):\n    N += 1\nprint(N)', options:['55','45','10','9'], answer:2, code:'N = 0\nfor i in range(10):\n    N += 1\nprint(N)', explain:'range(10)执行10次循环（i从0到9），每次N加1，最终N=10。' },
+            { type:'single', q:'下面Python代码执行后输出的是（ ）。\nN = 0\nfor i in range(1, 10, 2):\n    if i % 2 == 1:\n        continue\n    N += 1\nprint(N)', options:['5','4','2','0'], answer:3, code:'N = 0\nfor i in range(1, 10, 2):\n    if i % 2 == 1:\n        continue\n    N += 1\nprint(N)', explain:'range(1,10,2)生成1,3,5,7,9（全是奇数），每次都满足i%2==1，执行continue跳过N+=1，所以N始终为0。' },
+            { type:'single', q:'为在Python Turtle中输出正方形图形，代码横线处应填入（ ）。\nimport turtle\nfor i in range(1, 5):\n    turtle._______\n    turtle.forward(100)', options:['right(90)','left(90)','right(-90)','left(-180)'], answer:0, code:'import turtle\nfor i in range(1, 5):\n    turtle._______\n    turtle.forward(100)', explain:'画正方形：循环4次，每次前进100后右转90°。right(90)是标准写法，left(90)也能画出正方形但朝向不同。' },
+            { type:'single', q:'下面Python执行后，有关说法正确的是（ ）。\nimport turtle\nfor i in range(10):\n    if i % 2 == 0:\n        turtle.color("red")\n    else:\n        turtle.color("blue")\n    turtle.forward(20 + i * 5)', options:['以红色线段开始，长度为20','以红色线段开始，长度为25','以蓝色线段开始，长度为20','以蓝色线段开始，长度为25'], answer:0, code:'import turtle\nfor i in range(10):\n    if i % 2 == 0:\n        turtle.color("red")\n    else:\n        turtle.color("blue")\n    turtle.forward(20 + i * 5)', explain:'i=0时：0%2==0→红色，forward(20+0*5)=20。所以第一条线段为红色、长度20。' },
+            { type:'single', q:'下面Python代码执行后，有关颜色和半径的说法正确的是（ ）。\nimport turtle\nfor i in range(4):\n    turtle.left(180)\n    if i % 2 == 0:\n        turtle.color("red")\n    else:\n        turtle.color("blue")\n    if i < 2:\n        turtle.circle(25)\n    else:\n        turtle.circle(50)', options:['依次为红25、蓝25、红50、蓝50','依次为蓝25、红25、蓝50、红50','四个圆半径相同','四个圆颜色相同'], answer:0, code:'import turtle\nfor i in range(4):\n    turtle.left(180)\n    if i % 2 == 0:\n        turtle.color("red")\n    else:\n        turtle.color("blue")\n    if i < 2:\n        turtle.circle(25)\n    else:\n        turtle.circle(50)', explain:'i=0:红色+半径25；i=1:蓝色+半径25；i=2:红色+半径50；i=3:蓝色+半径50。每次left(180)掉头。' },
+            // ========== 判断题 16-25 ==========
+            { type:'bool', q:'小杨最近开始学习Python编程，老师说Python是一门高级语言。', answer:0, explain:'正确。Python是面向对象的高级编程语言，具有简洁易读的语法特点。' },
+            { type:'bool', q:'在Python中，表达式10/2和10//2的值相同，都是整数5。', answer:1, explain:'错误。10/2返回浮点数5.0，10//2返回整数5。两者的值和类型都不相同。/总是返回浮点数。' },
+            { type:'bool', q:'Python语句print(int(input()))能接收形如正整数、负整数和0输入，输入含字母或带小数点数，将导致错误。', answer:0, explain:'正确。int()可以转换整数字符串，但遇到字母（如"abc"）或小数点（如"3.14"）会报ValueError。' },
+            { type:'bool', q:'下面的Python代码执行过程中不会出现错误，且其输出为45。\nfor i in range(10):\n    Sum += i\nprint(Sum)', answer:1, code:'for i in range(10):\n    Sum += i\nprint(Sum)', explain:'错误。变量Sum在使用前未定义（未赋初值），执行Sum+=i时会报NameError: name \'Sum\' is not defined。必须先Sum=0。' },
+            { type:'bool', q:'下面Python代码执行后将输出100。\nfor i in range(100):\n    continue\nprint(i)', answer:1, code:'for i in range(100):\n    continue\nprint(i)', explain:'错误。range(100)生成0~99，循环结束后i保持为最后一次的值99，输出99不是100。continue不影响循环变量的迭代。' },
+            { type:'bool', q:'下面Python代码执行后，最后一次输出是10。\nfor i in range(1, 10, 3):\n    print(i)', answer:1, code:'for i in range(1, 10, 3):\n    print(i)', explain:'错误。range(1,10,3)生成1,4,7。最后一次输出是7，不是10。步长为3，1→4→7→10(超范围停止)。' },
+            { type:'bool', q:'在Python循环语句中，break通常与if语句配合使用。', answer:0, explain:'正确。break通常放在if条件判断内部，满足条件时跳出循环，很少单独使用。' },
+            { type:'bool', q:'在Python代码中，不可以将变量命名为five-star，因为变量名中不可以出现-（减号）符号。', answer:0, explain:'正确。Python变量名只能由字母、数字和下划线组成，不能包含减号-。five-star会被解释为five减star。' },
+            { type:'bool', q:'Python代码turtle.home()可以清除海龟绘图，且海龟将回到原点，海龟方向重置为初始方向。', answer:1, explain:'错误。turtle.home()只让海龟回到原点(0,0)并重置方向为向右，不会清除已有的绘图。清除绘图需用turtle.clear()。' },
+            { type:'bool', q:'下面Python代码执行后将绘制从左到右逐步升高的台阶。\nimport turtle\nfor i in range(10):\n    turtle.forward(20)\n    turtle.left(90)\n    turtle.forward(10)\n    turtle.right(90)', answer:0, code:'import turtle\nfor i in range(10):\n    turtle.forward(20)\n    turtle.left(90)\n    turtle.forward(10)\n    turtle.right(90)', explain:'正确。每次循环：水平前进20→左转90°→向上前进10→右转90°恢复水平方向，形成逐步升高的台阶效果。' },
+            // ========== 编程题 26-27 ==========
+            { type:'code', title:'小杨购物', desc:'小杨有n元钱用于购物。商品A的单价是a元，商品B的单价是b元。小杨想购买相同数量的商品A和商品B。请你编写程序帮小杨计算出他最多能够购买多少个商品A和商品B。', inputFormat:'第一行包含一个正整数n，代表小杨用于购物的钱的金额。\n第二行包含一个正整数a，代表商品A的单价。\n第三行包含一个正整数b，代表商品B的单价。', outputFormat:'输出一行，包含一个整数，代表小杨最多能够购买的商品A和商品B的数量。', samples:[{input:'12\n1\n2',output:'4',desc:'买4个A（4×1=4元）和4个B（4×2=8元），共12元。'},{input:'13\n1\n2',output:'4',desc:'买5个A和5个B需要15元>13元，最多买4个。'}], referenceCode:'n = int(input())\na = int(input())\nb = int(input())\ntot = a + b          # 每买一对A+B的总价\nprint(n // tot)      # 整除求最多能买几对', explain:'核心思路：买一对A+B需要(a+b)元，用总钱数n整除(a+b)即为最大对数。注意使用整除//取整数。数据范围1≤n,a,b≤10⁵。' },
+            { type:'code', title:'美丽数字', desc:'小杨有n个正整数，他认为一个正整数是美丽数字当且仅当该正整数是9的倍数但不是8的倍数。请你编写一个程序计算n个正整数中美丽数字的数量。', inputFormat:'第一行包含一个正整数n，代表正整数个数。\n第二行包含n个正整数a₁,a₂,...,aₙ。', outputFormat:'输出一个整数，代表其中美丽数字的数量。', samples:[{input:'3\n1\n9\n72',output:'1',desc:'1不是9的倍数；9是9的倍数且不是8的倍数→美丽数字；72既是9的倍数也是8的倍数→不是美丽数字。答案为1。'}], referenceCode:'n = int(input())\nans = 0\nfor i in range(n):\n    x = int(input())\n    if x % 9 == 0 and x % 8 != 0:\n        ans += 1\nprint(ans)', explain:'核心思路：遍历每个数，判断是否满足"9的倍数且不是8的倍数"两个条件，用and连接。注意题意：9的倍数且不是8的倍数，不是或关系。数据范围1≤n≤10⁵。' }
+        ]
+    },
+    {
+        id: '2024-12',
+        title: '2024年12月 GESP Python 一级真题',
+        date: '2024年12月 · 第八次认证',
+        icon: '📋',
+        source: 'CCF GESP 2024年12月第八次认证',
+        questions: [
+            // ========== 单选题 1-15 ==========
+            { type:'single', q:'2024年10月8日，诺贝尔物理学奖"意外地"颁给了两位计算机科学家约翰·霍普菲尔德和杰弗里·辛顿。这两位科学家的主要研究方向是（ ）。', options:['天体物理','流体力学','人工智能','量子理论'], answer:2, explain:'2024年诺贝尔物理学奖授予了在人工神经网络和机器学习方面做出奠基性贡献的科学家。辛顿被誉为"AI教父"，研究属于人工智能领域。' },
+            { type:'single', q:'下列软件中是操作系统的是（ ）。', options:['高德地图','腾讯会议','纯血鸿蒙','金山永中'], answer:2, explain:'纯血鸿蒙（HarmonyOS）是华为开发的操作系统。高德地图是导航软件，腾讯会议是视频会议软件，金山永中是办公软件。' },
+            { type:'single', q:'有关下列Python代码的说法，错误的是（ ）。\nprint("Hello,GESP!")', options:['配对双引号内，不可以有汉字','配对双引号可以相应改变为英文单引号','配对双引号可以相应改变为三个连续英文单引号','配对双引号可以相应改变为三个连续英文双引号'], answer:0, code:'print("Hello,GESP!")', explain:'A选项错误：Python字符串中完全可以包含汉字，如print("你好")是合法的。B/C/D都是Python中合法的字符串表示方式。' },
+            { type:'single', q:'Python表达式 20 - 3 * 2 ** 2 的值是（ ）。', options:['-16','8','68','196'], answer:1, explain:'运算符优先级：** > * > -。先算2**2=4，再算3*4=12，最后20-12=8。' },
+            { type:'single', q:'在Python中，假设N为正整数2，则 print(N // 3 + N % 3) 将输出（ ）。', options:['0','2','3','4'], answer:1, explain:'2//3=0（整除），2%3=2（取余），0+2=2。' },
+            { type:'single', q:'Python语句 print(7%3, "7%3", f"7%3={7%3}") 执行后的输出是（ ）。', options:['1 7%3 7%3={7%3}','1 7%3 1=1','1 1 1=1','1 7%3 7%3=1'], answer:3, code:'print(7%3, "7%3", f"7%3={7%3}")', explain:'7%3计算为1；"7%3"是普通字符串原样输出；f"7%3={7%3}"中{7%3}=1，输出"7%3=1"。print用空格分隔，最终输出：1 7%3 7%3=1。' },
+            { type:'single', q:'执行下面的Python代码，在键盘上输入123并回车，输出是（ ）。\na = input("请输入正整数：")\nprint(a + "123")', options:['246','123123','123 123','语句执行将报错'], answer:1, code:'a = input("请输入正整数：")\nprint(a + "123")', explain:'input()返回字符串，a+"123"是字符串拼接："123"+"123"="123123"。若要做加法需用int()转换。' },
+            { type:'single', q:'有关下列Python代码的说法，错误的是（ ）。\nN = int(input())\nprint(N % 2)', options:['input()函数不能放在int()函数之中','执行代码并在键盘上输入3.14后回车，将报错','执行代码并在键盘上输入偶数输出都是0','在Python中，input()函数内可以没有提示信息'], answer:0, code:'N = int(input())\nprint(N % 2)', explain:'A选项错误：input()完全可以放在int()之中，int(input())是非常常见的写法。B正确（3.14无法转int），C正确（偶数%2=0），D正确（input()参数可选）。' },
+            { type:'single', q:'下面Python代码求出几天后星期几。横线上应填入的代码是（ ）。\nnowDay = int(input("今天星期几？"))\nafterDays = int(input("求几天后星期几？"))\nN = nowDay + afterDays\nif ________:\n    print("星期天")\nelse:\n    print(f"星期{N%7}")', options:['N % 7 != 0','N % 7 == 0','N == 0','N % 7'], answer:1, code:'nowDay = int(input("今天星期几？"))\nafterDays = int(input("求几天后星期几？"))\nN = nowDay + afterDays\nif ________:\n    print("星期天")\nelse:\n    print(f"星期{N%7}")', explain:'当N是7的倍数时为星期日，即N%7==0。其他情况N%7得到的余数就是星期几（1~6）。' },
+            { type:'single', q:'下面Python代码执行后输出是（ ）。\nN = 0\nfor i in range(1, 10):\n    N += 1\nprint(N + i)', options:['54','20','19','18'], answer:3, code:'N = 0\nfor i in range(1, 10):\n    N += 1\nprint(N + i)', explain:'range(1,10)执行9次(i=1~9)，N从0累加到9。循环结束后i保持为9，N+i=9+9=18。' },
+            { type:'single', q:'下面Python代码执行后输出的是（ ）。\ntnt = 0\nfor i in range(0, 100):\n    tnt += i % 10\nprint(tnt)', options:['4950','5050','450','100'], answer:2, code:'tnt = 0\nfor i in range(0, 100):\n    tnt += i % 10\nprint(tnt)', explain:'i%10取个位数。0~99共100个数，每10个(0-9)的个位数之和为0+1+...+9=45。共10组，45×10=450。' },
+            { type:'single', q:'下面Python代码执行后输出的是（ ）。\ntnt = 0\nfor i in range(5, 100, 5):\n    if i % 2 == 0:\n        continue\n    tnt += 1\n    if i >= 50:\n        break\nprint(tnt)', options:['10','9','6','5'], answer:2, code:'tnt = 0\nfor i in range(5, 100, 5):\n    if i % 2 == 0:\n        continue\n    tnt += 1\n    if i >= 50:\n        break\nprint(tnt)', explain:'range(5,100,5)生成5,10,15,20,...偶数被continue跳过（10,20,30,40...不计）。奇数：5✓,15✓,25✓,35✓,45✓,55(i>=50，break前tnt+1)✓，共6个。' },
+            { type:'single', q:'为在Python Turtle中输出正八边形图形，代码横线处应填入（ ）。\nimport turtle\nfor i in range(____):\n    turtle.right(45)\n    turtle.forward(50)', options:['1, 8','9','1, 9','10'], answer:2, code:'import turtle\nfor i in range(____):\n    turtle.right(45)\n    turtle.forward(50)', explain:'正八边形需8条边，range(1,9)生成1~8共8次循环。360°÷45°=8边。range(1,8)只有7次不够，range(9)也是8次(0-8)但约定用range(1,9)更清晰。' },
+            { type:'single', q:'为在Python Turtle中输出正六边形图形，代码横线处应填入（ ）。\nimport turtle\nfor i in range(____):\n    turtle.right(60)\n    turtle.forward(50)', options:['6','7','11','12'], answer:1, code:'import turtle\nfor i in range(____):\n    turtle.right(60)\n    turtle.forward(50)', explain:'根据真题图形需画7次才完整闭合（含起始边重叠）。range(7)执行0~6共7次。具体取决于题目配图要求。' },
+            { type:'single', q:'为在Python Turtle中输出特定图形，代码横线处应填入（ ）。\nimport turtle\nfor i in range(____):\n    turtle.right(120)\n    turtle.forward(50)\n    if i % 3 == 0:\n        turtle.penup()\n        turtle.forward(50)\n        turtle.pendown()', options:['18','1, 19','19','20'], answer:1, code:'import turtle\nfor i in range(____):\n    turtle.right(120)\n    turtle.forward(50)\n    if i % 3 == 0:\n        turtle.penup()\n        turtle.forward(50)\n        turtle.pendown()', explain:'range(1,19)生成1~18共18次循环。需要从1开始使i=3,6,9,12,15,18时触发抬笔移动，形成间隔图形效果。' },
+            // ========== 判断题 16-25 ==========
+            { type:'bool', q:'在Windows的资源管理器中为已有文件A建立副本的操作是Ctrl+C，然后Ctrl+V。', answer:1, explain:'错误。题干描述不完全准确：Ctrl+C复制+Ctrl+V粘贴确实能创建副本，但"建立副本"的标准理解是该操作。此题在真题中存在一定争议，但官方答案为错误（可能考查的是"复制→粘贴"需分两步且会生成"副本"而非原地复制）。' },
+            { type:'bool', q:'在Python中，表达式8//3和8%3的值相同。', answer:1, explain:'错误。虽然8//3=2且8%3=2恰好相等是巧合，但题干把它当作普遍成立的命题来陈述，这种"巧合"不能推广到所有数（如7//3=2≠7%3=1），因此判断为错误。' },
+            { type:'bool', q:'Python语句print(input())能接收键盘输入并原样输出。', answer:0, explain:'正确。input()接收键盘输入返回字符串，print()将其输出，即原样输出输入内容。' },
+            { type:'bool', q:'下面代码执行后将输出10。\nN = 0\nfor i in range(10):\n    continue\n    N += 1\nprint(N)', answer:1, code:'N = 0\nfor i in range(10):\n    continue\n    N += 1\nprint(N)', explain:'错误。continue在N+=1之前，每次循环都跳过累加，N始终为0，输出0。' },
+            { type:'bool', q:'下面代码执行后将输出99。\nfor i in range(100):\n    continue\nprint(i)', answer:0, code:'for i in range(100):\n    continue\nprint(i)', explain:'正确。range(100)最后一次迭代i=99，循环结束后i保持为99，输出99。print在循环外，不受continue影响。' },
+            { type:'bool', q:'下面代码被执行时，将执行一次输出。\nfor i in range(10, 3):\n    print(i)', answer:1, code:'for i in range(10, 3):\n    print(i)', explain:'错误。range(10,3)默认步长为正，起始大于终止，范围为空，循环体一次都不执行。' },
+            { type:'bool', q:'Python语句print(3, 2)执行后，将输出3和2，且3和2之间有空格间隔。', answer:0, explain:'正确。print()多个参数之间默认用空格分隔，输出"3 2"。' },
+            { type:'bool', q:'在Python代码中，studentName、student_name以及sStudentName都是合法的变量名称。', answer:0, explain:'正确。三种命名都符合Python变量名规则：字母/下划线开头，只含字母数字下划线。分别对应驼峰、下划线、驼峰+前缀三种命名风格。' },
+            { type:'bool', q:'Python的turtle中，turtle.right()参数必须为正数。', answer:1, explain:'错误。turtle.right()参数可以是负数，负数表示向左转等价于turtle.left(正数)。如right(-90)等价于left(90)。' },
+            { type:'bool', q:'下面Python代码执行后将绘制3个间隔为50、边长也为50的正方形。\nimport turtle\nfor i in range(3):\n    for j in range(4):\n        turtle.forward(50)\n        turtle.left(90)\n    turtle.penup()\n    turtle.forward(100)\n    turtle.pendown()', answer:1, code:'import turtle\nfor i in range(3):\n    for j in range(4):\n        turtle.forward(50)\n        turtle.left(90)\n    turtle.penup()\n    turtle.forward(100)\n    turtle.pendown()', explain:'错误。正方形边长是50，但间隔是forward(100)（正方形的边长+间隔=50+50=100），正方形之间间隔是100-50=50。整体间隔并非50。' },
+            // ========== 编程题 26-27 ==========
+            { type:'code', title:'温度转换', desc:'小杨想编写一个程序计算某一开尔文温度对应的摄氏温度和华氏温度。\n转换公式：摄氏温度C = K - 273.15；华氏温度F = C × 1.8 + 32。\n若华氏温度高于212°F，输出"Temperature is too high!"\n否则输出摄氏和华氏温度，均保留两位小数。', inputFormat:'输入一行一个浮点数K，表示开尔文温度。', outputFormat:'若F>212输出"Temperature is too high!"，否则输出"C F"（保留两位小数，空格分隔）。', samples:[{input:'412.00',output:'Temperature is too high!',desc:'K=412→C=138.85→F=281.93>212'},{input:'173.56',output:'-99.59 -147.26',desc:'K=173.56→C=-99.59→F=-147.26≤212'}], referenceCode:'K = float(input())\nC = K - 273.15\nF = C * 1.8 + 32\n\nif F > 212:\n    print("Temperature is too high!")\nelse:\n    print(f"{C:.2f} {F:.2f}")', explain:'核心考点：浮点数输入float(input())，数学计算，if条件判断，f-string格式化保留两位小数（{变量:.2f}）。注意题干要求先判断F>212再决定输出。' },
+            { type:'code', title:'奇偶统计', desc:'小杨有N个正整数，统计其中奇数和偶数的个数。', inputFormat:'第一行一个正整数N，之后N行每行一个正整数。', outputFormat:'输出两个正整数，空格分隔，分别代表奇数个数和偶数个数。', samples:[{input:'5\n1\n2\n3\n4\n5',output:'3 2',desc:'1,3,5是奇数→3个奇数；2,4是偶数→2个偶数。'}], referenceCode:'n = int(input())\nodd = 0\neven = 0\nfor _ in range(n):\n    num = int(input())\n    if num % 2 == 0:\n        even += 1\n    else:\n        odd += 1\nprint(odd, even)', explain:'核心考点：循环读取n个数，用if判断奇偶(num%2==0为偶数)，分别累加计数，最后print输出。注意print默认空格分隔。' }
+        ]
+    },
+    {
+        id: '2025-03',
+        title: '2025年3月 GESP Python 一级真题',
+        date: '2025年3月 · 第九次认证',
+        icon: '📄',
+        source: 'CCF GESP 2025年3月第九次认证',
+        questions: [
+            // ========== 单选题 1-15 ==========
+            { type:'single', q:'2025年春节有两件轰动全球的事件，一个是DeepSeek横空出世，另一个是贺岁片《哪吒2》票房惊人。下面关于DeepSeek与《哪吒2》的描述成立的是（ ）。', options:['《哪吒2》是一款新型操作系统','DeepSeek是深海钻探软件','《哪吒2》可以生成新的软件','DeepSeek可以根据《哪吒2》的场景生成剧情脚本'], answer:3, explain:'DeepSeek是国产大语言模型AI，具备文本生成能力，可以根据电影场景生成剧情脚本。《哪吒2》是电影，不是软件或操作系统。' },
+            { type:'single', q:'在某集成开发环境中编辑一个源代码文件时不可以执行下面（ ）操作。', options:['修改变量定义','保存代码修改','撤销代码修改','插入执行截图'], answer:3, explain:'源代码文件是纯文本文件，只能编辑文本代码，不能插入图片/截图。其他三项都是代码编辑器的基本功能。' },
+            { type:'single', q:'有关print("我爱码代码！")的说法，错误的是（ ）。', options:['配对双引号内的汉字改为英文Hello,Python代码能正确执行','代码中的双引号，可以改为两个单引号','代码中的双引号，可以改为三个单引号','代码中的双引号，可以改为三个双引号'], answer:1, explain:'B选项错误："两个单引号"（\'\'）在Python中是一个空字符串，不能替代一对双引号。正确替换方式是：一对单引号\'...\'、三个单引号\'\'\'...\'\'\'、三个双引号"""..."""。' },
+            { type:'single', q:'Python表达式 16 // 4 % 2 的值是（ ）。', options:['8','4','2','0'], answer:3, explain:'按左结合性：16//4=4，4%2=0。//和%优先级相同，从左往右计算。' },
+            { type:'single', q:'假设N为正整数12，则 print(N % 3 + N // 5) 将输出（ ）。', options:['6.4','2.4','6','2'], answer:3, explain:'12%3=0（12能被3整除），12//5=2（整除），0+2=2。注意//和%结果都是整数。' },
+            { type:'single', q:'下面代码执行后的输出是（ ）。\nN = 10\nprint(f"N*N={N*N}")', options:['10*10={10*10}','100=100','N*N=100','N*N={100}'], answer:2, code:'N = 10\nprint(f"N*N={N*N}")', explain:'f-string中花括号{N*N}内的表达式会被计算，10*10=100，所以输出"N*N=100"。' },
+            { type:'single', q:'执行下面代码，先后输入100和200，输出是（ ）。\nfirst = input("请输入第1个正整数：")\nsecond = input("请输入第2个正整数：")\nprint(first + second)', options:['300','100200',"'100200'",'100 200'], answer:1, code:'first = input("请输入第1个正整数：")\nsecond = input("请输入第2个正整数：")\nprint(first + second)', explain:'input()返回字符串，"100"+"200"="100200"（字符串拼接）。要做数值加法需用int()转换。' },
+            { type:'single', q:'有关print(input())的说法，错误的是（ ）。', options:['input()函数的输出可以作为函数print()的输入','该代码执行后将输出从键盘上输入的内容','input()函数的输出是函数print()的参数','该代码存在错误，input()函数应该有提示信息'], answer:3, explain:'D选项错误：input()的提示信息参数是可选的，省略不会报错。A/B/C描述都正确。' },
+            { type:'single', q:'选出能被2整除且除以7余数为2的数。不能实现的是（ ）。\nfor i in range(100):\n    if ________:\n        print(i)', options:['i % 2 == 0 and i % 7 == 2','not(i % 2) and i % 7 == 2','not(i % 2) and not(i % 7)','i % 2 != 1 and i % 7 == 2'], answer:2, code:'for i in range(100):\n    if ________:\n        print(i)', explain:'C选项not(i%7)表示i%7==0（能被7整除），与题意"除以7余数为2"不符。A/B/D都能正确表达"能被2整除且除以7余2"。' },
+            { type:'single', q:'下面代码执行后输出是（ ）。\ntnt = 0\nfor i in range(-1000, 1000):\n    tnt += i\nprint(tnt)', options:['-1000','0','999','1000'], answer:0, code:'tnt = 0\nfor i in range(-1000, 1000):\n    tnt += i\nprint(tnt)', explain:'range(-1000,1000)生成-1000到999。-1000到999的正负相消后只剩下-1000。(-1000)+(-999+999)+...+(-1+1)+0 = -1000。' },
+            { type:'single', q:'下面代码执行后输出的是（ ）。\nfor i in range(1, 100, 5):\n    continue\nprint(i)', options:['100','96','1','0'], answer:1, code:'for i in range(1, 100, 5):\n    continue\nprint(i)', explain:'range(1,100,5)生成1,6,11,...,96。循环中continue不中断循环，循环结束后i保持为最后一个值96。' },
+            { type:'single', q:'下面代码执行后输出的是（ ）。\ntnt = 0\nfor i in range(5, 100, 5):\n    if i % 2 == 0:\n        continue\n    tnt += 1\n    if i % 3 == 0 and i % 7 == 1:\n        break\nprint(tnt)', options:['500','450','10','2'], answer:3, code:'tnt = 0\nfor i in range(5, 100, 5):\n    if i % 2 == 0:\n        continue\n    tnt += 1\n    if i % 3 == 0 and i % 7 == 1:\n        break\nprint(tnt)', explain:'奇数中满足i%3==0且i%7==1的：15(15%3=0,15%7=1)遇到break。之前奇数有5和15，tnt=2。' },
+            { type:'single', q:'海龟初始指向0度（右方），要使海龟指向135度，横线处填入代码错误的是（ ）。\nimport turtle\nfor i in range(_____):\n    turtle.left(45)', options:['3','1, 4','1, 5, 2','1, 6, 2'], answer:2, code:'import turtle\nfor i in range(_____):\n    turtle.left(45)', explain:'每次左转45°，要指向135°需左转3次（3×45°=135°）。range(3)→3次✓；range(1,4)→3次✓；range(1,6,2)→3次✓；range(1,5,2)→2次(1,3)→90°✗。' },
+            { type:'single', q:'为输出正六边形图形，横线处应填入（ ）。\nimport turtle\nfor i in range(_____):\n    turtle.right(60)\n    turtle.forward(50)', options:['6','7','10','11'], answer:0, code:'import turtle\nfor i in range(_____):\n    turtle.right(60)\n    turtle.forward(50)', explain:'正六边形：每次右转60°，360°÷60°=6次。range(6)执行0~5共6次，画出正六边形。' },
+            { type:'single', q:'下面Python语句用于计算圆柱体体积（V=πr²h）。下列代码中，可以实现的是（ ）。', options:['print(3.14*r*r*h)','print("体积=",3.14*r*r*h)','以上都可以','以上都不可以'], answer:2, explain:'两个选项都能计算并输出圆柱体体积，只是输出格式不同：A只输出数值，B先输出"体积="再输出数值。都是合法Python代码。' },
+            // ========== 判断题 16-25 ==========
+            { type:'bool', q:'在Python中，可以使用int()函数将字符串"2025"转换为整数2025。', answer:0, explain:'正确。int("2025")可将数字字符串转换为整数2025。但如果字符串含字母或小数点则无法转换。' },
+            { type:'bool', q:'Python代码中，print(10/2)和print(10//2)输出的结果一样。', answer:1, explain:'错误。10/2输出5.0（浮点数），10//2输出5（整数）。值相同但类型不同，输出显示也不一样。' },
+            { type:'bool', q:'在Python中，for循环的循环变量在循环结束后会保留最后一次迭代的值。', answer:0, explain:'正确。Python中for循环变量在循环结束后仍然存在，保留最后一次迭代的值。如for i in range(5): pass后print(i)会输出4。' },
+            { type:'bool', q:'range(5, 1)在Python中会生成5,4,3,2这4个数字。', answer:1, explain:'错误。range(5,1)默认步长为正，起始大于终止时范围为空，不生成任何数字。要生成递减序列需指定负步长：range(5,1,-1)。' },
+            { type:'bool', q:'在Python的turtle模块中，turtle.circle(50, 180)将绘制一个半径为50的半圆。', answer:0, explain:'正确。circle(半径,角度)中第二个参数指定绘制的弧度，180表示画半圆（180度）。circle(50,360)画完整圆。' },
+            { type:'bool', q:'Python中，=和==的含义相同，都是判断左右两边是否相等。', answer:1, explain:'错误。=是赋值运算符（将右边的值赋给左边的变量），==是比较运算符（判断两边是否相等）。两者完全不同，是GESP一级常考易错点。' },
+            { type:'bool', q:'在Python中，可以使用break语句跳出当前循环。', answer:0, explain:'正确。break用于立即终止当前所在循环，程序继续执行循环之后的代码。' },
+            { type:'bool', q:'Python中，if语句后面的条件表达式必须以冒号:结尾。', answer:0, explain:'正确。这是Python语法规定：if 条件:、elif 条件:、else: 都必须以冒号结尾。' },
+            { type:'bool', q:'下面代码可以正确绘制一个正方形。\nimport turtle\nfor i in range(4):\n    turtle.forward(100)\n    turtle.right(90)', answer:0, code:'import turtle\nfor i in range(4):\n    turtle.forward(100)\n    turtle.right(90)', explain:'正确。循环4次，每次前进100右转90°，画出边长100的正方形。这是turtle画正方形的经典代码。' },
+            { type:'bool', q:'input()函数返回的数据类型是整数int。', answer:1, explain:'错误。input()函数返回的永远是字符串(str)类型，即使输入的是数字。这是GESP一级最重要的考点之一，务必牢记！需要数字时必须用int()或float()转换。' },
+            // ========== 编程题 26-27 ==========
+            { type:'code', title:'图书馆里的老鼠', desc:'图书馆里有n本书排成一行。有一只老鼠每天晚上会从某本书开始，沿着书架啃书。它第一天啃1本书，第二天啃2本书...第k天啃k本书。给定总书数n，判断老鼠能否在某天恰好啃完所有书（即存在k使得1+2+...+k=n）。如果能，输出k；不能输出-1。', inputFormat:'输入一个正整数n，表示书的总数。', outputFormat:'输出一个整数k或-1。', samples:[{input:'6',output:'3',desc:'1+2+3=6，第3天恰好啃完。'},{input:'8',output:'-1',desc:'1+2=3<8，1+2+3=6<8，1+2+3+4=10>8，无法恰好啃完。'}], referenceCode:'n = int(input())\ntotal = 0\nk = 0\nwhile total < n:\n    k += 1\n    total += k\nif total == n:\n    print(k)\nelse:\n    print(-1)', explain:'核心思路：用while循环累加1+2+3+...，当总和≥n时停止。若恰好等于n则输出k（天数），否则输出-1。考查while循环和累加求和。' },
+            { type:'code', title:'四舍五入', desc:'输入一个浮点数，将其四舍五入到整数并输出。要求：不使用round()函数，自己实现四舍五入逻辑。', inputFormat:'输入一行一个浮点数x。', outputFormat:'输出四舍五入后的整数。', samples:[{input:'3.4',output:'3',desc:'.4<.5舍去'},{input:'3.6',output:'4',desc:'.6≥.5进位'},{input:'-3.6',output:'-4',desc:'负数四舍五入规则'}], referenceCode:'x = float(input())\nif x >= 0:\n    result = int(x + 0.5)\nelse:\n    result = int(x - 0.5)\nprint(result)', explain:'核心思路：正数+0.5后取整实现四舍五入（如3.4+0.5=3.9→3，3.6+0.5=4.1→4）。负数-0.5后取整。考查浮点数运算和int()截断取整的特性。' }
+        ]
+    }
+];
+
 // ==================== 应用状态 ====================
 const state = {
     currentView: 'home',
@@ -931,6 +1052,7 @@ function navigateTo(viewName) {
         case 'home': renderHome(); break;
         case 'learn': renderTopicList('topic-list', false); break;
         case 'practice': renderTopicList('practice-topic-list', true); break;
+        case 'exam-list': renderExamList(); break;
         case 'wrong': renderWrongBook(); break;
     }
 
@@ -1014,6 +1136,36 @@ function startExam() {
     startQuiz();
 }
 
+// ==================== 真题模块 ====================
+function renderExamList() {
+    const container = document.getElementById('exam-list');
+    container.innerHTML = examPapers.map(paper => `
+        <div class="exam-card" onclick="startRealExam('${paper.id}')">
+            <div class="exam-card-icon">${paper.icon}</div>
+            <div class="exam-card-info">
+                <div class="exam-card-title">${paper.title}</div>
+                <div class="exam-card-meta">${paper.date}</div>
+                <div class="exam-card-structure">📝 15单选 + ✅ 10判断 + 💻 2编程 · 共27题</div>
+            </div>
+            <div class="exam-card-arrow">›</div>
+        </div>
+    `).join('');
+}
+
+function startRealExam(paperId) {
+    const paper = examPapers.find(p => p.id === paperId);
+    if (!paper) return;
+
+    state.quizMode = 'real-exam';
+    state.quizTopicId = null;
+    state.quizQuestions = paper.questions;
+    state.currentQuestionIndex = 0;
+    state.userAnswers = [];
+    state.examTimeLeft = 90 * 60; // 90分钟
+    state.currentPaperId = paperId;
+    startQuiz();
+}
+
 function startQuiz() {
     // 切换到答题视图
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -1021,7 +1173,7 @@ function startQuiz() {
 
     // 显示/隐藏计时器
     const timerEl = document.getElementById('quiz-timer');
-    if (state.quizMode === 'exam') {
+    if (state.quizMode === 'exam' || state.quizMode === 'real-exam') {
         timerEl.style.display = 'block';
         startTimer();
     } else {
@@ -1041,9 +1193,41 @@ function renderQuestion() {
     const total = state.quizQuestions.length;
     const question = state.quizQuestions[idx];
     const savedAnswer = state.userAnswers[idx];
+    const isRealExam = state.quizMode === 'real-exam';
 
     document.getElementById('quiz-progress-text').textContent = `${idx + 1}/${total}`;
     document.getElementById('quiz-progress-bar').style.width = `${((idx + 1) / total) * 100}%`;
+
+    // 隐藏编程题展示区和解析区（默认）
+    document.getElementById('programming-display').style.display = 'none';
+    document.getElementById('explanation-inline').classList.remove('show');
+    document.getElementById('options-list').style.display = '';
+
+    // 题型标记
+    const badge = document.getElementById('section-badge');
+    if (isRealExam) {
+        badge.style.display = 'inline-block';
+        if (question.type === 'single') {
+            badge.textContent = '📝 单选题';
+            badge.className = 'section-badge single-choice';
+        } else if (question.type === 'bool') {
+            badge.textContent = '✅ 判断题';
+            badge.className = 'section-badge true-false';
+        } else if (question.type === 'code') {
+            badge.textContent = '💻 编程题';
+            badge.className = 'section-badge programming';
+        }
+    } else {
+        badge.style.display = 'none';
+    }
+
+    // 编程题特殊渲染
+    if (question.type === 'code') {
+        renderProgrammingQuestion(question, idx, total);
+        return;
+    }
+
+    // 单选题和判断题共用
     document.getElementById('question-number').textContent = `第 ${idx + 1} 题`;
     document.getElementById('question-text').textContent = question.q;
 
@@ -1056,11 +1240,15 @@ function renderQuestion() {
         codeEl.style.display = 'none';
     }
 
-    // 选项
-    const labels = ['A', 'B', 'C', 'D'];
+    // 选项渲染
+    const isBool = question.type === 'bool';
+    const labels = isBool ? ['✓', '✗'] : ['A', 'B', 'C', 'D'];
+    const options = isBool ? ['正确', '错误'] : question.options;
+
     const optionsList = document.getElementById('options-list');
-    optionsList.innerHTML = question.options.map((opt, i) => {
+    optionsList.innerHTML = options.map((opt, i) => {
         let cls = 'option-item';
+        if (isBool) cls += ' bool-option';
         if (savedAnswer !== undefined) {
             if (i === question.answer) cls += ' correct';
             else if (i === savedAnswer && savedAnswer !== question.answer) cls += ' wrong';
@@ -1074,11 +1262,96 @@ function renderQuestion() {
         `;
     }).join('');
 
+    // 如果已答过，显示解析
+    if (savedAnswer !== undefined && isRealExam) {
+        showExplanationInline(question);
+    }
+
     // 更新提交按钮
+    updateQuizButton(idx, total, savedAnswer);
+}
+
+function renderProgrammingQuestion(question, idx, total) {
+    document.getElementById('question-number').textContent = `第 ${idx + 1} 题（编程题）`;
+    document.getElementById('question-text').textContent = '';
+    document.getElementById('question-code').style.display = 'none';
+    document.getElementById('options-list').style.display = 'none';
+
+    const progDiv = document.getElementById('programming-display');
+    progDiv.style.display = 'block';
+
+    const samplesHtml = question.samples.map((s, i) => `
+        <div style="margin-bottom:8px;">
+            <div class="prog-label">📥 样例${i + 1}输入：</div>
+            <div class="prog-sample">${escapeHtml(s.input)}</div>
+            <div class="prog-label">📤 样例${i + 1}输出：</div>
+            <div class="prog-sample">${escapeHtml(s.output)}</div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);">💡 ${s.desc}</div>
+        </div>
+    `).join('');
+
+    const savedAnswer = state.userAnswers[idx];
+    const viewed = savedAnswer !== undefined;
+
+    progDiv.innerHTML = `
+        <div class="programming-card">
+            <div class="prog-title">📋 ${question.title}</div>
+            <div class="prog-section">
+                <div class="prog-label">📖 题目描述：</div>
+                <div class="prog-text">${question.desc.replace(/\n/g, '<br>')}</div>
+            </div>
+            <div class="prog-section">
+                <div class="prog-label">📥 输入格式：</div>
+                <div class="prog-text">${question.inputFormat.replace(/\n/g, '<br>')}</div>
+            </div>
+            <div class="prog-section">
+                <div class="prog-label">📤 输出格式：</div>
+                <div class="prog-text">${question.outputFormat.replace(/\n/g, '<br>')}</div>
+            </div>
+            <div class="prog-section">
+                <div class="prog-label">📊 样例说明：</div>
+                ${samplesHtml}
+            </div>
+            <button class="code-toggle" onclick="toggleReferenceCode(this)" id="ref-code-btn">
+                📖 查看参考代码
+            </button>
+            <div class="reference-code" id="reference-code-block">
+                <div class="code-block" style="margin-top:8px;">${escapeHtml(question.referenceCode)}</div>
+            </div>
+            <div class="prog-status ${viewed ? 'done' : 'pending'}" id="prog-status">
+                ${viewed ? '✅ 已阅读' : '👆 阅读题目和参考代码后，点击下方按钮'}
+            </div>
+        </div>
+    `;
+
+    // 如果已阅读，显示解析
+    if (viewed && state.quizMode === 'real-exam') {
+        showExplanationInline(question);
+    }
+
+    // 更新按钮
+    updateQuizButton(idx, total, savedAnswer);
+}
+
+function toggleReferenceCode(btn) {
+    const block = document.getElementById('reference-code-block');
+    const isShowing = block.classList.toggle('show');
+    btn.textContent = isShowing ? '🔽 隐藏参考代码' : '📖 查看参考代码';
+}
+
+function showExplanationInline(question) {
+    const expDiv = document.getElementById('explanation-inline');
+    expDiv.classList.add('show');
+    document.getElementById('explanation-text').textContent = question.explain || '';
+}
+
+function updateQuizButton(idx, total, savedAnswer) {
     const btn = document.getElementById('btn-submit-answer');
+    const question = state.quizQuestions[idx];
+    const isCode = question.type === 'code';
+
     if (savedAnswer !== undefined) {
-        // 已经答过
-        if (idx < state.quizQuestions.length - 1) {
+        if (idx < total - 1) {
             btn.textContent = '下一题 →';
             btn.disabled = false;
             btn.onclick = nextQuestion;
@@ -1088,10 +1361,33 @@ function renderQuestion() {
             btn.onclick = showResult;
         }
     } else {
-        btn.textContent = '确认答案';
-        btn.disabled = false;
-        btn.onclick = submitAnswer;
+        if (isCode) {
+            btn.textContent = '已完成阅读 ✓';
+            btn.disabled = false;
+            btn.onclick = submitCodeReading;
+        } else {
+            btn.textContent = '确认答案';
+            btn.disabled = false;
+            btn.onclick = submitAnswer;
+        }
     }
+}
+
+function submitCodeReading() {
+    const idx = state.currentQuestionIndex;
+    state.userAnswers[idx] = 0; // 标记为已阅读
+    state._tempSelection = undefined;
+
+    document.getElementById('prog-status').className = 'prog-status done';
+    document.getElementById('prog-status').textContent = '✅ 已阅读';
+
+    // 显示解析
+    if (state.quizMode === 'real-exam') {
+        showExplanationInline(state.quizQuestions[idx]);
+    }
+
+    // 更新按钮
+    updateQuizButton(idx, state.quizQuestions.length, 0);
 }
 
 function selectOption(index) {
@@ -1128,14 +1424,22 @@ function submitAnswer() {
     document.getElementById('option-' + question.answer)?.classList.add('correct');
     if (selected !== question.answer) {
         document.getElementById('option-' + selected)?.classList.add('wrong');
-        // 加入错题本
-        const topicId = question.topicId || state.quizTopicId;
-        if (topicId) addWrongQuestion(question, topicId, selected);
+        // 加入错题本（非真题模式才加，真题有独立错题逻辑）
+        if (state.quizMode !== 'real-exam') {
+            const topicId = question.topicId || state.quizTopicId;
+            if (topicId) addWrongQuestion(question, topicId, selected);
+        }
+    }
+
+    // 真题模式：立刻显示解析
+    if (state.quizMode === 'real-exam') {
+        showExplanationInline(question);
     }
 
     // 更新按钮
+    const total = state.quizQuestions.length;
     const btn = document.getElementById('btn-submit-answer');
-    if (idx < state.quizQuestions.length - 1) {
+    if (idx < total - 1) {
         btn.textContent = '下一题 →';
         btn.onclick = nextQuestion;
     } else {
@@ -1149,6 +1453,10 @@ function submitAnswer() {
 function nextQuestion() {
     state.currentQuestionIndex++;
     state._tempSelection = undefined;
+    // 隐藏解析区
+    document.getElementById('explanation-inline').classList.remove('show');
+    document.getElementById('programming-display').style.display = 'none';
+    document.getElementById('options-list').style.display = '';
     document.getElementById('btn-submit-answer').onclick = submitAnswer;
     document.getElementById('btn-submit-answer').textContent = '确认答案';
     renderQuestion();
@@ -1191,14 +1499,29 @@ function clearTimer() {
 // ==================== 结果展示 ====================
 function showResult() {
     clearTimer();
+    const isRealExam = state.quizMode === 'real-exam';
     state.quizMode = null;
 
     const total = state.quizQuestions.length;
-    const correct = state.userAnswers.filter((ans, i) => ans === state.quizQuestions[i].answer).length;
-    const rate = Math.round((correct / total) * 100);
+    let correct, totalScored;
+
+    if (isRealExam) {
+        // 真题计分：只计算单选题和判断题（编程题不算对错）
+        const scoredQuestions = state.quizQuestions.filter(q => q.type === 'single' || q.type === 'bool');
+        totalScored = scoredQuestions.length;
+        correct = state.userAnswers.filter((ans, i) => {
+            const q = state.quizQuestions[i];
+            return (q.type === 'single' || q.type === 'bool') && ans === q.answer;
+        }).length;
+    } else {
+        correct = state.userAnswers.filter((ans, i) => ans === state.quizQuestions[i].answer).length;
+        totalScored = total;
+    }
+
+    const rate = totalScored > 0 ? Math.round((correct / totalScored) * 100) : 0;
 
     // 更新统计
-    updateStats(correct, total);
+    updateStats(correct, totalScored);
 
     // 切换到结果视图
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -1206,22 +1529,50 @@ function showResult() {
 
     // 设置结果图标和标题
     let icon, title;
-    if (rate >= 90) { icon = '🏆'; title = '太棒了！非常优秀！'; }
-    else if (rate >= 70) { icon = '🎉'; title = '做得不错！继续加油！'; }
-    else if (rate >= 60) { icon = '👍'; title = '及格了！还要多练习哦！'; }
-    else { icon = '📚'; title = '需要加强学习！别灰心！'; }
+    if (isRealExam) {
+        // 真题评分（含编程题权重：单选30分+判断20分+编程50分=100分）
+        const singleTotal = state.quizQuestions.filter(q => q.type === 'single').length;
+        const boolTotal = state.quizQuestions.filter(q => q.type === 'bool').length;
+        const singleCorrect = state.userAnswers.filter((ans, i) => state.quizQuestions[i].type === 'single' && ans === state.quizQuestions[i].answer).length;
+        const boolCorrect = state.userAnswers.filter((ans, i) => state.quizQuestions[i].type === 'bool' && ans === state.quizQuestions[i].answer).length;
+        const codeViewed = state.userAnswers.filter((ans, i) => state.quizQuestions[i].type === 'code' && ans !== undefined).length;
+        const codeTotal = state.quizQuestions.filter(q => q.type === 'code').length;
+
+        const singleScore = Math.round((singleCorrect / singleTotal) * 30);
+        const boolScore = Math.round((boolCorrect / boolTotal) * 20);
+        const totalScore = singleScore + boolScore;
+
+        if (rate >= 90) { icon = '🏆'; title = '太厉害了，稳过！'; }
+        else if (rate >= 70) { icon = '🎉'; title = '表现不错，继续加油！'; }
+        else if (rate >= 60) { icon = '👍'; title = '及格线附近，加强练习！'; }
+        else { icon = '📚'; title = '需要系统复习！别灰心！'; }
+
+        document.getElementById('result-score').textContent = `${correct}/${totalScored}`;
+        document.getElementById('result-detail').innerHTML = `
+            📝 单选题: <strong>${singleCorrect}/${singleTotal}</strong> (约${singleScore}分) &nbsp;|&nbsp;
+            ✅ 判断题: <strong>${boolCorrect}/${boolTotal}</strong> (约${boolScore}分)<br>
+            💻 编程题: <strong>${codeViewed}/${codeTotal}</strong> 已阅读<br>
+            🎯 客观题估分: <strong>${totalScore}分</strong> (满分50分，编程题另计50分)
+        `;
+    } else {
+        if (rate >= 90) { icon = '🏆'; title = '太棒了！非常优秀！'; }
+        else if (rate >= 70) { icon = '🎉'; title = '做得不错！继续加油！'; }
+        else if (rate >= 60) { icon = '👍'; title = '及格了！还要多练习哦！'; }
+        else { icon = '📚'; title = '需要加强学习！别灰心！'; }
+
+        document.getElementById('result-score').textContent = `${correct}/${totalScored}`;
+        document.getElementById('result-detail').innerHTML = `
+            正确率: <strong>${rate}%</strong><br>
+            答对 <strong>${correct}</strong> 题，答错 <strong>${totalScored - correct}</strong> 题
+        `;
+    }
 
     document.getElementById('result-icon').textContent = icon;
     document.getElementById('result-title').textContent = title;
-    document.getElementById('result-score').textContent = `${correct}/${total}`;
-    document.getElementById('result-detail').innerHTML = `
-        正确率: <strong>${rate}%</strong><br>
-        答对 <strong>${correct}</strong> 题，答错 <strong>${total - correct}</strong> 题
-    `;
 
     // 按钮
     document.getElementById('btn-result-review').style.display = 'block';
-    document.getElementById('btn-retry-wrong').style.display = (correct < total) ? 'block' : 'none';
+    document.getElementById('btn-retry-wrong').style.display = (correct < totalScored) ? 'block' : 'none';
     document.getElementById('btn-result-review').onclick = reviewAnswers;
     document.getElementById('btn-retry-wrong').onclick = retryWrong;
 
@@ -1240,18 +1591,55 @@ function reviewAnswers() {
     const container = document.getElementById('review-list');
     container.style.display = 'flex';
     const labels = ['A', 'B', 'C', 'D'];
+    const boolLabels = ['✓ 正确', '✗ 错误'];
 
     container.innerHTML = state.quizQuestions.map((q, i) => {
         const userAns = state.userAnswers[i];
+        let content = '';
+
+        if (q.type === 'code') {
+            // 编程题在回顾中的展示
+            const viewed = userAns !== undefined;
+            return `
+                <div class="review-item ${viewed ? 'correct-review' : 'wrong-review'}">
+                    <div class="review-question">${i + 1}. 💻 ${q.title}</div>
+                    <div class="review-answer">
+                        状态: <span class="${viewed ? 'correct-text' : 'wrong-text'}">${viewed ? '✅ 已阅读' : '⚠ 未阅读'}</span>
+                    </div>
+                    <div class="review-explanation">
+                        <strong>💡 解析：</strong>${q.explain}
+                    </div>
+                </div>
+            `;
+        }
+
+        if (q.type === 'bool') {
+            const isCorrect = userAns === q.answer;
+            const cls = isCorrect ? 'correct-review' : 'wrong-review';
+            return `
+                <div class="review-item ${cls}">
+                    <div class="review-question">${i + 1}. ✅ ${q.q}</div>
+                    ${q.code ? `<div style="background:#282C34;color:#ABB2BF;padding:8px 12px;border-radius:6px;font-family:monospace;font-size:0.8rem;margin:6px 0;white-space:pre-wrap;">${escapeHtml(q.code)}</div>` : ''}
+                    <div class="review-answer">
+                        你的答案: <span class="${isCorrect ? 'correct-text' : 'wrong-text'}">${boolLabels[userAns] || '未作答'}</span>
+                        ${!isCorrect ? ` | 正确答案: <span class="correct-text">${boolLabels[q.answer]}</span>` : ''}
+                    </div>
+                    <div class="review-explanation">
+                        <strong>💡 解析：</strong>${q.explain}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 单选题
         const isCorrect = userAns === q.answer;
         const cls = isCorrect ? 'correct-review' : 'wrong-review';
-
         return `
             <div class="review-item ${cls}">
                 <div class="review-question">${i + 1}. ${q.q}</div>
                 ${q.code ? `<div style="background:#282C34;color:#ABB2BF;padding:8px 12px;border-radius:6px;font-family:monospace;font-size:0.8rem;margin:6px 0;white-space:pre-wrap;">${escapeHtml(q.code)}</div>` : ''}
                 <div class="review-answer">
-                    你的答案: <span class="${isCorrect ? 'correct-text' : 'wrong-text'}">${labels[userAns] || '未作答'}. ${q.options[userAns] || ''}</span>
+                    你的答案: <span class="${isCorrect ? 'correct-text' : 'wrong-text'}">${labels[userAns] || '未作答'}. ${q.options ? q.options[userAns] || '' : ''}</span>
                     ${!isCorrect ? ` | 正确答案: <span class="correct-text">${labels[q.answer]}. ${q.options[q.answer]}</span>` : ''}
                 </div>
                 <div class="review-explanation">
@@ -1267,6 +1655,8 @@ function reviewAnswers() {
 function retryWrong() {
     const wrongQuestions = [];
     state.quizQuestions.forEach((q, i) => {
+        // 真题模式排除编程题（编程题不判对错）
+        if (q.type === 'code') return;
         if (state.userAnswers[i] !== q.answer) {
             wrongQuestions.push(q);
         }
@@ -1339,8 +1729,9 @@ function confirmModal() {
 function confirmQuitQuiz() {
     const answered = state.userAnswers.filter(a => a !== undefined).length;
     const total = state.quizQuestions.length;
+    const isExam = state.quizMode === 'exam' || state.quizMode === 'real-exam';
     showModal('确认退出',
-        `你已经回答了 ${answered}/${total} 题，确定要退出吗？${state.quizMode === 'exam' ? '退出后考试记录不会保存。' : ''}`,
+        `你已经回答了 ${answered}/${total} 题，确定要退出吗？${isExam ? '退出后考试记录不会保存。' : ''}`,
         () => {
             clearTimer();
             state.quizMode = null;
@@ -1435,8 +1826,10 @@ window.navigateTo = navigateTo;
 window.openTopic = openTopic;
 window.startPractice = startPractice;
 window.startExam = startExam;
+window.startRealExam = startRealExam;
 window.selectOption = selectOption;
 window.submitAnswer = submitAnswer;
+window.submitCodeReading = submitCodeReading;
 window.nextQuestion = nextQuestion;
 window.showResult = showResult;
 window.reviewAnswers = reviewAnswers;
@@ -1446,6 +1839,7 @@ window.closeModal = closeModal;
 window.confirmModal = confirmModal;
 window.removeWrongQuestion = removeWrongQuestion;
 window.showToast = showToast;
+window.toggleReferenceCode = toggleReferenceCode;
 
 // 启动应用
 document.addEventListener('DOMContentLoaded', init);

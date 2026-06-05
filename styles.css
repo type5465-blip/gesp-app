@@ -885,6 +885,246 @@ body {
     }
 }
 
+/* --- 解析即时显示 --- */
+.explanation-inline {
+    background: #F0F8FF;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+    padding: 12px 14px;
+    margin-top: 14px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    animation: fadeSlideIn 0.3s ease;
+    display: none;
+}
+
+.explanation-inline.show {
+    display: block;
+}
+
+.explanation-inline .exp-header {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+/* --- 判断题选项 --- */
+.option-item.bool-option {
+    justify-content: center;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.option-item.bool-option .option-letter {
+    font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+}
+
+/* --- 编程题展示 --- */
+.programming-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+}
+
+.programming-card .prog-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+}
+
+.programming-card .prog-section {
+    margin-bottom: 10px;
+}
+
+.programming-card .prog-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.programming-card .prog-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.programming-card .prog-sample {
+    background: var(--bg);
+    border-radius: var(--radius-xs);
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    margin: 4px 0;
+}
+
+.code-toggle {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-xs);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.code-toggle:active {
+    opacity: 0.8;
+}
+
+.reference-code {
+    display: none;
+    margin-top: 10px;
+}
+
+.reference-code.show {
+    display: block;
+}
+
+.prog-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: var(--radius-xs);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.prog-status.done {
+    background: #E8F8EF;
+    color: var(--success);
+}
+
+.prog-status.pending {
+    background: #FFF9E6;
+    color: var(--accent-dark);
+}
+
+/* --- 题型分隔标签 --- */
+.section-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.section-badge.single-choice {
+    background: #EBF3FC;
+    color: var(--primary);
+}
+
+.section-badge.true-false {
+    background: #FFF3E0;
+    color: #E65100;
+}
+
+.section-badge.programming {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+/* --- 真题列表 --- */
+.exam-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.exam-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 4px solid var(--primary);
+}
+
+.exam-card:active {
+    transform: scale(0.98);
+}
+
+.exam-card-icon {
+    font-size: 2rem;
+    min-width: 48px;
+    text-align: center;
+}
+
+.exam-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.exam-card-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.exam-card-meta {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.exam-card-structure {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    margin-top: 2px;
+}
+
+.exam-card-arrow {
+    color: var(--text-light);
+    font-size: 1.3rem;
+}
+
+/* --- 单选题/判断题标记 --- */
+.question-type-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.question-type-badge.single {
+    background: #EBF3FC;
+    color: var(--primary);
+}
+
+.question-type-badge.bool {
+    background: #FFF3E0;
+    color: #E65100;
+}
+
+.question-type-badge.code {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
 /* --- 深色模式 --- */
 @media (prefers-color-scheme: dark) {
     :root {
@@ -924,5 +1164,29 @@ body {
 
     .review-explanation {
         background: #2C3038;
+    }
+
+    .explanation-inline {
+        background: #1E2A36;
+    }
+
+    .section-badge.single-choice {
+        background: #1A2A3E;
+    }
+
+    .section-badge.true-false {
+        background: #2E2418;
+    }
+
+    .section-badge.programming {
+        background: #1A2E22;
+    }
+
+    .prog-status.done {
+        background: #1A2E22;
+    }
+
+    .prog-status.pending {
+        background: #2C2818;
     }
 }

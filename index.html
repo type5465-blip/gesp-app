@@ -63,6 +63,11 @@
                     <div class="feature-title">错题本</div>
                     <div class="feature-desc">温故知新，查漏补缺</div>
                 </div>
+                <div class="feature-card" onclick="navigateTo('exam-list')">
+                    <div class="feature-icon">📋</div>
+                    <div class="feature-title">真题实战</div>
+                    <div class="feature-desc">近两年真题，全真模拟</div>
+                </div>
             </div>
         </section>
 
@@ -106,10 +111,18 @@
                 <div class="progress-bar-fill" id="quiz-progress-bar" style="width: 0%;"></div>
             </div>
             <div class="quiz-card" id="quiz-card">
+                <div class="section-badge single-choice" id="section-badge" style="display:none;"></div>
                 <div class="question-number" id="question-number"></div>
                 <div class="question-text" id="question-text"></div>
                 <div class="question-code" id="question-code" style="display:none;"></div>
                 <div class="options-list" id="options-list"></div>
+                <!-- 编程题展示区 -->
+                <div id="programming-display" style="display:none;"></div>
+                <!-- 即时解析区 -->
+                <div class="explanation-inline" id="explanation-inline">
+                    <div class="exp-header">💡 解析</div>
+                    <div id="explanation-text"></div>
+                </div>
             </div>
             <button class="btn-submit" id="btn-submit-answer" onclick="submitAnswer()">确认答案</button>
         </section>
@@ -128,6 +141,15 @@
                 </div>
             </div>
             <div class="review-list" id="review-list" style="display:none;"></div>
+        </section>
+
+        <!-- 真题列表视图 -->
+        <section id="view-exam-list" class="view">
+            <div class="section-header">
+                <button class="btn-back" onclick="navigateTo('home')">← 返回</button>
+                <h2>📋 真题实战</h2>
+            </div>
+            <div class="exam-list" id="exam-list"></div>
         </section>
 
         <!-- 错题本视图 -->
