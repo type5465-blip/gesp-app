@@ -1242,7 +1242,7 @@ function renderQuestion() {
 
     // 选项渲染
     const isBool = question.type === 'bool';
-    const labels = isBool ? ['✓', '✗'] : ['A', 'B', 'C', 'D'];
+    const labels = isBool ? ['✔', '✘'] : ['A', 'B', 'C', 'D'];
     const options = isBool ? ['正确', '错误'] : question.options;
 
     const optionsList = document.getElementById('options-list');
@@ -1591,7 +1591,7 @@ function reviewAnswers() {
     const container = document.getElementById('review-list');
     container.style.display = 'flex';
     const labels = ['A', 'B', 'C', 'D'];
-    const boolLabels = ['✓ 正确', '✗ 错误'];
+    const boolLabels = ['✔ 正确', '✘ 错误'];
 
     container.innerHTML = state.quizQuestions.map((q, i) => {
         const userAns = state.userAnswers[i];
