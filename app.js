@@ -1257,7 +1257,7 @@ function renderQuestion() {
         return `
             <div class="${cls}" onclick="selectOption(${i})" id="option-${i}">
                 <div class="option-letter">${labels[i]}</div>
-                <div>${opt}</div>
+                <div>${escapeHtml(opt)}</div>
             </div>
         `;
     }).join('');
@@ -1639,8 +1639,8 @@ function reviewAnswers() {
                 <div class="review-question">${i + 1}. ${q.q}</div>
                 ${q.code ? `<div style="background:#282C34;color:#ABB2BF;padding:8px 12px;border-radius:6px;font-family:monospace;font-size:0.8rem;margin:6px 0;white-space:pre-wrap;">${escapeHtml(q.code)}</div>` : ''}
                 <div class="review-answer">
-                    你的答案: <span class="${isCorrect ? 'correct-text' : 'wrong-text'}">${labels[userAns] || '未作答'}. ${q.options ? q.options[userAns] || '' : ''}</span>
-                    ${!isCorrect ? ` | 正确答案: <span class="correct-text">${labels[q.answer]}. ${q.options[q.answer]}</span>` : ''}
+                    你的答案: <span class="${isCorrect ? 'correct-text' : 'wrong-text'}">${labels[userAns] || '未作答'}. ${q.options ? escapeHtml(q.options[userAns] || '') : ''}</span>
+                    ${!isCorrect ? ` | 正确答案: <span class="correct-text">${labels[q.answer]}. ${escapeHtml(q.options[q.answer])}</span>` : ''}
                 </div>
                 <div class="review-explanation">
                     <strong>💡 解析：</strong>${q.explain}
