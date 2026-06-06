@@ -1059,6 +1059,7 @@ function openTopic(topicId) {
     document.getElementById('view-topic-detail').classList.add('active');
     document.getElementById('topic-detail-title').textContent = topic.icon + ' ' + topic.name;
     document.getElementById('topic-content').innerHTML = topic.content;
+    highlightCodeBlocks();
     window.scrollTo(0, 0);
 }
 
@@ -1773,6 +1774,52 @@ function escapeHtml(str) {
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+}
+
+// ==================== 语法高亮 ====================
+function highlightCodeBlocks() {
+    const keywords = ['if', 'else', 'elif', 'for', 'while', 'in', 'break', 'continue',
+        'import', 'True', 'False', 'not', 'and', 'or', 'def', 'return', 'class', 'try', 'except'];
+    const builtins = ['print', 'input', 'int', 'float', 'str', 'bool', 'type', 'len',
+        'range', 'list', 'append', 'sort', 'pop', 'insert', 'remove', 'strip', 'upper',
+        'lower', 'replace', 'find', 'split', 'abs', 'max', 'min', 'sum', 'round'];
+    const commentColor = '#5C6370';
+    const keywordColor = '#C678DD';
+    const builtinColor = '#E5C07B';
+    const stringColor = '#98C379';
+    const numberColor = '#D19A66';
+    const funcColor = '#61AFEF';
+
+    document.querySelectorAll('#topic-content .code-block').forEach(block => {
+        let html = block.innerHTML;
+        // 1. Highlight comments (# until end of line)
+        html = html.replace(/(<span[^>]*>)?(#.*$)/gm, function(m, span, comment) {
+            if (span) return m;
+            return '<span style="color:' + commentColor + ';font-style:italic">' + comment + '</span>';
+        });
+        // 2. Highlight strings (single/double quoted)
+        html = html.replace(/(["'])(?:(?!\1|\\).|\\.)*\1/g, function(m) {
+            // Don't re-wrap already highlighted spans
+            if (m.includes('<span')) return m;
+            return '<span style="color:' + stringColor + '">' + m + '</span>';
+        });
+        // 3. Highlight numbers
+        html = html.replace(/\b(\d+\.?\d*)\b/g, function(m) {
+            if (m.includes('<span')) return m;
+            return '<span style="color:' + numberColor + '">' + m + '</span>';
+        });
+        // 4. Highlight keywords
+        keywords.forEach(kw => {
+            let re = new RegExp('\\b(' + kw + ')\\b(?![^<]*>)', 'g');
+            html = html.replace(re, '<span style="color:' + keywordColor + '">$1</span>');
+        });
+        // 5. Highlight built-in functions (word followed by opening paren)
+        builtins.forEach(fn => {
+            let re = new RegExp('\\b(' + fn + ')(?=\\s*\\()', 'g');
+            html = html.replace(re, '<span style="color:' + builtinColor + '">$1</span>');
+        });
+        block.innerHTML = html;
+    });
 }
 
 // ==================== 初始化 ====================
