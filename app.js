@@ -1263,7 +1263,7 @@ function renderQuestion() {
     }).join('');
 
     // 如果已答过，显示解析
-    if (savedAnswer !== undefined && isRealExam) {
+    if (savedAnswer !== undefined) {
         showExplanationInline(question);
     }
 
@@ -1325,7 +1325,7 @@ function renderProgrammingQuestion(question, idx, total) {
     `;
 
     // 如果已阅读，显示解析
-    if (viewed && state.quizMode === 'real-exam') {
+    if (viewed) {
         showExplanationInline(question);
     }
 
@@ -1431,10 +1431,8 @@ function submitAnswer() {
         }
     }
 
-    // 真题模式：立刻显示解析
-    if (state.quizMode === 'real-exam') {
-        showExplanationInline(question);
-    }
+    // 答完立刻显示解析
+    showExplanationInline(question);
 
     // 更新按钮
     const total = state.quizQuestions.length;
