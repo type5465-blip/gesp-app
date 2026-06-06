@@ -983,7 +983,7 @@ const examPapers = [
 // ==================== 应用状态 ====================
 const state = {
     currentView: 'home',
-    quizMode: null,        // 'practice' | 'exam'
+    quizMode: null,        // 'practice' | 'exam' | 'real-exam'
     quizTopicId: null,
     quizQuestions: [],
     currentQuestionIndex: 0,
@@ -991,6 +991,7 @@ const state = {
     timerInterval: null,
     examTimeLeft: 0,
     modalCallback: null,    // 弹窗确认回调
+    isRetry: false,        // 是否为重做错题
 };
 
 // ==================== 存储管理 ====================
@@ -1525,6 +1526,7 @@ function clearTimer() {
 function showResult() {
     clearTimer();
     const isRealExam = state.quizMode === 'real-exam';
+    const isSimExam = state.quizMode === 'exam';
     state.quizMode = null;
 
     const total = state.quizQuestions.length;
@@ -1545,8 +1547,11 @@ function showResult() {
 
     const rate = totalScored > 0 ? Math.round((correct / totalScored) * 100) : 0;
 
-    // 更新统计
-    updateStats(correct, totalScored);
+    // 更新统计（重做错题不重复计入）
+    if (!state.isRetry) {
+        updateStats(correct, totalScored);
+    }
+    state.isRetry = false;
 
     // 切换到结果视图
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -1604,8 +1609,8 @@ function showResult() {
     // 隐藏解析列表
     document.getElementById('review-list').style.display = 'none';
 
-    // 如果是模拟考试，增加统计
-    if (!state.quizTopicId) {
+    // 只在新考试（非重做错题）时增加考试计数
+    if (isSimExam || isRealExam) {
         incrementExams();
     }
 
@@ -1693,6 +1698,7 @@ function retryWrong() {
     }
 
     state.quizMode = 'practice';
+    state.isRetry = true;
     state.quizQuestions = wrongQuestions;
     state.currentQuestionIndex = 0;
     state.userAnswers = [];
