@@ -726,11 +726,25 @@ body {
     margin-bottom: 4px;
 }
 
+.wrong-code {
+    background: #282C34;
+    color: #ABB2BF;
+    border-radius: var(--radius-xs);
+    padding: 8px 12px;
+    margin: 8px 0;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
 .wrong-item .wrong-meta {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: var(--text-secondary);
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 6px;
 }
 
 .wrong-item .wrong-topic {
@@ -741,10 +755,30 @@ body {
     font-size: 0.7rem;
 }
 
+.wrong-choice {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.correct-choice {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.wrong-explanation {
+    background: var(--bg);
+    border-radius: var(--radius-xs);
+    padding: 10px 12px;
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.6;
+}
+
 .wrong-actions {
     display: flex;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 12px;
 }
 
 .wrong-actions button {
@@ -1189,5 +1223,13 @@ body {
 
     .prog-status.pending {
         background: #2C2818;
+    }
+
+    .wrong-explanation {
+        background: #2C3038;
+    }
+
+    .wrong-code {
+        background: #1A1D23;
     }
 }

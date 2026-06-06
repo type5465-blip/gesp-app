@@ -1724,9 +1724,14 @@ function renderWrongBook() {
     container.innerHTML = data.wrongBook.map((w, i) => `
         <div class="wrong-item">
             <div class="wrong-question">${i + 1}. ${w.q}</div>
+            ${w.code ? `<div class="wrong-code">${escapeHtml(w.code)}</div>` : ''}
             <div class="wrong-meta">
                 <span class="wrong-topic">${w.topicName}</span>
-                <span>你的答案: ${labels[w.userChoice]} → 正确答案: ${labels[w.answer]}</span>
+                <span>你的答案: <span class="wrong-choice">${labels[w.userChoice]}. ${escapeHtml(w.options[w.userChoice] || '')}</span></span>
+                <span>正确答案: <span class="correct-choice">${labels[w.answer]}. ${escapeHtml(w.options[w.answer] || '')}</span></span>
+            </div>
+            <div class="wrong-explanation">
+                <strong>💡 解析：</strong>${w.explain || ''}
             </div>
             <div class="wrong-actions">
                 <button class="btn-secondary" onclick="removeWrongQuestion(${i}); renderWrongBook(); showToast('已从错题本移除')">移除</button>
