@@ -631,6 +631,9 @@ const questionBank = {
         { q: 'GESP一级考试主要考察什么？', options: ['高级算法', 'Python基础语法和简单编程', '机器学习', '网络编程'], answer: 1, code: '', explain: 'GESP一级主要考察Python基础语法、变量、输入输出、简单的控制结构等基础知识。' },
         { q: 'Python代码中，以下哪个是正确的语句？', options: ['PRINT("hello")', 'print("hello")', 'Print("hello")', 'echo "hello"'], answer: 1, code: '', explain: 'Python中print()函数名必须全部小写。PRINT或Print都是错误的，Python区分大小写。' },
         { q: 'Python的官方网站是？', options: ['python.com', 'python.org', 'python.net', 'python.cn'], answer: 1, code: '', explain: 'Python的官方网站是python.org，可以在上面下载Python安装包和查阅文档。' },
+        { q: 'Python源程序文件的扩展名通常是？', options: ['.txt', '.py', '.python', '.pyt'], answer: 1, code: '', explain: 'Python源程序文件的标准扩展名是.py。Python解释器通过这个扩展名来识别和运行Python脚本文件。' },
+        { q: '以下关于Python语言的说法，正确的是？', options: ['Python只能运行在Windows系统上', 'Python是跨平台语言，支持Windows、macOS、Linux等', 'Python代码必须先编译成.exe才能运行', 'Python只能做简单的数学计算'], answer: 1, code: '', explain: 'Python是跨平台的解释型语言，无需事先编译，可以在Windows、macOS、Linux等多种操作系统上直接运行。' },
+        { q: '在Python交互模式（>>>提示符）中直接输入3*4并回车，屏幕上会显示？', options: ['3*4', '12', '报错信息', '什么也不显示'], answer: 1, code: '', explain: 'Python交互模式（REPL）会立即计算并显示表达式的结果。输入3*4后，直接输出计算结果12。' },
     ],
     // Python开发环境 (12题)
     2: [
@@ -646,6 +649,9 @@ const questionBank = {
         { q: 'Python程序可以直接双击.py文件运行吗？', options: ['永远不能', '可以，如果安装了Python', '需要先转成PDF', '只能在手机上运行'], answer: 1, code: '', explain: '如果电脑上安装了Python，可以直接双击.py文件运行，也可以右键选择用Python打开。' },
         { q: '在编辑器模式写好代码后，需要做什么才能看到结果？', options: ['保存并关闭文件', '运行（Run）程序', '重启电脑', '把文件发到手机上'], answer: 1, code: '', explain: '在编辑器模式写好代码后，需要运行（Run Module或按F5）才能看到程序执行结果。' },
         { q: '以下关于IDLE的说法，哪个是正确的？', options: ['IDLE需要额外付费购买', 'IDLE是Python安装时自带的免费工具', 'IDLE只能写代码不能运行', 'IDLE只能运行一行代码'], answer: 1, code: '', explain: 'IDLE是Python安装时自带的免费集成开发环境，既可以写代码也可以运行程序。' },
+        { q: '在Python中，单行注释使用什么符号？', options: ['//', '#', '--', '/*'], answer: 1, code: '', explain: 'Python使用#作为单行注释符。#及其之后的内容到行尾都不会被执行。//是Java/C++的注释符，/* */是C语言的块注释。' },
+        { q: 'Python代码中，缩进（行首空格）的主要作用是？', options: ['让代码看起来更美观', '用来表示代码之间的层级和从属关系', '可以提高程序运行速度', '没有任何实际作用，可省略'], answer: 1, code: '', explain: 'Python使用缩进来表示代码块结构。例如if语句下的代码必须缩进，表示它们从属于该if条件。缩进错误会导致IndentationError。' },
+        { q: '以下哪种操作不能运行Python程序？', options: ['在IDLE编辑器中按F5键', '在命令行中输入python test.py', '在Word文档中编辑代码后保存并运行', '双击.py文件（已安装Python）'], answer: 2, code: '', explain: 'Word文档(.docx)是文字处理格式，不能直接运行Python代码。Python程序需要在Python解释器环境中运行。' },
     ],
     // 变量与数据类型 (15题)
     3: [
@@ -664,6 +670,8 @@ const questionBank = {
         { q: '下面关于Python变量的说法，哪个是正确的？', options: ['变量必须先声明类型', '变量不需要声明类型，直接赋值即可', '变量只能存储数字', '变量名可以随意起'], answer: 1, code: '', explain: 'Python是动态类型语言，变量不需要声明类型，直接赋值即可使用。' },
         { q: '布尔类型的值有几个？', options: ['1个', '2个', '3个', '无数个'], answer: 1, code: '', explain: '布尔类型（bool）只有两个值：True和False。用于表示真和假。' },
         { q: '以下代码输出什么？\nx = 10\nprint(type(x))\nx = "hello"\nprint(type(x))', options: ['int\\nint', 'int\\nstr', 'str\\nint', 'str\\nstr'], answer: 1, code: 'x = 10\nprint(type(x))\nx = "hello"\nprint(type(x))', explain: '变量x先赋值为10（int类型），后赋值为"hello"（str类型）。Python变量可以改变类型，type()反映当前类型。' },
+        { q: '以下哪个变量名是不合法的？', options: ['my_name', '_count', '2name', 'name2'], answer: 2, code: '', explain: '变量名只能以字母或下划线开头，不能以数字开头。2name以数字2开头，不是合法的变量名。其他三项都符合命名规则。' },
+        { q: 'int("123")的结果是什么类型？', options: ['str', 'int', 'float', 'bool'], answer: 1, code: '', explain: 'int()函数将字符串或数字转换为整数类型。int("123")返回整数123，类型为int。如果字符串无法转换（如int("abc")）则会报错。' },
     ],
     // 输入与输出 (15题)
     4: [
@@ -682,6 +690,8 @@ const questionBank = {
         { q: '以下代码输出什么？\nprint("a", "b", "c", sep=",")', options: ['a b c', 'abc', 'a,b,c', 'a, b, c'], answer: 2, code: 'print("a", "b", "c", sep=",")', explain: 'sep=","表示用逗号分隔，所以输出a,b,c。每个逗号就是sep指定的分隔符。' },
         { q: 'float("3.5")的返回值是什么？', options: ['3', '3.5', '"3.5"', '报错'], answer: 1, code: '', explain: 'float()函数将字符串转换为浮点数。float("3.5")返回浮点数3.5。' },
         { q: '以下代码输出什么？\nprint("Python", end="***")\nprint("GESP")', options: ['Python\\nGESP', 'Python***GESP', 'Python***\\nGESP', '报错'], answer: 1, code: 'print("Python", end="***")\nprint("GESP")', explain: '第一个print结尾输出***而不是换行，紧接着第二个print输出GESP，所以结果是Python***GESP。' },
+        { q: 'print("Hello", "World", sep="-")输出什么？', options: ['Hello World', 'Hello-World', 'HelloWorld', 'Hello - World'], answer: 1, code: '', explain: 'print()的sep参数指定多个输出值之间的分隔符。sep="-"表示用短横线分隔，输出"Hello-World"。默认sep=" "（空格）。' },
+        { q: '执行n=int(input())，用户输入3.14，会怎样？', options: ['n等于3', 'n等于3.14', '报ValueError', 'n等于0'], answer: 2, code: '', explain: 'int()不能转换含小数点的字符串"3.14"，会报ValueError。想接收小数应使用float(input())。这是GESP常考易错点。' },
     ],
     // 运算符 (16题)
     5: [
@@ -701,6 +711,8 @@ const questionBank = {
         { q: '以下代码输出什么？\nprint(5 != 3)', options: ['True', 'False', '2', '报错'], answer: 0, code: '', explain: '!=是不等于运算符。5不等于3成立，所以返回True。' },
         { q: '20 // 3 的结果是？', options: ['6', '6.666', '7', '2'], answer: 0, code: '', explain: '20÷3=6.666...，整除//向下取整得6。' },
         { q: '以下代码输出什么？\nprint(10 / 2 == 5)', options: ['True', 'False', '5', '报错'], answer: 0, code: '', explain: '先算10/2=5.0（浮点数），然后5.0==5比较，Python中5.0==5是True。' },
+        { q: '以下代码输出什么？\nprint(2 ** 3 ** 2)', options: ['64', '512', '12', '报错'], answer: 1, code: '', explain: '幂运算**是右结合的，3**2=9，然后2**9=512。注意是2**(3**2)=2**9=512，不是(2**3)**2=8**2=64。' },
+        { q: 'not (5 > 3 and 2 > 4) 的结果是？', options: ['True', 'False', '报错', 'None'], answer: 0, code: '', explain: '5>3是True，2>4是False，True and False = False，not False = True。not反转布尔值。' },
     ],
     // 条件判断 (15题)
     6: [
@@ -719,6 +731,8 @@ const questionBank = {
         { q: '在Python中，"如果a大于b"的正确写法是？', options: ['if a > b:', 'if a > b then:', 'if (a > b):', '大于(a, b):'], answer: 0, code: '', explain: 'Python中if语句的正确写法是 if a > b:，不需要括号或then关键字。' },
         { q: '以下代码输出什么？\nyear = 2024\nif year % 4 == 0:\n    print("闰年")\nelse:\n    print("平年")', options: ['闰年', '平年', '2024', '报错'], answer: 0, code: 'year = 2024\nif year % 4 == 0:\n    print("闰年")\nelse:\n    print("平年")', explain: '2024%4=0（2024能被4整除），所以year%4==0为True，输出"闰年"。' },
         { q: '以下代码最后输出什么？\na = 3\nif a > 1:\n    print(a)\n    a = a + 2\nprint(a)', options: ['3\\n5', '3\\n3', '5\\n5', '3'], answer: 0, code: 'a = 3\nif a > 1:\n    print(a)\n    a = a + 2\nprint(a)', explain: 'a=3>1成立，进入if块：先print(a)输出3，然后a=3+2=5。if块结束后print(a)输出5。' },
+        { q: '以下代码输出什么？\nscore = 85\nif score >= 90:\n    print("优秀")\nelif score >= 70:\n    print("良好")\nelif score >= 60:\n    print("及格")\nelse:\n    print("不及格")', options: ['优秀', '良好', '及格', '不及格'], answer: 1, code: 'score = 85\nif score >= 90:\n    print("优秀")\nelif score >= 70:\n    print("良好")\nelif score >= 60:\n    print("及格")\nelse:\n    print("不及格")', explain: 'score=85，不满足≥90，满足≥70，输出"良好"。elif按顺序检查，找到第一个满足条件的分支就停止。' },
+        { q: '以下代码输出什么？\na = 10\nif a > 5:\n    if a < 15:\n        print("OK")\n    else:\n        print("NO")', options: ['OK', 'NO', '报错', 'OK\\nNO'], answer: 0, code: 'a = 10\nif a > 5:\n    if a < 15:\n        print("OK")\n    else:\n        print("NO")', explain: '这是嵌套if。a=10，外层a>5成立，进入内层if；10<15成立，输出"OK"。内层else属于内层if，只在a<15不成立时执行。' },
     ],
     // for循环 (16题)
     7: [
@@ -738,6 +752,8 @@ const questionBank = {
         { q: '以下代码输出什么？\ns = 0\nfor i in range(1, 6):\n    s = s + i\nprint(s)', options: ['10', '15', '21', '5'], answer: 1, code: 's = 0\nfor i in range(1, 6):\n    s = s + i\nprint(s)', explain: '1+2+3+4+5=15。range(1,6)生成1到5，累加和为15。' },
         { q: '以下代码输出什么？\nfor i in range(3):\n    print("*" * (i + 1))', options: ['*\\n**\\n***', '***\\n**\\n*', '*\\n**\\n***\\n****', '***'], answer: 0, code: 'for i in range(3):\n    print("*" * (i + 1))', explain: 'i=0: "*"*1="*"; i=1: "*"*2="**"; i=2: "*"*3="***"。逐行输出金字塔形状。' },
         { q: '以下代码输出什么？\nfor i in range(2):\n    print("第" + str(i+1) + "次")', options: ['第1次\\n第2次', '第i+1次\\n第i+1次', '第0次\\n第1次', '报错'], answer: 0, code: 'for i in range(2):\n    print("第" + str(i+1) + "次")', explain: 'i=0: str(1)="1"，输出"第1次"；i=1: str(2)="2"，输出"第2次"。' },
+        { q: 'range(10, 0, -2)生成哪些数字？', options: ['10,8,6,4,2', '10,8,6,4,2,0', '10,9,8...1', '0,2,4,6,8,10'], answer: 0, code: '', explain: 'range(10,0,-2)从10开始递减2：10,8,6,4,2。到0停止（不含0）。负步长range常用于倒序循环。' },
+        { q: '以下代码输出什么？\nfor i in range(2):\n    for j in range(3):\n        if j == 1:\n            break\n        print(i, j)', options: ['0 0\\n1 0', '0 0\\n0 1\\n1 0\\n1 1', '不输出', '报错'], answer: 0, code: 'for i in range(2):\n    for j in range(3):\n        if j == 1:\n            break\n        print(i, j)', explain: '嵌套循环中break只跳出内层循环。i=0: j=0打印0 0，j=1时break跳出内层；i=1: j=0打印1 0，j=1时break跳出。共输出两行。' },
     ],
     // while循环 (15题)
     8: [
@@ -756,6 +772,8 @@ const questionBank = {
         { q: '以下代码输出什么？\ni = 1\nwhile i <= 10:\n    if i % 3 == 0:\n        print(i)\n    i = i + 1', options: ['1\\n2\\n3\\n...\\n10', '3\\n6\\n9', '3\\n9', '1\\n3\\n6\\n9'], answer: 1, code: 'i = 1\nwhile i <= 10:\n    if i % 3 == 0:\n        print(i)\n    i = i + 1', explain: '循环1到10，只打印能被3整除的数：3, 6, 9。' },
         { q: '以下代码输出什么？\nn = 1\nwhile n < 8:\n    n = n * 2\nprint(n)', options: ['4', '8', '16', '死循环'], answer: 1, code: 'n = 1\nwhile n < 8:\n    n = n * 2\nprint(n)', explain: 'n=1→2→4→8。n=8时不满足<8，停止循环，最终print输出8。' },
         { q: '以下代码输出什么？\na = 0\nwhile a < 3:\n    a = a + 1\nprint(a)', options: ['0', '1', '2', '3'], answer: 3, code: 'a = 0\nwhile a < 3:\n    a = a + 1\nprint(a)', explain: 'a从0开始：a=1→a=2→a=3，此时a=3不满足<3，停止循环。最终print输出3。' },
+        { q: '以下代码输出什么？\nn = 10\nwhile n > 0:\n    n = n - 3\n    if n <= 0:\n        print(n)\n        break', options: ['0', '1', '-2', '死循环'], answer: 2, code: 'n = 10\nwhile n > 0:\n    n = n - 3\n    if n <= 0:\n        print(n)\n        break', explain: 'n=10→减3=7→7>0继续；7→减3=4→4>0继续；4→减3=1→1>0继续；1→减3=-2→-2≤0，print(-2)后break退出。输出-2。' },
+        { q: '关于break和continue，以下说法正确的是？', options: ['break跳出整个循环，continue跳过本次循环剩余代码', 'break跳过本次循环，continue跳出整个循环', '两者作用完全相同', 'break和continue都不能在while中使用'], answer: 0, code: '', explain: 'break用于立即终止整个循环；continue用于跳过当前迭代的剩余代码，进入下一次循环。两者在for和while中都可用。' },
     ],
     // 字符串操作 (16题)
     9: [
@@ -774,7 +792,9 @@ const questionBank = {
         { q: 'len("你好Python")的结果是？', options: ['8', '9', '10', '11'], answer: 0, code: '', explain: '"你好Python"共8个字符：你(1)好(1)P(1)y(1)t(1)h(1)o(1)n(1)。Python 3中len()按Unicode码点计数，中英文每个字符都算1个。' },
         { q: '"banana".replace("a", "o")的结果是？', options: ['banana', 'bonono', 'banono', 'bonana'], answer: 1, code: '', explain: 'replace("a","o")将所有的"a"替换为"o"。"banana"中三个a都变成o→"bonono"。' },
         { q: '"Hello".find("e")的结果是？', options: ['0', '1', '2', '-1'], answer: 1, code: '', explain: 'find()查找子串首次出现的位置。"Hello"中"e"在索引1（H=0,e=1）。如果找不到会返回-1。' },
-        { q: '" Python "[1:5].strip()的结果是？', options: ['Pyth', 'Python', '"Py"', 'ython'], answer: 0, code: '', explain: '" Python "字符串索引：空格=0,P=1,y=2,t=3,h=4,o=5,n=6,空格=7。[1:5]切片取索引1,2,3,4 → "Pyth"。strip()去除两端空格，"Pyth"无空格可去除，结果仍为"Pyth"。注意索引从0开始，[1:5]含左不含右（即不含索引5的"o"）。' },
+        { q: '" Python "[1:5].strip()的结果是？', options: ['Pyth', 'Python', '"Py"', 'ython'], answer: 0, code: '', explain: '" Python "字符串索引：空格=0,P=1,y=2,t=3,h=4,o=5,n=6,空格=7。[1:5]切片取索引1,2,3,4 → "Pyth"。strip()去除两端空格，"Pyth"无空格可去除，结果仍为"Pyth"。' },
+        { q: '以下代码输出什么？\ns = "Hello"\nprint(s[1:4])', options: ['Hel', 'ell', 'ello', 'Hell'], answer: 1, code: '', explain: '"Hello"索引：H=0,e=1,l=2,l=3,o=4。[1:4]取索引1,2,3即"e","l","l"→"ell"。含左不含右。' },
+        { q: '执行 s = "abc"; s[0] = "A" 会怎样？', options: ['s变为"Abc"', 's变为"ABC"', '程序报错TypeError', 's保持不变'], answer: 2, code: '', explain: 'Python中字符串是不可变类型，不能直接修改某个字符。s[0]="A"会报TypeError。要修改字符串必须创建新字符串，如 s = "A" + s[1:]。' },
     ],
     // 列表基础 (16题)
     10: [
@@ -794,6 +814,8 @@ const questionBank = {
         { q: '[1, 2] * 3 的结果是？', options: ['[1, 2, 3]', '[1, 2, 1, 2, 1, 2]', '[3, 6]', '报错'], answer: 1, code: '', explain: '列表*整数表示重复：[1,2]*3=[1,2,1,2,1,2]。和字符串*整数的逻辑相同。' },
         { q: '以下代码输出什么？\nlst = ["a", "b", "c"]\nfor x in lst:\n    print(x, end="")', options: ['abc', 'a b c', 'a\\nb\\nc', '报错'], answer: 0, code: 'lst = ["a", "b", "c"]\nfor x in lst:\n    print(x, end="")', explain: 'for循环遍历列表每个元素，end=""表示不以换行分隔，依次输出a,b,c→"abc"。' },
         { q: 'len([])的结果是？', options: ['0', '1', '报错', 'null'], answer: 0, code: '', explain: '空列表[]的长度为0，len([])返回0。' },
+        { q: '以下代码输出什么？\nlst = [1, 2, 3]\nlst.insert(1, 10)\nprint(lst)', options: ['[1, 2, 3]', '[1, 10, 2, 3]', '[10, 1, 2, 3]', '报错'], answer: 1, code: 'lst = [1, 2, 3]\nlst.insert(1, 10)\nprint(lst)', explain: 'insert(位置, 元素)在指定位置插入元素，原位置及之后的元素后移。insert(1,10)在索引1处插入10→[1,10,2,3]。' },
+        { q: '列表和字符串的一个重要区别是？', options: ['列表可以修改元素，字符串不能修改', '列表用引号，字符串不用引号', '列表不能有重复元素', '字符串比列表功能多'], answer: 0, code: '', explain: '列表是可变的（可以修改某个元素的值），字符串是不可变的（不能直接修改某个字符）。这是两者的关键区别，也是GESP常考点。' },
     ],
     // Turtle绘图 (14题)
     11: [
@@ -811,6 +833,9 @@ const questionBank = {
         { q: '以下代码画什么？\nimport turtle\nfor i in range(6):\n    turtle.forward(50)\n    turtle.right(60)', options: ['正方形', '正五边形', '正六边形', '圆形'], answer: 2, code: 'import turtle\nfor i in range(6):\n    turtle.forward(50)\n    turtle.right(60)', explain: '循环6次，每次转60度。360÷60=6条边，画出正六边形。如果是360÷角度=整数，就能画出正多边形。' },
         { q: '以下代码中，海龟总共转了多少度？\nimport turtle\nfor i in range(5):\n    turtle.forward(100)\n    turtle.right(144)', options: ['360度', '720度', '144度', '500度'], answer: 1, code: '', explain: '5次×每次144度=720度。画五角星需要转720度（两圈），这就是五角星的画法。' },
         { q: 'turtle.backward(50)的作用是？', options: ['向前移动50', '向后移动50', '向左转50度', '画一个半径50的圆'], answer: 1, code: '', explain: 'backward(50)让海龟向后退（向后移动）50个像素。相当于forward(-50)。' },
+        { q: '以下代码画什么？\nimport turtle\nfor i in range(5):\n    turtle.forward(80)\n    turtle.right(72)', options: ['正五边形', '五角星', '正方形', '圆形'], answer: 0, code: 'import turtle\nfor i in range(5):\n    turtle.forward(80)\n    turtle.right(72)', explain: '循环5次每次右转72°，360÷72=5，画出正五边形。正多边形的外角=360÷边数，这里360÷5=72。' },
+        { q: 'turtle.circle(50, 180)的作用是？', options: ['画半径为50的完整圆', '画半径为50的半圆（180度圆弧）', '画半径为180的圆', '向前50后转180度'], answer: 1, code: '', explain: 'circle(半径, 角度)的第二个参数指定圆弧的角度。circle(50,180)画半径为50的半圆（180度）。circle(50)默认画完整圆（360度）。' },
+        { q: '以下Turtle代码画出来的图形是什么形状？\nimport turtle\nfor i in range(4):\n    turtle.forward(80)\n    turtle.left(90)\n    turtle.forward(40)\n    turtle.left(90)', options: ['正方形', '长方形', '三角形', '梯形'], answer: 1, code: '', explain: '每次循环：前进80→左转90→前进40→左转90→(恢复方向)。等于是画两个相邻的边（长80和宽40），循环4次画出80×40的长方形。注意每条边被画了两次。' },
     ],
     // 综合应用 (15题)
     12: [
@@ -829,6 +854,8 @@ const questionBank = {
         { q: '以下代码输出什么？\na = 1\nwhile a < 4:\n    a = a + 1\n    if a == 3:\n        break\nprint(a)', options: ['1', '2', '3', '4'], answer: 2, code: 'a = 1\nwhile a < 4:\n    a = a + 1\n    if a == 3:\n        break\nprint(a)', explain: 'a=1→a变2→a不是3继续→a变3→a是3执行break跳出→print(a)输出3。' },
         { q: '以下代码输出什么？\ns = "abc"\nprint("d" in s)', options: ['True', 'False', 'd', '报错'], answer: 1, code: 's = "abc"\nprint("d" in s)', explain: 'in关键字检查子串是否在字符串中。"abc"中不包含"d"，返回False。' },
         { q: '以下代码输出什么？\nx = 2\nfor i in range(3):\n    x = x * x\nprint(x)', options: ['4', '16', '256', '8'], answer: 2, code: 'x = 2\nfor i in range(3):\n    x = x * x\nprint(x)', explain: '循环3次：x=2→2*2=4→4*4=16→16*16=256。最终输出256。' },
+        { q: '以下代码输出什么？\ns = "abc123"\ncount = 0\nfor ch in s:\n    if ch.isdigit():\n        count += 1\nprint(count)', options: ['0', '3', '6', '报错'], answer: 1, code: 's = "abc123"\ncount = 0\nfor ch in s:\n    if ch.isdigit():\n        count += 1\nprint(count)', explain: 'isdigit()检查字符是否为数字。遍历"abc123"：a,b,c不是数字，1,2,3是数字，count统计数字个数=3。' },
+        { q: '以下代码输出什么？\na, b = 3, 5\nif a > b:\n    m = a\nelse:\n    m = b\nprint(m)', options: ['3', '5', '8', '报错'], answer: 1, code: 'a, b = 3, 5\nif a > b:\n    m = a\nelse:\n    m = b\nprint(m)', explain: 'a=3,b=5。3>5不成立，执行else分支m=b=5。输出5。这段代码的作用是找出两个数的最大值。' },
     ]
 };
 
