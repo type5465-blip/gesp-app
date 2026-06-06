@@ -7,93 +7,81 @@
 // 知识点学习内容
 const topics = [
     {
-        id: 1,
-        name: '认识Python',
-        icon: '🐍',
+        id: 1, name: '认识Python', icon: '🐍',
         desc: '了解Python语言的特点和应用',
         content: `
 <h3>🐍 什么是Python？</h3>
-<p>Python是一种<strong>高级编程语言</strong>，由荷兰人Guido van Rossum于1991年创建。Python这个名字来源于他喜欢的电视节目"Monty Python's Flying Circus"。</p>
+<p>Python是一种<strong>高级编程语言</strong>，由Guido van Rossum于1991年创建，名字来源于喜剧节目"Monty Python's Flying Circus"。</p>
 
 <h3>🌟 Python的特点</h3>
 <ul>
-    <li><strong>简单易学</strong>：语法简洁清晰，像读英语一样</li>
-    <li><strong>免费开源</strong>：任何人都可以免费使用</li>
-    <li><strong>跨平台</strong>：可以在Windows、Mac、Linux上运行</li>
-    <li><strong>功能强大</strong>：有丰富的库和框架</li>
-    <li><strong>应用广泛</strong>：网站开发、数据分析、人工智能、游戏开发等</li>
+    <li><strong>简单易学</strong>：语法简洁清晰，接近自然语言</li>
+    <li><strong>免费开源</strong>：任何人都可以免费下载使用</li>
+    <li><strong>跨平台</strong>：支持Windows、macOS、Linux</li>
+    <li><strong>功能强大</strong>：拥有丰富的第三方库和框架</li>
+    <li><strong>应用广泛</strong>：Web开发、数据分析、人工智能等</li>
 </ul>
 
 <h3>🎯 Python的应用领域</h3>
 <ul>
-    <li><strong>人工智能与机器学习</strong>：深度学习、图像识别</li>
-    <li><strong>Web开发</strong>：网站后端开发（如豆瓣、知乎）</li>
-    <li><strong>数据分析</strong>：科学计算、数据可视化</li>
-    <li><strong>自动化运维</strong>：服务器管理、自动脚本</li>
-    <li><strong>游戏开发</strong>：使用Pygame等库制作游戏</li>
+    <li><strong>人工智能</strong>：机器学习、深度学习、图像识别</li>
+    <li><strong>Web开发</strong>：网站后端（豆瓣、知乎等均使用Python）</li>
+    <li><strong>数据分析</strong>：科学计算、图表可视化</li>
+    <li><strong>自动化运维</strong>：批量处理、系统管理脚本</li>
+    <li><strong>游戏开发</strong>：使用Pygame等库开发2D游戏</li>
 </ul>
 
 <div class="note-box">
-    <strong>💡 GESP考试提示：</strong>一级考试主要考察Python基础语法、简单的输入输出、变量使用和基本控制结构。
-</div>
-        `
+    <strong>💡 GESP考点：</strong>一级主要考察Python基础语法、输入输出、变量和控制结构。
+</div>`
     },
     {
-        id: 2,
-        name: 'Python开发环境',
-        icon: '💻',
+        id: 2, name: 'Python开发环境', icon: '💻',
         desc: '了解IDLE和代码编写环境',
         content: `
-<h3>🛠 Python开发环境</h3>
-<p>编写Python代码需要开发环境，常用的有：</p>
+<h3>🛠 开发环境介绍</h3>
+<p>编写Python代码需要开发环境，常用有：</p>
 <ul>
     <li><strong>IDLE</strong>：Python自带的集成开发环境，适合初学者</li>
-    <li><strong>VS Code</strong>：微软开发的免费代码编辑器</li>
+    <li><strong>VS Code</strong>：微软开发的免费代码编辑器，功能强大</li>
     <li><strong>PyCharm</strong>：专业的Python开发工具</li>
-    <li><strong>在线编辑器</strong>：如replit.com、Python在线编辑器</li>
+    <li><strong>在线编辑器</strong>：如Python在线编辑器、replit.com</li>
 </ul>
 
-<h3>📝 使用IDLE编写Python程序</h3>
-<p>IDLE有两种模式：</p>
+<h3>📝 IDLE的两种模式</h3>
 <ol>
-    <li><strong>交互模式（Shell）</strong>：输入一行代码，立即执行并显示结果</li>
-    <li><strong>编辑器模式</strong>：编写完整的.py文件，然后运行</li>
+    <li><strong>交互模式（Shell）</strong>：输入一行代码，回车立即执行并显示结果（提示符为 >>>）</li>
+    <li><strong>编辑器模式</strong>：编写完整的 .py 文件，按 F5 运行整个程序</li>
 </ol>
 
 <h3>▶️ 运行Python程序</h3>
-<p>在IDLE编辑器中：</p>
 <ol>
-    <li>编写代码</li>
-    <li>按 <strong>F5</strong> 键运行</li>
-    <li>或者在菜单选择 Run → Run Module</li>
+    <li>在编辑器中编写代码</li>
+    <li>按 <strong>F5</strong> 键（或菜单 Run → Run Module）</li>
+    <li>也可以在命令行输入：<code>python 文件名.py</code></li>
 </ol>
 
-<h3>📄 Python文件的扩展名</h3>
-<p>Python程序文件以 <strong>.py</strong> 结尾，例如：<code>hello.py</code>、<code>test.py</code></p>
+<h3>📄 Python文件</h3>
+<p>Python程序文件以 <strong>.py</strong> 结尾，如 <code>hello.py</code>、<code>test.py</code>。建议使用<strong>UTF-8编码</strong>保存，以正确处理中文。</p>
 
 <div class="note-box">
-    <strong>💡 记住：</strong>Python文件的扩展名是<strong>.py</strong>，这是GESP一级常考知识点！
-</div>
-        `
+    <strong>💡 记住：</strong>.py 是Python文件的扩展名，IDLE中按 <strong>F5</strong> 运行程序。这是GESP常考基础题！
+</div>`
     },
     {
-        id: 3,
-        name: '变量与数据类型',
-        icon: '📦',
+        id: 3, name: '变量与数据类型', icon: '📦',
         desc: '学习变量命名和常用数据类型',
         content: `
 <h3>📦 什么是变量？</h3>
-<p>变量就像一个<strong>贴了标签的盒子</strong>，用来存储数据。在Python中，不需要声明变量类型，直接赋值即可。</p>
+<p>变量就像一个<strong>贴了标签的盒子</strong>，用来存储数据。Python中变量不需要声明类型，直接赋值即可使用。</p>
 
-<div class="code-block">
-<span class="comment"># 变量的定义和赋值</span>
-<span class="func">name</span> = <span class="string">"小明"</span>
-<span class="func">age</span> = <span class="number">12</span>
-<span class="func">height</span> = <span class="number">1.55</span>
-<span class="func">is_student</span> = <span class="keyword">True</span>
-</div>
+<div class="code-block"># 变量的定义和赋值
+name = "小明"
+age = 12
+height = 1.55
+is_student = True</div>
 
-<h3>📋 Python常见数据类型</h3>
+<h3>📋 Python常用数据类型</h3>
 <ul>
     <li><strong>整型（int）</strong>：整数，如 <code>10</code>、<code>-5</code>、<code>0</code></li>
     <li><strong>浮点型（float）</strong>：小数，如 <code>3.14</code>、<code>-2.5</code></li>
@@ -101,516 +89,465 @@ const topics = [
     <li><strong>布尔型（bool）</strong>：只有 <code>True</code> 和 <code>False</code> 两个值</li>
 </ul>
 
-<h3>✏️ 变量命名规则</h3>
+<h3>✏️ 变量命名规则（重要！）</h3>
 <ul>
     <li>只能包含<strong>字母、数字和下划线</strong></li>
-    <li>不能以<strong>数字</strong>开头</li>
-    <li>区分<strong>大小写</strong>（age和Age是不同的变量）</li>
-    <li>不能使用Python的<strong>关键字</strong>（如if、for、while等）</li>
+    <li>不能以<strong>数字</strong>开头（如 <code>2name</code> 不合法）</li>
+    <li>区分<strong>大小写</strong>（age 和 Age 是不同的变量）</li>
+    <li>不能使用Python<strong>关键字</strong>（如 if、for、while 等）</li>
 </ul>
 
-<div class="output-block">
->>> name = "小明"
+<div class="output-block">>>> name = "小明"
 >>> age = 12
 >>> print(name)
 小明
 >>> print(age)
 12
 >>> print(type(age))
-&lt;class 'int'&gt;
-</div>
+&lt;class 'int'&gt;</div>
 
-<h3>🔄 使用type()查看类型</h3>
-<p><code>type()</code>函数可以查看数据的类型：</p>
+<h3>🔄 type() 函数</h3>
+<p><code>type()</code> 可以查看数据的类型：</p>
 
-<div class="code-block">
-<span class="builtin">print</span>(<span class="builtin">type</span>(<span class="number">10</span>))      <span class="comment"># 输出: &lt;class 'int'&gt;</span>
-<span class="builtin">print</span>(<span class="builtin">type</span>(<span class="number">3.14</span>))    <span class="comment"># 输出: &lt;class 'float'&gt;</span>
-<span class="builtin">print</span>(<span class="builtin">type</span>(<span class="string">"hi"</span>))    <span class="comment"># 输出: &lt;class 'str'&gt;</span>
-<span class="builtin">print</span>(<span class="builtin">type</span>(<span class="keyword">True</span>))   <span class="comment"># 输出: &lt;class 'bool'&gt;</span>
-</div>
+<div class="code-block">print(type(10))      # &lt;class 'int'&gt;
+print(type(3.14))    # &lt;class 'float'&gt;
+print(type("hi"))    # &lt;class 'str'&gt;
+print(type(True))    # &lt;class 'bool'&gt;</div>
 
 <div class="note-box">
-    <strong>💡 注意：</strong>Python中True和False<strong>首字母必须大写</strong>，这是常考易错点！
-</div>
-        `
+    <strong>💡 注意：</strong>True 和 False <strong>首字母必须大写</strong>，这是常考易错点！
+</div>`
     },
     {
-        id: 4,
-        name: '输入与输出',
-        icon: '⌨️',
+        id: 4, name: '输入与输出', icon: '⌨️',
         desc: '掌握print()输出和input()输入',
         content: `
 <h3>📤 输出函数 print()</h3>
-<p><code>print()</code>是最常用的输出函数，用于在屏幕上显示内容。</p>
+<p><code>print()</code> 用于在屏幕上显示内容，是Python中最常用的函数。</p>
 
-<div class="code-block">
-<span class="comment"># 基本用法</span>
-<span class="builtin">print</span>(<span class="string">"Hello, Python!"</span>)
-<span class="builtin">print</span>(<span class="number">100</span>)
-<span class="builtin">print</span>(<span class="number">3</span> + <span class="number">5</span>)
+<div class="code-block"># 基本用法
+print("Hello, Python!")
+print(100)
+print(3 + 5)
 
-<span class="comment"># 输出多个内容，用逗号分隔</span>
-<span class="builtin">print</span>(<span class="string">"答案是"</span>, <span class="number">42</span>)
+# 输出多个内容（逗号分隔，默认空格间隔）
+print("答案是", 42)
 
-<span class="comment"># sep参数：指定分隔符（默认空格）</span>
-<span class="builtin">print</span>(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, sep=<span class="string">"-"</span>)  <span class="comment"># 输出: a-b-c</span>
+# sep参数：指定分隔符
+print("a", "b", "c", sep="-")   # 输出: a-b-c
 
-<span class="comment"># end参数：指定结尾字符（默认换行）</span>
-<span class="builtin">print</span>(<span class="string">"第一行"</span>, end=<span class="string">"---"</span>)
-<span class="builtin">print</span>(<span class="string">"接在后面"</span>)  <span class="comment"># 输出: 第一行---接在后面</span>
-</div>
+# end参数：指定结尾字符（默认换行）
+print("第一行", end="---")
+print("接在后面")   # 输出: 第一行---接在后面</div>
 
-<h3>📥 输入函数 input()</h3>
-<p><code>input()</code>用于从键盘获取用户输入。<strong>注意：input()获取的内容永远是字符串类型！</strong></p>
+<h3>📥 输入函数 input()（重要考点！）</h3>
+<p><code>input()</code> 用于从键盘获取用户输入。<strong>注意：input() 返回的永远是字符串！</strong></p>
 
-<div class="code-block">
-<span class="comment"># 基本用法</span>
-<span class="func">name</span> = <span class="builtin">input</span>(<span class="string">"请输入你的名字："</span>)
-<span class="builtin">print</span>(<span class="string">"你好，"</span>, name)
+<div class="code-block"># 基本用法
+name = input("请输入你的名字：")
+print("你好，", name)
 
-<span class="comment"># 获取数字需要类型转换</span>
-<span class="func">age_str</span> = <span class="builtin">input</span>(<span class="string">"请输入年龄："</span>)
-<span class="func">age</span> = <span class="builtin">int</span>(age_str)  <span class="comment"># 将字符串转为整数</span>
-<span class="builtin">print</span>(<span class="string">"明年你"</span>, age + <span class="number">1</span>, <span class="string">"岁"</span>)
-</div>
+# 获取数字必须转换类型！
+age_str = input("请输入年龄：")
+age = int(age_str)         # 将字符串转为整数
+print("明年你", age + 1, "岁")</div>
 
 <h3>🔄 类型转换函数</h3>
 <ul>
-    <li><code>int(x)</code>：将x转换为整数</li>
-    <li><code>float(x)</code>：将x转换为浮点数</li>
-    <li><code>str(x)</code>：将x转换为字符串</li>
-    <li><code>bool(x)</code>：将x转换为布尔值</li>
+    <li><code>int(x)</code>：转换为整数</li>
+    <li><code>float(x)</code>：转换为浮点数</li>
+    <li><code>str(x)</code>：转换为字符串</li>
 </ul>
 
 <div class="note-box">
-    <strong>💡 重要考点：</strong>input()的返回值<strong>永远是字符串</strong>！如果需要做数学运算，必须用int()或float()转换！
-</div>
-        `
+    <strong>💡 必考点：</strong>input() 返回值<strong>永远是字符串</strong>！做数学运算必须用 int() 或 float() 转换！
+</div>`
     },
     {
-        id: 5,
-        name: '运算符',
-        icon: '➕',
+        id: 5, name: '运算符', icon: '➕',
         desc: '算术、比较和逻辑运算符',
         content: `
 <h3>🔢 算术运算符</h3>
-<table style="width:100%;border-collapse:collapse;margin:8px 0;">
-    <tr style="background:#f0f4f8;"><td style="padding:8px;border:1px solid #ddd;"><strong>运算符</strong></td><td style="padding:8px;border:1px solid #ddd;"><strong>说明</strong></td><td style="padding:8px;border:1px solid #ddd;"><strong>示例</strong></td><td style="padding:8px;border:1px solid #ddd;"><strong>结果</strong></td></tr>
-    <tr><td style="padding:8px;border:1px solid #ddd;">+</td><td style="padding:8px;border:1px solid #ddd;">加法</td><td style="padding:8px;border:1px solid #ddd;">3 + 5</td><td style="padding:8px;border:1px solid #ddd;">8</td></tr>
-    <tr><td style="padding:8px;border:1px solid #ddd;">-</td><td style="padding:8px;border:1px solid #ddd;">减法</td><td style="padding:8px;border:1px solid #ddd;">10 - 3</td><td style="padding:8px;border:1px solid #ddd;">7</td></tr>
-    <tr><td style="padding:8px;border:1px solid #ddd;">*</td><td style="padding:8px;border:1px solid #ddd;">乘法</td><td style="padding:8px;border:1px solid #ddd;">4 * 5</td><td style="padding:8px;border:1px solid #ddd;">20</td></tr>
-    <tr><td style="padding:8px;border:1px solid #ddd;">/</td><td style="padding:8px;border:1px solid #ddd;">除法</td><td style="padding:8px;border:1px solid #ddd;">10 / 3</td><td style="padding:8px;border:1px solid #ddd;">3.333...</td></tr>
-    <tr><td style="padding:8px;border:1px solid #ddd;">//</td><td style="padding:8px;border:1px solid #ddd;">整除</td><td style="padding:8px;border:1px solid #ddd;">10 // 3</td><td style="padding:8px;border:1px solid #ddd;">3</td></tr>
-    <tr><td style="padding:8px;border:1px solid #ddd;">%</td><td style="padding:8px;border:1px solid #ddd;">取余</td><td style="padding:8px;border:1px solid #ddd;">10 % 3</td><td style="padding:8px;border:1px solid #ddd;">1</td></tr>
-    <tr><td style="padding:8px;border:1px solid #ddd;">**</td><td style="padding:8px;border:1px solid #ddd;">幂运算</td><td style="padding:8px;border:1px solid #ddd;">2 ** 3</td><td style="padding:8px;border:1px solid #ddd;">8</td></tr>
+<table>
+<tr><th>运算符</th><th>说明</th><th>示例</th><th>结果</th></tr>
+<tr><td>+</td><td>加法</td><td>3 + 5</td><td>8</td></tr>
+<tr><td>-</td><td>减法</td><td>10 - 3</td><td>7</td></tr>
+<tr><td>*</td><td>乘法</td><td>4 * 5</td><td>20</td></tr>
+<tr><td>/</td><td>除法（得小数）</td><td>10 / 3</td><td>3.333...</td></tr>
+<tr><td>//</td><td>整除（取整数）</td><td>10 // 3</td><td>3</td></tr>
+<tr><td>%</td><td>取余数</td><td>10 % 3</td><td>1</td></tr>
+<tr><td>**</td><td>幂运算</td><td>2 ** 3</td><td>8</td></tr>
 </table>
 
 <h3>⚖️ 比较运算符</h3>
 <ul>
-    <li><code>==</code> 等于</li>
+    <li><code>==</code> 等于（注意是两个等号！）</li>
     <li><code>!=</code> 不等于</li>
     <li><code>&gt;</code> 大于</li>
     <li><code>&lt;</code> 小于</li>
     <li><code>&gt;=</code> 大于等于</li>
     <li><code>&lt;=</code> 小于等于</li>
 </ul>
-<p>比较运算的结果是<strong>布尔值</strong>（True或False）。</p>
+<p>比较运算的结果是<strong>布尔值</strong>（True 或 False）。</p>
 
 <h3>🧠 逻辑运算符</h3>
 <ul>
-    <li><code>and</code>：两个条件都成立才为True</li>
-    <li><code>or</code>：至少一个条件成立就为True</li>
-    <li><code>not</code>：取反</li>
+    <li><code>and</code>：两边都为True才为True</li>
+    <li><code>or</code>：至少一边为True就为True</li>
+    <li><code>not</code>：取反，True变False</li>
 </ul>
 
-<div class="code-block">
-<span class="builtin">print</span>(<span class="number">5</span> &gt; <span class="number">3</span> <span class="keyword">and</span> <span class="number">2</span> &lt; <span class="number">4</span>)   <span class="comment"># True</span>
-<span class="builtin">print</span>(<span class="number">5</span> &gt; <span class="number">10</span> <span class="keyword">or</span> <span class="number">3</span> &gt; <span class="number">1</span>)  <span class="comment"># True</span>
-<span class="builtin">print</span>(<span class="keyword">not</span> (<span class="number">5</span> &gt; <span class="number">3</span>))          <span class="comment"># False</span>
-</div>
+<div class="code-block">print(5 > 3 and 2 < 4)    # True
+print(5 > 10 or 3 > 1)    # True
+print(not (5 > 3))        # False</div>
 
 <h3>📐 运算符优先级</h3>
 <p><strong>括号 → 幂运算 → 乘除/整除/取余 → 加减 → 比较 → 逻辑</strong></p>
+
 <div class="note-box">
-    <strong>💡 记忆技巧：</strong>不确定优先级时，<strong>加括号</strong>！括号里的先算。
-</div>
-        `
+    <strong>💡 技巧：</strong>不确定优先级时，<strong>加括号</strong>！括号里的先算，清晰又不会错。
+</div>`
     },
     {
-        id: 6,
-        name: '条件判断 if-else',
-        icon: '🔀',
+        id: 6, name: '条件判断 if-else', icon: '🔀',
         desc: '掌握if/elif/else条件分支',
         content: `
 <h3>🔀 条件判断的作用</h3>
 <p>条件判断让程序能根据不同情况做出不同反应，是程序"智能"的基础。</p>
 
 <h3>📝 if 语句基本格式</h3>
-<div class="code-block">
-<span class="keyword">if</span> 条件:
-    条件成立时执行的代码  <span class="comment"># 注意缩进！</span>
-</div>
+<div class="code-block">if 条件:
+    条件成立时执行的代码  # 注意：必须缩进！</div>
 
-<h3>📝 if-else 语句</h3>
-<div class="code-block">
-<span class="func">score</span> = <span class="number">85</span>
-<span class="keyword">if</span> score &gt;= <span class="number">60</span>:
-    <span class="builtin">print</span>(<span class="string">"及格！"</span>)
-<span class="keyword">else</span>:
-    <span class="builtin">print</span>(<span class="string">"不及格！"</span>)
-</div>
+<h3>📝 if-else 双分支</h3>
+<div class="code-block">score = 85
+if score >= 60:
+    print("及格！")
+else:
+    print("不及格！")</div>
 
 <h3>📝 if-elif-else 多分支</h3>
-<div class="code-block">
-<span class="func">score</span> = <span class="number">85</span>
-<span class="keyword">if</span> score &gt;= <span class="number">90</span>:
-    <span class="builtin">print</span>(<span class="string">"优秀"</span>)
-<span class="keyword">elif</span> score &gt;= <span class="number">80</span>:
-    <span class="builtin">print</span>(<span class="string">"良好"</span>)
-<span class="keyword">elif</span> score &gt;= <span class="number">60</span>:
-    <span class="builtin">print</span>(<span class="string">"及格"</span>)
-<span class="keyword">else</span>:
-    <span class="builtin">print</span>(<span class="string">"不及格"</span>)
-</div>
+<div class="code-block">score = 85
+if score >= 90:
+    print("优秀")
+elif score >= 80:
+    print("良好")
+elif score >= 60:
+    print("及格")
+else:
+    print("不及格")</div>
 
-<h3>⚠️ Python缩进规则</h3>
-<p>Python使用<strong>缩进</strong>（通常是4个空格或1个Tab）来表示代码块。同一个代码块的缩进必须<strong>一致</strong>！</p>
+<h3>⚠️ 缩进规则（重要！）</h3>
+<p>Python使用<strong>缩进</strong>（通常4个空格）表示代码块。同一代码块缩进必须<strong>一致</strong>！</p>
 
-<div class="code-block">
-<span class="keyword">if</span> <span class="number">10</span> &gt; <span class="number">5</span>:
-    <span class="builtin">print</span>(<span class="string">"这行缩进了"</span>)  <span class="comment"># 属于if块</span>
-    <span class="builtin">print</span>(<span class="string">"这行也缩进了"</span>)  <span class="comment"># 也属于if块</span>
-<span class="builtin">print</span>(<span class="string">"这行没有缩进"</span>)      <span class="comment"># 不属于if块，总会执行</span>
-</div>
+<div class="code-block">if 10 > 5:
+    print("这行缩进了")   # 属于if块
+    print("这也缩进了")   # 也属于if块
+print("这行没缩进")       # 不属于if块，总会执行</div>
 
 <div class="note-box">
-    <strong>💡 考试重点：</strong>Python的缩进不是装饰，是<strong>语法要求</strong>！缩进错误会导致IndentationError。
-</div>
-        `
+    <strong>💡 考点：</strong>Python的缩进是<strong>语法要求</strong>，不是装饰！缩进错误会报 IndentationError。
+</div>`
     },
     {
-        id: 7,
-        name: 'for循环',
-        icon: '🔁',
+        id: 7, name: 'for循环', icon: '🔁',
         desc: '学习for循环和range()函数',
         content: `
 <h3>🔁 for循环的作用</h3>
-<p>for循环用于<strong>重复执行</strong>一段代码，通常配合 <code>range()</code> 函数使用。</p>
+<p>for循环用于<strong>重复执行</strong>一段代码，常配合 <code>range()</code> 使用。</p>
 
 <h3>📝 range() 函数</h3>
-<p><code>range()</code> 生成一系列数字：</p>
 <ul>
-    <li><code>range(n)</code>：生成 0 到 n-1，共n个数字</li>
+    <li><code>range(n)</code>：生成 0 到 n-1，共 n 个数字</li>
     <li><code>range(start, stop)</code>：生成 start 到 stop-1</li>
     <li><code>range(start, stop, step)</code>：指定步长</li>
 </ul>
 
-<div class="code-block">
-<span class="comment"># 打印0到9</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">10</span>):
-    <span class="builtin">print</span>(i)
+<div class="code-block"># 打印 0 到 9
+for i in range(10):
+    print(i)
 
-<span class="comment"># 打印1到5</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">6</span>):
-    <span class="builtin">print</span>(i)
+# 打印 1 到 5
+for i in range(1, 6):
+    print(i)
 
-<span class="comment"># 每隔2个打印</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>):
-    <span class="builtin">print</span>(i)  <span class="comment"># 输出: 1, 3, 5, 7, 9</span>
-</div>
+# 每隔2个打印（步长为2）
+for i in range(1, 10, 2):
+    print(i)   # 输出: 1, 3, 5, 7, 9
 
-<h3>📊 for循环累加求和</h3>
-<div class="code-block">
-<span class="comment"># 求1+2+3+...+100的和</span>
-<span class="func">total</span> = <span class="number">0</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">101</span>):
+# 倒序（负步长）
+for i in range(10, 0, -2):
+    print(i)   # 输出: 10, 8, 6, 4, 2</div>
+
+<h3>📊 累加求和</h3>
+<div class="code-block">total = 0
+for i in range(1, 101):
     total = total + i
-<span class="builtin">print</span>(<span class="string">"1到100的和是："</span>, total)
-</div>
+print("1到100的和：", total)   # 5050</div>
 
-<h3>🔢 for循环遍历字符串</h3>
-<div class="code-block">
-<span class="func">word</span> = <span class="string">"Python"</span>
-<span class="keyword">for</span> ch <span class="keyword">in</span> word:
-    <span class="builtin">print</span>(ch)
-<span class="comment"># 输出: P y t h o n (每行一个字母)</span>
-</div>
+<h3>🔢 遍历字符串</h3>
+<div class="code-block">word = "Python"
+for ch in word:
+    print(ch)
+# 逐行输出: P y t h o n</div>
 
 <div class="note-box">
-    <strong>💡 注意：</strong>range(1, 10)包含1，<strong>不包含10</strong>。range(1, 101)才能取到100。
-</div>
-        `
+    <strong>💡 注意：</strong>range(1, 10) 包含 1，<strong>不含 10</strong>。要取到 100 必须写 range(1, 101)。
+</div>`
     },
     {
-        id: 8,
-        name: 'while循环',
-        icon: '🔄',
+        id: 8, name: 'while循环', icon: '🔄',
         desc: '学习while循环和循环控制',
         content: `
-<h3>🔄 while循环的作用</h3>
-<p>while循环在<strong>条件成立时</strong>反复执行代码块，直到条件变为False才停止。</p>
+<h3>🔄 while循环</h3>
+<p>while循环在<strong>条件成立时</strong>反复执行，直到条件变为False才停止。</p>
 
-<h3>📝 while循环基本格式</h3>
-<div class="code-block">
-<span class="keyword">while</span> 条件:
-    条件成立时执行的代码  <span class="comment"># 注意缩进！</span>
-</div>
+<h3>📝 基本格式</h3>
+<div class="code-block">while 条件:
+    条件成立时执行的代码  # 注意缩进和条件变量更新！</div>
 
-<h3>📊 while循环示例</h3>
-<div class="code-block">
-<span class="comment"># 打印1到5</span>
-<span class="func">i</span> = <span class="number">1</span>
-<span class="keyword">while</span> i &lt;= <span class="number">5</span>:
-    <span class="builtin">print</span>(i)
-    i = i + <span class="number">1</span>  <span class="comment"># 一定要更新条件变量！</span>
-</div>
+<h3>📊 示例</h3>
+<div class="code-block"># 打印 1 到 5
+i = 1
+while i <= 5:
+    print(i)
+    i = i + 1   # 一定要更新条件变量！
+
+# 倒计时
+n = 5
+while n > 0:
+    print(n, end=" ")
+    n = n - 1
+# 输出: 5 4 3 2 1</div>
 
 <h3>⚠️ 死循环</h3>
-<p>如果条件永远为True，程序将无法停止——这叫<strong>死循环</strong>。考试中要特别注意避免！</p>
-<div class="code-block">
-<span class="comment"># 危险！死循环示例（不要运行）</span>
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    <span class="builtin">print</span>(<span class="string">"停不下来了！"</span>)
-</div>
-
-<h3>🆚 for vs while</h3>
-<ul>
-    <li><strong>for循环</strong>：知道循环次数时使用（如"循环10次"）</li>
-    <li><strong>while循环</strong>：不知道具体次数，但知道条件时使用（如"直到用户输入quit"）</li>
-</ul>
+<p>如果条件永远为True，程序将无法停止——这叫<strong>死循环</strong>。</p>
+<div class="code-block"># 危险！死循环（不要运行！）
+while True:
+    print("停不下来了！")</div>
 
 <h3>⏭ break 和 continue</h3>
 <ul>
     <li><code>break</code>：立即<strong>跳出</strong>整个循环</li>
-    <li><code>continue</code>：跳过本次循环，<strong>继续</strong>下一次</li>
+    <li><code>continue</code>：跳过本次，<strong>继续</strong>下一次循环</li>
 </ul>
 
-<div class="code-block">
-<span class="comment"># break示例：找到第一个偶数就停止</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">10</span>):
-    <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">and</span> i &gt; <span class="number">0</span>:
-        <span class="builtin">print</span>(<span class="string">"找到偶数："</span>, i)
-        <span class="keyword">break</span>
-</div>
+<div class="code-block"># break 示例：找第一个偶数就退出
+for i in range(10):
+    if i % 2 == 0 and i > 0:
+        print("找到偶数：", i)   # 输出: 2
+        break
+
+# continue 示例：只打印奇数
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    print(i)   # 输出: 1 3 5 7 9</div>
+
+<h3>🆚 for vs while</h3>
+<ul>
+    <li><strong>for</strong>：知道循环次数时使用</li>
+    <li><strong>while</strong>：不知道次数，但知道条件时使用</li>
+</ul>
 
 <div class="note-box">
-    <strong>💡 考试易错点：</strong>while循环中<strong>必须更新条件变量</strong>（如i = i + 1），否则会变成死循环！
-</div>
-        `
+    <strong>💡 易错点：</strong>while 循环中<strong>必须更新条件变量</strong>，否则变成死循环！
+</div>`
     },
     {
-        id: 9,
-        name: '字符串操作',
-        icon: '📝',
+        id: 9, name: '字符串操作', icon: '📝',
         desc: '字符串的索引、切片和方法',
         content: `
 <h3>📝 什么是字符串？</h3>
-<p>字符串是由字符组成的<strong>序列</strong>，用单引号或双引号包裹。Python中字符串是<strong>不可变</strong>的。</p>
+<p>字符串是由字符组成的<strong>序列</strong>，用引号包裹。Python中字符串是<strong>不可变</strong>的（不能修改单个字符）。</p>
 
-<h3>🔢 字符串索引（下标）</h3>
-<p>每个字符都有一个编号，从<strong>0</strong>开始：</p>
-<div class="output-block">
->>> s = "Python"
->>> s[0]
-'P'
->>> s[1]
-'y'
->>> s[5]
-'n'
->>> s[-1]   # 负数索引从右边开始
-'n'
-</div>
+<h3>🔢 索引（下标）</h3>
+<p>每个字符都有编号，从<strong>0</strong>开始：</p>
+<div class="output-block">>>> s = "Python"
+>>> s[0]    → 'P'（第1个字符）
+>>> s[1]    → 'y'（第2个字符）
+>>> s[5]    → 'n'（第6个字符）
+>>> s[-1]   → 'n'（最后一个字符）
+>>> s[-2]   → 'o'（倒数第二个）</div>
 
-<h3>✂️ 字符串切片</h3>
-<p>语法：<code>s[start:stop:step]</code></p>
-<div class="code-block">
-<span class="func">s</span> = <span class="string">"Python编程"</span>
-<span class="builtin">print</span>(s[<span class="number">0</span>:<span class="number">3</span>])    <span class="comment"># "Pyt" (不含索引3)</span>
-<span class="builtin">print</span>(s[:<span class="number">3</span>])      <span class="comment"># "Pyt" (省略start，从0开始)</span>
-<span class="builtin">print</span>(s[<span class="number">3</span>:])      <span class="comment"># "hon编程" (省略stop，到末尾)</span>
-<span class="builtin">print</span>(s[::<span class="number">2</span>])     <span class="comment"># "Pto编" (每两个取一个)</span>
-</div>
+<h3>✂️ 切片</h3>
+<p>语法：<code>s[start:stop:step]</code>，含左不含右。</p>
+<div class="code-block">s = "Python编程"
+print(s[0:3])     # "Pyt"（索引0,1,2，不含3）
+print(s[:3])      # "Pyt"（省略start，从0开始）
+print(s[3:])      # "hon编程"（省略stop，到末尾）
+print(s[::2])     # "Pto编"（步长2，每两个取一个）</div>
 
-<h3>🔤 常用字符串方法</h3>
+<h3>🔤 常用方法</h3>
 <ul>
     <li><code>len(s)</code>：获取字符串长度</li>
-    <li><code>s.upper()</code>：转为大写</li>
-    <li><code>s.lower()</code>：转为小写</li>
+    <li><code>s.upper()</code>：全部转大写</li>
+    <li><code>s.lower()</code>：全部转小写</li>
     <li><code>s.strip()</code>：去除两端空格</li>
-    <li><code>s.replace(old, new)</code>：替换</li>
-    <li><code>s.find(sub)</code>：查找子串位置</li>
+    <li><code>s.replace(old, new)</code>：替换子串</li>
+    <li><code>s.find(sub)</code>：查找子串位置（找不到返回-1）</li>
 </ul>
 
-<h3>➕ 字符串拼接</h3>
-<div class="code-block">
-<span class="func">a</span> = <span class="string">"Hello"</span>
-<span class="func">b</span> = <span class="string">"World"</span>
-<span class="builtin">print</span>(a + <span class="string">" "</span> + b)  <span class="comment"># "Hello World"</span>
-<span class="builtin">print</span>(a * <span class="number">3</span>)         <span class="comment"># "HelloHelloHello"</span>
-</div>
+<h3>➕ 拼接与重复</h3>
+<div class="code-block">a = "Hello"
+b = "World"
+print(a + " " + b)   # "Hello World"（拼接）
+print(a * 3)          # "HelloHelloHello"（重复）</div>
 
 <div class="note-box">
-    <strong>💡 记住：</strong>字符串索引从<strong>0</strong>开始！第一个字符是s[0]，不是s[1]。这是考试最常出错的地方！
-</div>
-        `
+    <strong>💡 必考点：</strong>索引从<strong>0</strong>开始！s[0]是第一个字符，s[1]才是第二个。负数索引从右往左数。
+</div>`
     },
     {
-        id: 10,
-        name: '列表基础',
-        icon: '📋',
+        id: 10, name: '列表基础', icon: '📋',
         desc: '列表的创建、索引和常用操作',
         content: `
 <h3>📋 什么是列表？</h3>
-<p>列表是Python中存储<strong>多个数据</strong>的容器，用方括号<code>[]</code>表示，元素用逗号分隔。列表是<strong>可变</strong>的。</p>
+<p>列表是存储<strong>多个数据</strong>的容器，用 <code>[]</code> 表示。列表是<strong>可变</strong>的（可以修改元素）。</p>
 
-<div class="code-block">
-<span class="comment"># 创建列表</span>
-<span class="func">fruits</span> = [<span class="string">"苹果"</span>, <span class="string">"香蕉"</span>, <span class="string">"橙子"</span>]
-<span class="func">mixed</span> = [<span class="number">1</span>, <span class="string">"hello"</span>, <span class="number">3.14</span>, <span class="keyword">True</span>]
-<span class="func">empty</span> = []  <span class="comment"># 空列表</span>
-</div>
+<div class="code-block"># 创建列表
+fruits = ["苹果", "香蕉", "橙子"]
+mixed = [1, "hello", 3.14, True]   # 可混合不同类型
+empty = []                          # 空列表</div>
 
-<h3>🔢 列表索引和切片</h3>
-<p>和字符串类似，列表也支持索引和切片：</p>
-<div class="code-block">
-<span class="func">nums</span> = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>]
-<span class="builtin">print</span>(nums[<span class="number">0</span>])      <span class="comment"># 10</span>
-<span class="builtin">print</span>(nums[-<span class="number">1</span>])     <span class="comment"># 50</span>
-<span class="builtin">print</span>(nums[<span class="number">1</span>:<span class="number">3</span>])    <span class="comment"># [20, 30]</span>
-</div>
+<h3>🔢 索引和切片</h3>
+<p>和字符串完全相同，索引从0开始：</p>
+<div class="code-block">nums = [10, 20, 30, 40, 50]
+print(nums[0])      # 10
+print(nums[-1])     # 50（最后一个）
+print(nums[1:3])    # [20, 30]（切片）</div>
 
-<h3>🔧 列表常用操作</h3>
+<h3>🔧 常用操作</h3>
 <ul>
-    <li><code>len(lst)</code>：获取列表长度</li>
-    <li><code>lst.append(x)</code>：在末尾添加元素</li>
-    <li><code>lst.insert(i, x)</code>：在位置i插入元素</li>
-    <li><code>lst.remove(x)</code>：删除第一个值为x的元素</li>
+    <li><code>len(lst)</code>：列表长度</li>
+    <li><code>lst.append(x)</code>：末尾添加元素</li>
+    <li><code>lst.insert(i, x)</code>：在位置i插入</li>
     <li><code>lst.pop()</code>：删除最后一个元素</li>
-    <li><code>lst.sort()</code>：排序</li>
+    <li><code>lst.sort()</code>：升序排列</li>
+    <li><code>x in lst</code>：检查x是否在列表中</li>
 </ul>
 
 <h3>🔁 遍历列表</h3>
-<div class="code-block">
-<span class="func">fruits</span> = [<span class="string">"苹果"</span>, <span class="string">"香蕉"</span>, <span class="string">"橙子"</span>]
-<span class="keyword">for</span> fruit <span class="keyword">in</span> fruits:
-    <span class="builtin">print</span>(<span class="string">"我喜欢吃"</span>, fruit)
-</div>
+<div class="code-block">fruits = ["苹果", "香蕉", "橙子"]
+for fruit in fruits:
+    print("我喜欢吃", fruit)</div>
 
 <h3>🆚 列表 vs 字符串</h3>
 <ul>
-    <li>列表是<strong>可变</strong>的，可以修改元素</li>
-    <li>字符串是<strong>不可变</strong>的，不能修改字符</li>
+    <li>列表<strong>可变</strong>：可以修改元素，如 <code>lst[0] = 10</code></li>
+    <li>字符串<strong>不可变</strong>：不能修改单个字符</li>
 </ul>
 
 <div class="note-box">
-    <strong>💡 考点提示：</strong>列表索引也是从<strong>0</strong>开始。列表和字符串的切片语法完全相同。
-</div>
-        `
+    <strong>💡 考点：</strong>列表和字符串的索引/切片语法<strong>完全相同</strong>，区别在于列表可变。
+</div>`
     },
     {
-        id: 11,
-        name: 'Turtle绘图基础',
-        icon: '🎨',
+        id: 11, name: 'Turtle绘图基础', icon: '🎨',
         desc: '认识turtle海龟绘图库',
         content: `
 <h3>🐢 什么是Turtle？</h3>
-<p>Turtle（海龟绘图）是Python自带的绘图库，通过控制"小海龟"在屏幕上移动来画图，非常适合编程入门。</p>
+<p>Turtle（海龟绘图）是Python自带的绘图库，通过控制"小海龟"移动来画画，适合编程入门。</p>
 
 <h3>📥 导入Turtle</h3>
-<div class="code-block">
-<span class="keyword">import</span> turtle          <span class="comment"># 导入turtle库</span>
-</div>
+<div class="code-block">import turtle   # 导入turtle库</div>
 
-<h3>🐢 基本绘图命令</h3>
+<h3>🐢 基本命令</h3>
 <ul>
-    <li><code>turtle.forward(n)</code>：向前移动n个像素</li>
-    <li><code>turtle.backward(n)</code>：向后移动n个像素</li>
-    <li><code>turtle.right(angle)</code>：向右转angle度</li>
-    <li><code>turtle.left(angle)</code>：向左转angle度</li>
-    <li><code>turtle.circle(r)</code>：画半径为r的圆</li>
-    <li><code>turtle.penup()</code>：抬起画笔（移动不画线）</li>
-    <li><code>turtle.pendown()</code>：落下画笔（移动画线）</li>
-    <li><code>turtle.color(c)</code>：设置画笔颜色</li>
+    <li><code>turtle.forward(n)</code>：向前 n 像素</li>
+    <li><code>turtle.backward(n)</code>：向后 n 像素</li>
+    <li><code>turtle.right(度)</code>：向右转</li>
+    <li><code>turtle.left(度)</code>：向左转</li>
+    <li><code>turtle.circle(半径)</code>：画圆</li>
+    <li><code>turtle.circle(半径, 角度)</code>：画圆弧</li>
+    <li><code>turtle.penup()</code>：抬笔，移动不画线</li>
+    <li><code>turtle.pendown()</code>：落笔，移动画线</li>
+    <li><code>turtle.color("颜色")</code>：设置画笔颜色</li>
     <li><code>turtle.done()</code>：保持窗口不关闭</li>
 </ul>
 
 <h3>🟦 画正方形</h3>
-<div class="code-block">
-<span class="keyword">import</span> turtle
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">4</span>):
-    turtle.forward(<span class="number">100</span>)
-    turtle.right(<span class="number">90</span>)
-turtle.done()
-</div>
+<div class="code-block">import turtle
+for i in range(4):
+    turtle.forward(100)
+    turtle.right(90)
+turtle.done()</div>
+
+<h3>🔺 画等边三角形</h3>
+<div class="code-block">import turtle
+for i in range(3):
+    turtle.forward(100)
+    turtle.left(120)
+turtle.done()</div>
 
 <h3>⭐ 画五角星</h3>
-<div class="code-block">
-<span class="keyword">import</span> turtle
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>):
-    turtle.forward(<span class="number">100</span>)
-    turtle.right(<span class="number">144</span>)
-turtle.done()
-</div>
+<div class="code-block">import turtle
+for i in range(5):
+    turtle.forward(100)
+    turtle.right(144)
+turtle.done()</div>
+
+<h3>📐 公式：正多边形</h3>
+<p>边数 = <strong>360 ÷ 转角</strong>。例如每次转90°（360÷90=4）画正方形，转60°（360÷60=6）画正六边形。</p>
 
 <div class="note-box">
-    <strong>💡 GESP一级要求：</strong>需要认识基本的turtle命令，能读懂简单的turtle绘图代码，并判断绘制结果。
-</div>
-        `
+    <strong>💡 GESP考点：</strong>能读懂turtle代码并判断绘制结果。记住 360÷转角=边数 这个公式。
+</div>`
     },
     {
-        id: 12,
-        name: '综合应用与易错点',
-        icon: '🎯',
+        id: 12, name: '综合应用与易错点', icon: '🎯',
         desc: '综合练习和常见易错点总结',
         content: `
-<h3>🎯 GESP一级常考易错点</h3>
+<h3>🎯 GESP一级高频易错点</h3>
 
-<h3>❌ 易错点1：input()返回类型</h3>
-<p>input()返回的<strong>永远是字符串</strong>，做运算前必须转换！</p>
-<div class="code-block">
-<span class="comment"># 错误写法</span>
-<span class="func">a</span> = <span class="builtin">input</span>(<span class="string">"输入数字："</span>)  <span class="comment"># a是字符串"5"，不是数字5</span>
-<span class="builtin">print</span>(a + <span class="number">3</span>)              <span class="comment"># 报错！字符串不能加数字</span>
+<h3>❌ 1. input() 返回类型</h3>
+<p>input() 返回<strong>永远是字符串</strong>，做运算前必须转换！</p>
+<div class="code-block"># 错误：字符串不能和数字相加
+a = input("输入数字：")
+print(a + 3)        # TypeError!
 
-<span class="comment"># 正确写法</span>
-<span class="func">a</span> = <span class="builtin">int</span>(<span class="builtin">input</span>(<span class="string">"输入数字："</span>))
-<span class="builtin">print</span>(a + <span class="number">3</span>)  <span class="comment"># 正确</span>
-</div>
+# 正确：先转成整数
+a = int(input("输入数字："))
+print(a + 3)        # OK</div>
 
-<h3>❌ 易错点2：索引从0开始</h3>
-<p>字符串和列表的第一个元素索引是<strong>0</strong>，不是1！</p>
-<div class="code-block">
-s = <span class="string">"Python"</span>
-<span class="builtin">print</span>(s[<span class="number">1</span>])  <span class="comment"># 输出'y'，不是'P'！</span>
-</div>
+<h3>❌ 2. 索引从0开始</h3>
+<p>字符串和列表第一个元素索引是<strong>0</strong>，不是1！</p>
+<div class="code-block">s = "Python"
+print(s[1])   # 输出 'y'，不是 'P'！</div>
 
-<h3>❌ 易错点3：缩进错误</h3>
-<p>Python靠缩进识别代码块，缩进不一致会报错。</p>
+<h3>❌ 3. = 和 == 的区别</h3>
+<p><code>=</code> 是<strong>赋值</strong>，<code>==</code> 是<strong>判断相等</strong>，不要混淆！</p>
 
-<h3>❌ 易错点4：range()不含结束值</h3>
-<p>range(1, 5)生成的是1, 2, 3, 4，<strong>不包含5</strong>。</p>
+<h3>❌ 4. range() 不含结束值</h3>
+<p><code>range(1, 5)</code> 生成 1, 2, 3, 4，<strong>不含5</strong>。</p>
+<p><code>range(5)</code> 生成 0, 1, 2, 3, 4，<strong>共5个数</strong>。</p>
 
-<h3>❌ 易错点5：比较用==而不是=</h3>
-<p><code>=</code>是赋值，<code>==</code>才是判断相等。</p>
+<h3>❌ 5. 缩进是语法要求</h3>
+<p>if/for/while 后面的代码块<strong>必须缩进</strong>，且缩进量要一致。</p>
 
-<h3>❌ 易错点6：True/False首字母大写</h3>
-<p>Python中布尔值必须写成<code>True</code>和<code>False</code>，首字母大写。</p>
+<h3>❌ 6. True/False 首字母大写</h3>
+<p>布尔值必须写成 <code>True</code> 和 <code>False</code>（首字母大写）。</p>
 
-<h3>❌ 易错点7：整除和除法混淆</h3>
-<p><code>/</code> 是普通除法（得小数），<code>//</code> 才是整除（得整数）。</p>
+<h3>❌ 7. / 和 // 的区别</h3>
+<p><code>/</code> 普通除法（得小数），<code>//</code> 整除（得整数）。</p>
+<div class="code-block">print(10 / 3)    # 3.333...
+print(10 // 3)   # 3</div>
+
+<h3>❌ 8. 字符串不可变</h3>
+<p>不能修改字符串中的单个字符：<code>s[0] = "A"</code> 会报错。</p>
 
 <h3>📝 考试建议</h3>
 <ul>
-    <li>仔细读题，注意"输出结果是什么"类型的题目</li>
-    <li>注意变量类型，特别是input()的返回值</li>
+    <li>仔细审题，注意"输出结果是什么"类型</li>
+    <li>注意变量类型，特别是 input() 的返回值</li>
     <li>注意缩进和代码块的范围</li>
-    <li>注意range()的起始和结束值</li>
-    <li>注意print()的sep和end参数</li>
-</ul>
-        `
+    <li>注意 range() 的起止值</li>
+    <li>注意 print() 的 sep 和 end 参数</li>
+</ul>`
     }
 ];
+
+
 
 // 题库 - 每个知识点对应一组题目
 const questionBank = {

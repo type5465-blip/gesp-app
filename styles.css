@@ -326,6 +326,39 @@ body {
     margin-bottom: 4px;
 }
 
+.topic-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+}
+
+.topic-content th {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 10px;
+    border: 1px solid var(--primary-dark);
+    text-align: left;
+}
+
+.topic-content td {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+}
+
+.topic-content tr:nth-child(even) td {
+    background: var(--bg);
+}
+
+.topic-content .inline-code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+}
+
 .code-block {
     background: #282C34;
     color: #ABB2BF;
