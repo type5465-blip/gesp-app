@@ -808,6 +808,24 @@ body {
     line-height: 1.6;
 }
 
+.review-code-compare {
+    margin-top: 8px;
+}
+
+.review-code-block {
+    background: #282C34;
+    color: #ABB2BF;
+    border-radius: var(--radius-xs);
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+}
+
 .wrong-actions {
     display: flex;
     gap: 8px;
@@ -1193,6 +1211,114 @@ body {
     color: #2E7D32;
 }
 
+/* --- 编程题代码编辑器 --- */
+.code-editor {
+    width: 100%;
+    min-height: 200px;
+    background: #282C34;
+    color: #ABB2BF;
+    border: 1px solid #3E4452;
+    border-radius: var(--radius-xs);
+    padding: 12px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    tab-size: 4;
+}
+
+.code-editor:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(74,144,217,0.2);
+}
+
+.code-editor::placeholder {
+    color: #5C6370;
+    font-style: italic;
+}
+
+.code-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.code-panel {
+    background: #282C34;
+    border-radius: var(--radius-xs);
+    overflow: hidden;
+}
+
+.code-panel-header {
+    background: #21252B;
+    color: #ABB2BF;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-bottom: 1px solid #3E4452;
+}
+
+.code-panel-header.user { color: #61AFEF; }
+.code-panel-header.ref  { color: #98C379; }
+
+.code-panel-body {
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #ABB2BF;
+    white-space: pre-wrap;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.prog-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.btn-submit-code {
+    flex: 1;
+    padding: 10px;
+    background: var(--success);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-xs);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-submit-code:active { opacity: 0.85; }
+
+.btn-show-answer {
+    flex: 1;
+    padding: 10px;
+    background: var(--bg);
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    border-radius: var(--radius-xs);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-show-answer:active { background: #EBF3FC; }
+
+/* 深色模式覆盖 */
+@media (prefers-color-scheme: dark) {
+    .code-editor { background: #1A1D23; border-color: #333840; }
+    .code-panel { background: #1A1D23; }
+    .code-panel-header { background: #14171C; }
+    .btn-show-answer { background: #252830; }
+    .btn-show-answer:active { background: #1A2A3E; }
+}
+
 /* --- 深色模式 --- */
 @media (prefers-color-scheme: dark) {
     :root {
@@ -1263,6 +1389,10 @@ body {
     }
 
     .wrong-code {
+        background: #1A1D23;
+    }
+
+    .review-code-block {
         background: #1A1D23;
     }
 }

@@ -1246,6 +1246,9 @@ function renderProgrammingQuestion(question, idx, total) {
     const progDiv = document.getElementById('programming-display');
     progDiv.style.display = 'block';
 
+    const savedCode = state.userAnswers[idx]; // undefined=未做, ''=直接看答案, string=用户代码
+    const attempted = savedCode !== undefined;
+
     const samplesHtml = question.samples.map((s, i) => `
         <div style="margin-bottom:8px;">
             <div class="prog-label">📥 样例${i + 1}输入：</div>
@@ -1256,8 +1259,38 @@ function renderProgrammingQuestion(question, idx, total) {
         </div>
     `).join('');
 
-    const savedAnswer = state.userAnswers[idx];
-    const viewed = savedAnswer !== undefined;
+    let editorSection, compareSection, statusSection;
+
+    if (!attempted) {
+        // 未作答：显示编辑器
+        editorSection = `
+            <div class="prog-section">
+                <div class="prog-label">💻 编写代码：</div>
+                <textarea class="code-editor" id="user-code-editor" placeholder="# 在这里编写你的 Python 代码...&#10;# 例如：&#10;n = int(input())&#10;print(n * 2)"></textarea>
+            </div>
+            <div class="prog-buttons">
+                <button class="btn-submit-code" onclick="submitProgrammingAttempt()">✅ 提交并对比答案</button>
+                <button class="btn-show-answer" onclick="submitProgrammingAttempt(true)">💡 直接看答案</button>
+            </div>`;
+        compareSection = '';
+        statusSection = '<div class="prog-status pending">👆 编写代码后提交，或点击"直接看答案"</div>';
+    } else {
+        // 已作答：显示对比
+        const userCode = savedCode || '# 未编写代码，直接查看了答案';
+        editorSection = '';
+        compareSection = `
+            <div class="code-compare">
+                <div class="code-panel">
+                    <div class="code-panel-header user">👤 你的代码</div>
+                    <div class="code-panel-body">${escapeHtml(userCode)}</div>
+                </div>
+                <div class="code-panel">
+                    <div class="code-panel-header ref">📖 参考答案</div>
+                    <div class="code-panel-body">${escapeHtml(question.referenceCode)}</div>
+                </div>
+            </div>`;
+        statusSection = `<div class="prog-status done">✅ 已${savedCode ? '提交代码' : '查看答案'} — 上方可对比你的代码和参考答案</div>`;
+    }
 
     progDiv.innerHTML = `
         <div class="programming-card">
@@ -1278,31 +1311,37 @@ function renderProgrammingQuestion(question, idx, total) {
                 <div class="prog-label">📊 样例说明：</div>
                 ${samplesHtml}
             </div>
-            <button class="code-toggle" onclick="toggleReferenceCode(this)" id="ref-code-btn">
-                📖 查看参考代码
-            </button>
-            <div class="reference-code" id="reference-code-block">
-                <div class="code-block" style="margin-top:8px;">${escapeHtml(question.referenceCode)}</div>
-            </div>
-            <div class="prog-status ${viewed ? 'done' : 'pending'}" id="prog-status">
-                ${viewed ? '✅ 已阅读' : '👆 阅读题目和参考代码后，点击下方按钮'}
-            </div>
+            ${editorSection}
+            ${compareSection}
+            ${statusSection}
         </div>
     `;
 
-    // 如果已阅读，显示解析
-    if (viewed) {
+    if (attempted) {
         showExplanationInline(question);
     }
 
-    // 更新按钮
-    updateQuizButton(idx, total, savedAnswer);
+    updateQuizButton(idx, total, attempted ? 'done' : undefined);
 }
 
-function toggleReferenceCode(btn) {
-    const block = document.getElementById('reference-code-block');
-    const isShowing = block.classList.toggle('show');
-    btn.textContent = isShowing ? '🔽 隐藏参考代码' : '📖 查看参考代码';
+function submitProgrammingAttempt(skipEditor) {
+    const idx = state.currentQuestionIndex;
+    const question = state.quizQuestions[idx];
+    const editor = document.getElementById('user-code-editor');
+
+    let userCode = '';
+    if (!skipEditor && editor) {
+        userCode = editor.value.trim();
+    }
+
+    state.userAnswers[idx] = userCode;
+
+    // 重新渲染以显示对比视图
+    renderProgrammingQuestion(question, idx, state.quizQuestions.length);
+    showExplanationInline(question);
+
+    // 更新按钮
+    updateQuizButton(idx, state.quizQuestions.length, 'done');
 }
 
 function showExplanationInline(question) {
@@ -1317,6 +1356,7 @@ function updateQuizButton(idx, total, savedAnswer) {
     const isCode = question.type === 'code';
 
     if (savedAnswer !== undefined) {
+        btn.style.display = '';
         if (idx < total - 1) {
             btn.textContent = '下一题 →';
             btn.disabled = false;
@@ -1328,32 +1368,15 @@ function updateQuizButton(idx, total, savedAnswer) {
         }
     } else {
         if (isCode) {
-            btn.textContent = '已完成阅读 ✓';
-            btn.disabled = false;
-            btn.onclick = submitCodeReading;
+            // 编程题：隐藏底部按钮，使用卡片内的按钮
+            btn.style.display = 'none';
         } else {
+            btn.style.display = '';
             btn.textContent = '确认答案';
             btn.disabled = false;
             btn.onclick = submitAnswer;
         }
     }
-}
-
-function submitCodeReading() {
-    const idx = state.currentQuestionIndex;
-    state.userAnswers[idx] = 0; // 标记为已阅读
-    state._tempSelection = undefined;
-
-    document.getElementById('prog-status').className = 'prog-status done';
-    document.getElementById('prog-status').textContent = '✅ 已阅读';
-
-    // 显示解析
-    if (state.quizMode === 'real-exam') {
-        showExplanationInline(state.quizQuestions[idx]);
-    }
-
-    // 更新按钮
-    updateQuizButton(idx, state.quizQuestions.length, 0);
 }
 
 function selectOption(index) {
@@ -1421,6 +1444,7 @@ function nextQuestion() {
     document.getElementById('explanation-inline').classList.remove('show');
     document.getElementById('programming-display').style.display = 'none';
     document.getElementById('options-list').style.display = '';
+    document.getElementById('btn-submit-answer').style.display = '';
     document.getElementById('btn-submit-answer').onclick = submitAnswer;
     document.getElementById('btn-submit-answer').textContent = '确认答案';
     renderQuestion();
@@ -1566,14 +1590,22 @@ function reviewAnswers() {
         let content = '';
 
         if (q.type === 'code') {
-            // 编程题在回顾中的展示
             const viewed = userAns !== undefined;
+            const userCode = viewed ? (userAns || '# 直接查看了答案') : '';
             return `
                 <div class="review-item ${viewed ? 'correct-review' : 'wrong-review'}">
                     <div class="review-question">${i + 1}. 💻 ${q.title}</div>
                     <div class="review-answer">
-                        状态: <span class="${viewed ? 'correct-text' : 'wrong-text'}">${viewed ? '✅ 已阅读' : '⚠ 未阅读'}</span>
+                        状态: <span class="${viewed ? 'correct-text' : 'wrong-text'}">${viewed ? '✅ 已尝试' : '⚠ 未做'}</span>
                     </div>
+                    ${viewed ? `
+                    <div class="review-code-compare">
+                        <div style="font-weight:600;font-size:0.8rem;color:#61AFEF;margin-bottom:4px;">👤 你的代码：</div>
+                        <pre class="review-code-block">${escapeHtml(userCode) || '（空）'}</pre>
+                        <div style="font-weight:600;font-size:0.8rem;color:#98C379;margin:8px 0 4px;">📖 参考答案：</div>
+                        <pre class="review-code-block">${escapeHtml(q.referenceCode)}</pre>
+                    </div>
+                    ` : ''}
                     <div class="review-explanation">
                         <strong>💡 解析：</strong>${q.explain}
                     </div>
@@ -1864,7 +1896,7 @@ window.startExam = startExam;
 window.startRealExam = startRealExam;
 window.selectOption = selectOption;
 window.submitAnswer = submitAnswer;
-window.submitCodeReading = submitCodeReading;
+window.submitProgrammingAttempt = submitProgrammingAttempt;
 window.nextQuestion = nextQuestion;
 window.showResult = showResult;
 window.reviewAnswers = reviewAnswers;
@@ -1874,7 +1906,6 @@ window.closeModal = closeModal;
 window.confirmModal = confirmModal;
 window.removeWrongQuestion = removeWrongQuestion;
 window.showToast = showToast;
-window.toggleReferenceCode = toggleReferenceCode;
 
 // 启动应用
 document.addEventListener('DOMContentLoaded', init);
