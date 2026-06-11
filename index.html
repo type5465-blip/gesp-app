@@ -105,6 +105,7 @@
                 <div class="quiz-progress">
                     <span id="quiz-progress-text">1/10</span>
                 </div>
+                <button class="btn-nav-questions" onclick="toggleQuestionNav()" id="btn-question-nav">📋 题号</button>
                 <div class="quiz-timer" id="quiz-timer" style="display:none;">⏱ 60:00</div>
             </div>
             <div class="progress-bar-container">
@@ -125,6 +126,21 @@
                 </div>
             </div>
             <button class="btn-submit" id="btn-submit-answer" onclick="submitAnswer()">确认答案</button>
+
+            <!-- 题目导航面板 -->
+            <div class="question-nav-overlay" id="question-nav-overlay" onclick="closeQuestionNav(event)">
+                <div class="question-nav-panel" onclick="event.stopPropagation()">
+                    <div class="question-nav-header">
+                        <h3>📋 题目导航</h3>
+                        <button class="question-nav-close" onclick="toggleQuestionNav()">✕</button>
+                    </div>
+                    <div class="question-nav-legend">
+                        <span>🟢 已答</span><span>🔵 当前</span><span>⚪ 未答</span>
+                    </div>
+                    <div class="question-nav-grid" id="question-nav-grid"></div>
+                    <div class="question-nav-tip">💡 点击题号直接跳转</div>
+                </div>
+            </div>
         </section>
 
         <!-- 结果视图 -->

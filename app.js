@@ -1437,6 +1437,71 @@ function submitAnswer() {
     state._tempSelection = undefined;
 }
 
+// ==================== 题目导航 ====================
+function toggleQuestionNav() {
+    const overlay = document.getElementById('question-nav-overlay');
+    const isShowing = overlay.classList.toggle('show');
+    if (isShowing) renderQuestionNav();
+}
+
+function closeQuestionNav(event) {
+    if (event.target === document.getElementById('question-nav-overlay')) {
+        document.getElementById('question-nav-overlay').classList.remove('show');
+    }
+}
+
+function renderQuestionNav() {
+    const grid = document.getElementById('question-nav-grid');
+    const questions = state.quizQuestions;
+    const current = state.currentQuestionIndex;
+
+    grid.innerHTML = questions.map((q, i) => {
+        const answered = state.userAnswers[i] !== undefined;
+        const isCurrent = i === current;
+        let cls = 'question-nav-btn';
+        let typeDot = '';
+
+        // 题型标记
+        if (q.type === 'single') typeDot = '<span class="q-type-dot single"></span>';
+        else if (q.type === 'bool') typeDot = '<span class="q-type-dot bool"></span>';
+        else if (q.type === 'code') typeDot = '<span class="q-type-dot code"></span>';
+
+        // 状态
+        if (isCurrent) cls += ' current';
+        else if (answered) {
+            if (q.type !== 'code' && state.userAnswers[i] !== q.answer) {
+                cls += ' answered wrong-answer';
+            } else {
+                cls += ' answered';
+            }
+        } else {
+            cls += ' unanswered';
+        }
+
+        return `
+            <button class="${cls}" onclick="jumpToQuestion(${i})" title="第${i + 1}题${q.type === 'single' ? ' (单选)' : q.type === 'bool' ? ' (判断)' : ' (编程)'}">
+                ${typeDot}${i + 1}
+            </button>
+        `;
+    }).join('');
+}
+
+function jumpToQuestion(index) {
+    if (index < 0 || index >= state.quizQuestions.length) return;
+
+    state.currentQuestionIndex = index;
+    state._tempSelection = undefined;
+    document.getElementById('question-nav-overlay').classList.remove('show');
+    document.getElementById('explanation-inline').classList.remove('show');
+    document.getElementById('programming-display').style.display = 'none';
+    document.getElementById('options-list').style.display = '';
+    document.getElementById('btn-submit-answer').style.display = '';
+    document.getElementById('btn-submit-answer').onclick = submitAnswer;
+    document.getElementById('btn-submit-answer').textContent = '确认答案';
+    renderQuestion();
+    window.scrollTo(0, 0);
+}
+
 function nextQuestion() {
     state.currentQuestionIndex++;
     state._tempSelection = undefined;
@@ -1905,6 +1970,9 @@ window.confirmQuitQuiz = confirmQuitQuiz;
 window.closeModal = closeModal;
 window.confirmModal = confirmModal;
 window.removeWrongQuestion = removeWrongQuestion;
+window.toggleQuestionNav = toggleQuestionNav;
+window.closeQuestionNav = closeQuestionNav;
+window.jumpToQuestion = jumpToQuestion;
 window.showToast = showToast;
 
 // 启动应用

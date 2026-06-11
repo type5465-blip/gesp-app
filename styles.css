@@ -1211,6 +1211,158 @@ body {
     color: #2E7D32;
 }
 
+/* --- 题目导航面板 --- */
+.btn-nav-questions {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    border-radius: var(--radius-xs);
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-nav-questions:active { background: rgba(255,255,255,0.2); }
+
+.question-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 250;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.2s ease;
+}
+
+.question-nav-overlay.show { display: flex; }
+
+.question-nav-panel {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    animation: scaleIn 0.2s ease;
+}
+
+.question-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.question-nav-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.question-nav-close {
+    background: var(--bg);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-nav-legend {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.7rem;
+    flex-wrap: wrap;
+}
+
+.question-nav-legend span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.question-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.question-nav-btn {
+    aspect-ratio: 1;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-xs);
+    background: var(--bg);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    position: relative;
+}
+
+.question-nav-btn .q-type-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+
+.question-nav-btn .q-type-dot.single { background: var(--primary); }
+.question-nav-btn .q-type-dot.bool   { background: #E65100; }
+.question-nav-btn .q-type-dot.code   { background: #2E7D32; }
+
+.question-nav-btn.current {
+    border-color: var(--primary);
+    background: #EBF3FC;
+    box-shadow: 0 0 0 2px rgba(74,144,217,0.25);
+}
+
+.question-nav-btn.answered {
+    border-color: var(--success);
+    background: #E8F8EF;
+}
+
+.question-nav-btn.answered.wrong-answer {
+    border-color: var(--danger);
+    background: #FDEAEA;
+}
+
+.question-nav-btn.unanswered {
+    opacity: 0.5;
+}
+
+.question-nav-btn:active { transform: scale(0.93); }
+
+/* 编程题提示 */
+.question-nav-tip {
+    margin-top: 12px;
+    padding: 8px 10px;
+    background: var(--bg);
+    border-radius: var(--radius-xs);
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
 /* --- 编程题代码编辑器 --- */
 .code-editor {
     width: 100%;
@@ -1394,5 +1546,21 @@ body {
 
     .review-code-block {
         background: #1A1D23;
+    }
+
+    .question-nav-btn.current {
+        background: #1A2A3E;
+    }
+
+    .question-nav-btn.answered {
+        background: #1A2E22;
+    }
+
+    .question-nav-btn.answered.wrong-answer {
+        background: #2E1A1A;
+    }
+
+    .question-nav-close {
+        background: #333840;
     }
 }
