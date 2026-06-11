@@ -1778,47 +1778,62 @@ function escapeHtml(str) {
 
 // ==================== 语法高亮 ====================
 function highlightCodeBlocks() {
-    const keywords = ['if', 'else', 'elif', 'for', 'while', 'in', 'break', 'continue',
-        'import', 'True', 'False', 'not', 'and', 'or', 'def', 'return', 'class', 'try', 'except'];
-    const builtins = ['print', 'input', 'int', 'float', 'str', 'bool', 'type', 'len',
-        'range', 'list', 'append', 'sort', 'pop', 'insert', 'remove', 'strip', 'upper',
-        'lower', 'replace', 'find', 'split', 'abs', 'max', 'min', 'sum', 'round'];
-    const commentColor = '#5C6370';
-    const keywordColor = '#C678DD';
-    const builtinColor = '#E5C07B';
-    const stringColor = '#98C379';
-    const numberColor = '#D19A66';
-    const funcColor = '#61AFEF';
+    const KW = '\\b(if|else|elif|for|while|in|break|continue|import|True|False|not|and|or|def|return)\\b';
+    const BUILTIN = '\\b(print|input|int|float|str|bool|type|len|range|list|abs|max|min|sum|round)\\b(?=\\s*\\()';
+    const COMMENT = '(#.*$)';
+    const STRING = '("[^"]*"|\'[^\']*\')';
+    const NUMBER = '\\b(\\d+\\.?\\d*)\\b';
+
+    const CC = '#5C6370';   // comment
+    const KC = '#C678DD';   // keyword
+    const BC = '#E5C07B';   // builtin
+    const SC = '#98C379';   // string
+    const NC = '#D19A66';   // number
 
     document.querySelectorAll('#topic-content .code-block').forEach(block => {
-        let html = block.innerHTML;
-        // 1. Highlight comments (# until end of line)
-        html = html.replace(/(<span[^>]*>)?(#.*$)/gm, function(m, span, comment) {
-            if (span) return m;
-            return '<span style="color:' + commentColor + ';font-style:italic">' + comment + '</span>';
-        });
-        // 2. Highlight strings (single/double quoted)
-        html = html.replace(/(["'])(?:(?!\1|\\).|\\.)*\1/g, function(m) {
-            // Don't re-wrap already highlighted spans
-            if (m.includes('<span')) return m;
-            return '<span style="color:' + stringColor + '">' + m + '</span>';
-        });
-        // 3. Highlight numbers
-        html = html.replace(/\b(\d+\.?\d*)\b/g, function(m) {
-            if (m.includes('<span')) return m;
-            return '<span style="color:' + numberColor + '">' + m + '</span>';
-        });
-        // 4. Highlight keywords
-        keywords.forEach(kw => {
-            let re = new RegExp('\\b(' + kw + ')\\b(?![^<]*>)', 'g');
-            html = html.replace(re, '<span style="color:' + keywordColor + '">$1</span>');
-        });
-        // 5. Highlight built-in functions (word followed by opening paren)
-        builtins.forEach(fn => {
-            let re = new RegExp('\\b(' + fn + ')(?=\\s*\\()', 'g');
-            html = html.replace(re, '<span style="color:' + builtinColor + '">$1</span>');
-        });
-        block.innerHTML = html;
+        // Get raw text content to avoid HTML entity issues
+        const text = block.textContent;
+        const lines = text.split('\n');
+        const result = lines.map(line => {
+            // Skip empty lines
+            if (!line.trim()) return '';
+            // Escape HTML first
+            let escaped = line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            // Mark protected regions with placeholders to prevent nested spans
+            let protected_ = [];
+            // 1. Strings
+            escaped = escaped.replace(new RegExp(STRING, 'g'), m => {
+                protected_.push('<span style="color:' + SC + '">' + m + '</span>');
+                return '\x00' + (protected_.length - 1) + '\x00';
+            });
+            // 2. Comments (after strings so # inside strings is preserved)
+            escaped = escaped.replace(new RegExp(COMMENT, 'g'), m => {
+                protected_.push('<span style="color:' + CC + ';font-style:italic">' + m + '</span>');
+                return '\x00' + (protected_.length - 1) + '\x00';
+            });
+            // 3. Builtins
+            escaped = escaped.replace(new RegExp(BUILTIN, 'g'), m => {
+                protected_.push('<span style="color:' + BC + '">' + m + '</span>');
+                return '\x00' + (protected_.length - 1) + '\x00';
+            });
+            // 4. Keywords
+            escaped = escaped.replace(new RegExp(KW, 'g'), m => {
+                protected_.push('<span style="color:' + KC + '">' + m + '</span>');
+                return '\x00' + (protected_.length - 1) + '\x00';
+            });
+            // 5. Numbers
+            escaped = escaped.replace(new RegExp(NUMBER, 'g'), m => {
+                protected_.push('<span style="color:' + NC + '">' + m + '</span>');
+                return '\x00' + (protected_.length - 1) + '\x00';
+            });
+            // Restore protected regions
+            for (let i = 0; i < protected_.length; i++) {
+                escaped = escaped.split('\x00' + i + '\x00').join(protected_[i]);
+            }
+            return escaped;
+        }).join('\n');
+
+        block.innerHTML = result;
     });
 }
 
