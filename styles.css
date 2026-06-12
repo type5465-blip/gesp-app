@@ -1185,6 +1185,35 @@ body {
     font-size: 1.3rem;
 }
 
+.exam-new-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF6B6B, #EE5A24);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-left: 6px;
+    vertical-align: middle;
+    animation: pulse 2s infinite;
+}
+
+/* 真题列表时间轴效果 */
+.exam-list {
+    position: relative;
+    padding-left: 0;
+}
+
+.exam-card {
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.exam-card:hover {
+    transform: translateX(3px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
 /* --- 单选题/判断题标记 --- */
 .question-type-badge {
     display: inline-block;
