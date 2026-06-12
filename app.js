@@ -951,8 +951,8 @@ const examPapers = [
             { type:'bool', q:'在Python代码中，turtle.reset()和turtle.clear()功能相同，都是清除画⾯，海⻳回到原点，朝向 置为默认⽅向。（ ）', answer:0, explain:'int(3.14)截断小数得3(非四舍五入)。int()将浮点数或整数字符串转为整数。' },
             { type:'bool', q:'在Python的 turtle库中，turtle.right()与turtle.rt()等价。（ ） 3', answer:1, explain:'range(1,10,3)生成1,4,7。最后一次输出是7(不是10)。步长3：1+3=4,4+3=7,7+3=10超。' },
             // Q26-27
-            { type:'code', title:'Q1', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' },
-            { type:'code', title:'Q2', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' }
+            { type:'code', title:'星期几计算', desc:'输入今天是星期几x和经过的天数n，计算n天后是星期几并输出。', inputFormat:'第一行一个整数x（1~7，代表星期一到星期日）。\n第二行一个整数n（经过的天数）。', outputFormat:'输出一个整数（1~7），代表n天后是星期几。', samples:[{input:'1\n6',output:'7',desc:'星期一+6天=星期日(7)。'}], referenceCode:'x = int(input())\nn = int(input())\nprint((x - 1 + n % 7) % 7 + 1)', explain:'核心思路：(x-1)将星期转为0-based(0~6)，加n%7后取余7，最后+1转回1-based。考查取余运算和数学建模。' },
+            { type:'code', title:'输出不被m整除的数', desc:'输入n和m，输出1到n之间所有不能被m整除的整数。', inputFormat:'第一行一个整数n。\n第二行一个整数m。', outputFormat:'每行一个整数，输出1到n之间不能被m整除的数。', samples:[{input:'10\n3',output:'1\n2\n4\n5\n7\n8\n10',desc:'1~10中不被3整除的数。'}], referenceCode:'n = int(input())\nm = int(input())\nfor i in range(1, n + 1):\n    if i % m != 0:\n        print(i)', explain:'核心思路：遍历1到n，用if i%m!=0筛选不能被m整除的数并输出。考查for循环、取余运算和条件判断。' }
         ]},
 {id: '2024-03',
         title: '2024年3月 GESP Python 一级真题',
@@ -988,8 +988,8 @@ const examPapers = [
             { type:'bool', q:'Python代码执⾏后，将绘制⼀个边长为 100 的等边三角形，且填充颜⾊为红⾊。（ ）', answer:0, explain:'while循环在条件成立时反复执行。必须更新条件变量避免死循环。' },
             { type:'bool', q:'Python代码turtle.right()也可以实现海⻳指向左旋转。（ ） 3', answer:1, explain:'print()的sep参数指定分隔符(默认空格)。sep="*"则用*分隔各输出项。' },
             // Q26-27
-            { type:'code', title:'Q1', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' },
-            { type:'code', title:'Q2', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' }
+            { type:'code', title:'小杨买书', desc:'图书单价为13元。小杨有n元零花钱，他想购买尽可能多的图书。请计算最多购买数量和剩余金额。', inputFormat:'输入一行一个正整数n。', outputFormat:'第一行输出最多购买数量，第二行输出剩余金额。', samples:[{input:'100',output:'7\n9',desc:'100÷13=7余9。'}], referenceCode:'n = int(input())\nprice = 13\nprint(n // price)\nprint(n % price)', explain:'核心思路：整除//求数量，取余%求剩余。考查整除和取余运算符的实际应用。' },
+            { type:'code', title:'找因数', desc:'输入一个正整数N，从小到大输出N的所有因数。', inputFormat:'输入一行一个正整数N。', outputFormat:'每行一个因数，从小到大输出。', samples:[{input:'6',output:'1\n2\n3\n6',desc:'6的因数:1,2,3,6。'}], referenceCode:'N = int(input())\nfor i in range(1, N + 1):\n    if N % i == 0:\n        print(i)', explain:'核心思路：遍历1到N，若N%i==0则i是因数。考查for循环和取余判断整除。' }
         ]},
 {id: '2024-06',
         title: '2024年6月 GESP Python 一级真题',
@@ -1025,8 +1025,8 @@ const examPapers = [
             { type:'bool', q:'Python代码 turtle.clear() 可以清除海⻳绘图，且海⻳将回到原点。（ ）import turtle for i in range(4): turtle.circle(50) turtle.left(__________)1 2 3 4', answer:0, explain:'f-string中{}内表达式会被计算替换。如f"6%2={6%2}"输出"6%2=0"。f前缀不能省略。' },
             { type:'bool', q:'下⾯ Python 代码执⾏后将绘制正多边形，如输⼊ 5 将绘制正 5 边形，输⼊ 8 将绘制正 8 边形，以此类推。（ ） 3', answer:1, explain:'while循环在条件成立时反复执行。必须更新条件变量避免死循环。' },
             // Q26-27
-            { type:'code', title:'Q1', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' },
-            { type:'code', title:'Q2', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' }
+            { type:'code', title:'休息时间', desc:'小杨在h时m分s秒开始学习，学习了k秒后休息。计算开始休息的时刻。', inputFormat:'四行：h(时) m(分) s(秒) k(学习秒数)。', outputFormat:'输出hh mm ss，空格分隔。', samples:[{input:'8\n0\n0\n3600',output:'9 0 0',desc:'学习3600秒=1小时。'}], referenceCode:'h = int(input())\nm = int(input())\ns = int(input())\nk = int(input())\ntotal = h * 3600 + m * 60 + s + k\nhh = (total // 3600) % 24\nmm = (total % 3600) // 60\nss = total % 60\nprint(hh, mm, ss)', explain:'核心思路：统一转换为秒后相加，再转回时分秒。hh对24取余处理跨天。考查时间换算和整除/取余综合运用。' },
+            { type:'code', title:'立方数', desc:'判断正整数n是否为立方数（存在x使x³=n，n≤1000）。', inputFormat:'输入一行一个正整数n。', outputFormat:'是立方数输出Yes，否则输出No。', samples:[{input:'8',output:'Yes',desc:'2³=8。'},{input:'10',output:'No',desc:'不是立方数。'}], referenceCode:'n = int(input())\nflag = False\nfor i in range(1, n + 1):\n    if i * i * i == n:\n        flag = True\n        break\nif flag:\n    print("Yes")\nelse:\n    print("No")', explain:'核心思路：遍历1到n，检查i³==n。找到后设flag并break。由于n≤1000，最大i只需到10。考查循环和break。' }
         ]},
 {id: '2025-06',
         title: '2025年6月 GESP Python 一级真题',
@@ -1062,8 +1062,8 @@ const examPapers = [
             { type:'bool', q:'下⾯的 Python 代码执⾏后，海⻳指向不会发⽣变化。（ ）', answer:0, explain:'continue跳过本次循环剩余代码。若在累加之前则该次累加被跳过。' },
             { type:'bool', q:'下⾯的 Python 代码被执⾏后将绘制出正六边形。（ ） 3', answer:1, explain:'错误。该说法与Python语言实际行为不符。' },
             // Q26-27
-            { type:'code', title:'Q1', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' },
-            { type:'code', title:'Q2', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' }
+            { type:'code', title:'面积比较', desc:'输入两个矩形的长和宽，比较面积大小。', inputFormat:'四行：a b c d（两个矩形的长宽）。', outputFormat:'第一个大输出>，第二个大输出<，相等输出=。', samples:[{input:'3\n4\n2\n5',output:'>',desc:'3×4=12>2×5=10。'}], referenceCode:'a=int(input())\nb=int(input())\nc=int(input())\nd=int(input())\nS1=a*b\nS2=c*d\nif S1>S2:\n    print(">")\nelif S1<S2:\n    print("<")\nelse:\n    print("=")', explain:'核心思路：计算两个矩形面积后if-elif-else比较。考查乘法、输入和条件判断。' },
+            { type:'code', title:'统计偶数', desc:'输入n个正整数，统计偶数的个数。', inputFormat:'第一行n，第二行n个正整数空格分隔。', outputFormat:'输出偶数的个数。', samples:[{input:'5\n1 2 3 4 5',output:'2',desc:'2和4是偶数。'}], referenceCode:'n=int(input())\nnums=list(map(int,input().split()))\ncount=0\nfor x in nums:\n    if x%2==0:\n        count+=1\nprint(count)', explain:'核心思路：用split()分割字符串，map(int)转整数列表，遍历if判断偶数并计数。考查输入处理和取余。' }
         ]},
 {id: '2025-09',
         title: '2025年9月 GESP Python 一级真题',
@@ -1099,8 +1099,8 @@ const examPapers = [
             { type:'bool', q:'下⾯的 Python 代码执⾏后，海⻳指向不会发⽣变化。（ ）', answer:0, explain:'正确。该说法符合Python语言规范和编程逻辑。' },
             { type:'bool', q:'下⾯的 Python 代码执⾏后将能绘制出⼤于 3 的正多边形。（ ） 3', answer:1, explain:'正方形4边，每边后转90度(360/4)。循环4次：forward(边长)+right(90)。' },
             // Q26-27
-            { type:'code', title:'Q1', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' },
-            { type:'code', title:'Q2', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' }
+            { type:'code', title:'商店折扣', desc:'两种优惠方案：方案1满x减y，方案2打n折。计算最低支付金额。', inputFormat:'四行：x(满减门槛) y(满减额) n(折扣1~9) p(原价)。', outputFormat:'输出最低支付金额，保留两位小数。', samples:[{input:'8\n7\n9\n10',output:'9.00',desc:'满减不够门槛=10，打折10×0.9=9，取9.00。'}], referenceCode:'x=int(input())\ny=int(input())\nn=int(input())\np=int(input())\np1=p-y if p>=x else p\np2=p*n/10\nprint(f"{min(p1,p2):.2f}")', explain:'核心思路：if判断满减条件，计算两种方案后取min。f-string的:.2f保留两位小数。考查条件判断和格式化输出。' },
+            { type:'code', title:'金字塔石块', desc:'搭建n层金字塔，从底向上每层需i²块石头。计算总石块数。', inputFormat:'一行一个正整数n。', outputFormat:'输出总石块数。', samples:[{input:'2',output:'5',desc:'1²+2²=1+4=5。'}], referenceCode:'n=int(input())\ntotal=0\nfor i in range(1,n+1):\n    total+=i*i\nprint(total)', explain:'核心思路：遍历1到n累加i²，即平方和∑i²。考查for循环和累加。' }
         ]},
 {id: '2025-12',
         title: '2025年12月 GESP Python 一级真题',
@@ -1136,8 +1136,8 @@ const examPapers = [
             { type:'bool', q:'下⾯的 Python 代码执⾏后，将画出横平竖直 ( 两条边⽔平，另两条边与之垂直，且⾸尾相接 ) 的正⽅形。（ ）', answer:0, explain:'正确。该说法符合Python语言规范和编程逻辑。' },
             { type:'bool', q:'下⾯的 Python 代码执⾏后将绘制出如下图形。（ ） cnt = 0 for i in range(100): cnt += 1 print(cnt)1 2 3 4 n = int(input("请输入正整数 :")) new_number = 0 while n != 0: new_number = new_number * 10 + n % 10 n //= 10 if n == new_', answer:1, explain:'错误。该说法与Python语言实际行为不符。' },
             // Q26-27
-            { type:'code', title:'Q1', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' },
-            { type:'code', title:'Q2', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' }
+            { type:'code', title:'小杨的快递', desc:'快递两种计费：体积费0.5×V，重量费G<300收M否则收N。求最低运费。', inputFormat:'四行：V G M N（浮点数）。', outputFormat:'最低运费，保留一位小数。', samples:[{input:'100\n200\n10\n15',output:'10.0',desc:'体积50>重量10，取10.0。'}], referenceCode:'V=float(input())\nG=float(input())\nM=float(input())\nN=float(input())\np_v=0.5*V\np_g=M if G<300 else N\nprint(f"{min(p_v,p_g):.1f}")', explain:'核心思路：分别计算体积费和重量费（if判断G范围），取min。考查浮点数输入和条件判断。' },
+            { type:'code', title:'电量显示', desc:'根据电量P显示：P≤10输出R，10<P≤20输出L，P>20输出P。处理T次查询。', inputFormat:'第一行T，接下来T行每行一个P。', outputFormat:'T行，每行对应结果。', samples:[{input:'3\n5\n15\n80',output:'R\nL\n80',desc:'5→R,15→L,80→80。'}], referenceCode:'T=int(input())\nfor _ in range(T):\n    P=int(input())\n    if P<=10:\n        print("R")\n    elif P<=20:\n        print("L")\n    else:\n        print(P)', explain:'核心思路：if-elif-else按条件分类输出。注意顺序：先≤10再≤20。考查多条件判断和多次查询。' }
         ]},
 {id: '2026-03',
         title: '2026年3月 GESP Python 一级真题',
@@ -1173,8 +1173,8 @@ const examPapers = [
             { type:'bool', q:'下⾯的 Python 代码执⾏后，将输出等边三角形。（ ）for i in range(1, 10): if i % 3 == 0: break print(i)1 2 3 4 N = int(input("请输入正整数： ")) total = 0 for i in range(1, N + 1): total += i print(total)1 2 3 4 5 N = input() whi', answer:0, explain:'正确。该说法符合Python语言规范和编程逻辑。' },
             { type:'bool', q:'下⾯的 Python 代码执⾏后第⼀条直线与第⼆条直线相交于原点，两线之间的夹角为 120 度。（ ） 3', answer:1, explain:'错误。该说法与Python语言实际行为不符。' },
             // Q26-27
-            { type:'code', title:'Q1', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' },
-            { type:'code', title:'Q2', desc:'See PDF', inputFormat:'-', outputFormat:'-', samples:[], referenceCode:'# See PDF', explain:'See PDF' }
+            { type:'code', title:'交朋友', desc:'Alice身高H1，三位朋友身高H2,H3,H4。找与Alice身高差最小的人交朋友，差距相同时选较矮的。', inputFormat:'四行：H1 H2 H3 H4。', outputFormat:'输出Alice应该交朋友的人的身高。', samples:[{input:'160\n158\n162\n155',output:'158',desc:'差2最小，158和162差相同选较矮158。'}], referenceCode:'H1=int(input())\nH2=int(input())\nH3=int(input())\nH4=int(input())\nbest=H2\nbest_diff=abs(H2-H1)\nif abs(H3-H1)<best_diff or (abs(H3-H1)==best_diff and H3<best):\n    best=H3\n    best_diff=abs(H3-H1)\nif abs(H4-H1)<best_diff or (abs(H4-H1)==best_diff and H4<best):\n    best=H4\nprint(best)', explain:'核心思路：用abs()计算身高差，逐步比较更新最优解。差距相同时and条件选较矮者。考查abs()和多条件判断。' },
+            { type:'code', title:'数字替换', desc:'输入一个正整数，将其中所有数字4替换为8，没有4则原样输出。', inputFormat:'一行一个正整数。', outputFormat:'替换后的结果。', samples:[{input:'1234',output:'1238',desc:'4替换为8。'},{input:'5678',output:'5678',desc:'没有4，不变。'}], referenceCode:'s=input()\nprint(s.replace("4","8"))', explain:'核心思路：用字符串replace()方法直接替换。输入可能很大故用字符串处理而非整数运算。考查字符串操作。' }
         ]
     }
 ];
