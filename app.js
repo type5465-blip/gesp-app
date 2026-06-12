@@ -801,7 +801,7 @@ const examPapers = [
 {id: '2026-03',
         title: '2026年3月 GESP Python 一级真题',
         date: '2026年3月 · 第十三次认证',
-        icon: '🌸',
+        icon: '📋',
         source: 'CCF GESP 2026年3月',
         questions: [
             // Q1-15
@@ -839,7 +839,7 @@ const examPapers = [
 {id: '2025-12',
         title: '2025年12月 GESP Python 一级真题',
         date: '2025年12月 · 第十二次认证',
-        icon: '❄️',
+        icon: '📋',
         source: 'CCF GESP 2025年12月',
         questions: [
             // Q1-15
@@ -876,7 +876,7 @@ const examPapers = [
 {id: '2025-09',
         title: '2025年9月 GESP Python 一级真题',
         date: '2025年9月 · 第十一次认证',
-        icon: '🍂',
+        icon: '📋',
         source: 'CCF GESP 2025年9月',
         questions: [
             // Q1-15
@@ -913,7 +913,7 @@ const examPapers = [
 {id: '2025-06',
         title: '2025年6月 GESP Python 一级真题',
         date: '2025年6月 · 第十次认证',
-        icon: '☀️',
+        icon: '📋',
         source: 'CCF GESP 2025年6月',
         questions: [
             // Q1-15
@@ -951,7 +951,7 @@ const examPapers = [
         id: '2025-03',
         title: '2025年3月 GESP Python 一级真题',
         date: '2025年3月 · 第九次认证',
-        icon: '🌸',
+        icon: '📋',
         source: 'CCF GESP 2025年3月第九次认证',
         questions: [
             // ========== 单选题 1-15 ==========
@@ -990,7 +990,7 @@ const examPapers = [
         id: '2024-12',
         title: '2024年12月 GESP Python 一级真题',
         date: '2024年12月 · 第八次认证',
-        icon: '❄️',
+        icon: '📋',
         source: 'CCF GESP 2024年12月第八次认证',
         questions: [
             // ========== 单选题 1-15 ==========
@@ -1029,7 +1029,7 @@ const examPapers = [
         id: '2024-09',
         title: '2024年9月 GESP Python 一级真题',
         date: '2024年9月 · 第七次认证',
-        icon: '🍂',
+        icon: '📋',
         source: 'CCF GESP 2024年9月第七次认证',
         questions: [
             // ========== 单选题 1-15 ==========
@@ -1067,7 +1067,7 @@ const examPapers = [
 {id: '2024-06',
         title: '2024年6月 GESP Python 一级真题',
         date: '2024年6月 · 第六次认证',
-        icon: '☀️',
+        icon: '📋',
         source: 'CCF GESP 2024年6月',
         questions: [
             // Q1-15
@@ -1104,7 +1104,7 @@ const examPapers = [
 {id: '2024-03',
         title: '2024年3月 GESP Python 一级真题',
         date: '2024年3月 · 第五次认证',
-        icon: '🌸',
+        icon: '📋',
         source: 'CCF GESP 2024年3月',
         questions: [
             // Q1-15
@@ -1142,7 +1142,7 @@ const examPapers = [
         id: '2023-12',
         title: '2023年12月 GESP Python 一级真题',
         date: '2023年12月 · 第四次认证',
-        icon: '❄️',
+        icon: '📋',
         source: 'CCF GESP 2023年12月',
         questions: [
             // Q1-15
