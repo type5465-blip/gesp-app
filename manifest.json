@@ -1,13 +1,15 @@
 {
   "name": "Python GESP 一级助考",
   "short_name": "GESP助考",
-  "description": "Python GESP一级考级学习助手 - 知识点、练习、模拟考、真题实战、错题本",
+  "description": "Python GESP一级考级学习助手 - 12个知识点、207道练习题、10套真题、模拟考试、错题本",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#F5F7FA",
   "theme_color": "#4A90D9",
   "lang": "zh-CN",
+  "categories": ["education", "productivity"],
   "icons": [
     {
       "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234A90D9'/><text y='.75em' font-size='65' text-anchor='middle' x='50' fill='white'>🐍</text></svg>",
@@ -20,6 +22,15 @@
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='640'><rect width='360' height='640' fill='%23F5F7FA'/><rect y='0' width='360' height='56' fill='%234A90D9'/><text y='36' font-size='18' fill='white' text-anchor='middle' x='180' font-family='sans-serif'>🐍 Python GESP 一级助考</text><rect x='12' y='72' width='336' height='120' rx='16' fill='%23667eea'/><text y='110' font-size='32' text-anchor='middle' x='180'>🎓</text><text y='145' font-size='16' fill='white' text-anchor='middle' x='180' font-family='sans-serif'>欢迎来到Python学习助手</text><text y='170' font-size='12' fill='%23ddd' text-anchor='middle' x='180' font-family='sans-serif'>专为GESP一级考级设计</text><rect x='12' y='205' width='162' height='65' rx='10' fill='white'/><text y='230' font-size='12' fill='%234A90D9' text-anchor='middle' x='93' font-family='sans-serif'>📚 知识点学习</text><text y='250' font-size='10' fill='%237F8C8D' text-anchor='middle' x='93' font-family='sans-serif'>12个考点系统学习</text><rect x='186' y='205' width='162' height='65' rx='10' fill='white'/><text y='230' font-size='12' fill='%234A90D9' text-anchor='middle' x='267' font-family='sans-serif'>✏️ 专项练习</text><text y='250' font-size='10' fill='%237F8C8D' text-anchor='middle' x='267' font-family='sans-serif'>按知识点分类</text><rect x='12' y='283' width='162' height='65' rx='10' fill='white'/><text y='308' font-size='12' fill='%234A90D9' text-anchor='middle' x='93' font-family='sans-serif'>🏆 模拟考试</text><text y='328' font-size='10' fill='%237F8C8D' text-anchor='middle' x='93' font-family='sans-serif'>45题60分钟</text><rect x='186' y='283' width='162' height='65' rx='10' fill='white'/><text y='308' font-size='12' fill='%234A90D9' text-anchor='middle' x='267' font-family='sans-serif'>📝 错题本</text><text y='328' font-size='10' fill='%237F8C8D' text-anchor='middle' x='267' font-family='sans-serif'>温故知新</text></svg>",
+      "sizes": "360x640",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "首页"
     }
   ]
 }
