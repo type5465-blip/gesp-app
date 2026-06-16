@@ -104,7 +104,7 @@ is_student = True</div>
 >>> print(age)
 12
 >>> print(type(age))
-&lt;class 'int'&gt;</div>
+<class 'int'></div>
 
 <h3>🔄 type() 函数</h3>
 <p><code>type()</code> 可以查看数据的类型：</p>
