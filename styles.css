@@ -360,24 +360,42 @@ body {
 }
 
 .code-block {
-    background: #282C34;
-    color: #ABB2BF;
-    border-radius: var(--radius-xs);
-    padding: 14px 16px;
-    margin: 10px 0;
+    background: #1E2233;
+    color: #CDD6F4;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 12px 0;
     overflow-x: auto;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    line-height: 1.6;
+    font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.75;
     position: relative;
+    border: 1px solid #2A2F45;
+    tab-size: 4;
 }
 
-.code-block .keyword { color: #C678DD; }
-.code-block .builtin { color: #E5C07B; }
-.code-block .string { color: #98C379; }
-.code-block .number { color: #D19A66; }
-.code-block .comment { color: #5C6370; font-style: italic; }
-.code-block .func { color: #61AFEF; }
+.code-block::before {
+    content: '🐍 Python';
+    position: absolute;
+    top: 0;
+    right: 12px;
+    background: #2A2F45;
+    color: #7C8DB0;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 0 0 6px 6px;
+    letter-spacing: 0.5px;
+    font-family: var(--font-main, inherit);
+}
+
+.code-block .kw  { color: #C9A0FF; font-weight: 500; }
+.code-block .bi  { color: #F0C060; }
+.code-block .str { color: #A6E3A1; }
+.code-block .num { color: #FAB387; }
+.code-block .cm  { color: #6C7086; font-style: italic; }
+.code-block .fn  { color: #89B4FA; }
+.code-block .op  { color: #89DCEB; }
 
 .output-block {
     background: #F0F4F8;
@@ -1567,6 +1585,16 @@ body {
 
     .wrong-explanation {
         background: #2C3038;
+    }
+
+    .code-block {
+        background: #11131F;
+        border-color: #1E2233;
+    }
+
+    .code-block::before {
+        background: #1E2233;
+        color: #5C6A8A;
     }
 
     .wrong-code {

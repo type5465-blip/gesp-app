@@ -2138,62 +2138,41 @@ function escapeHtml(str) {
 
 // ==================== 语法高亮 ====================
 function highlightCodeBlocks() {
-    const KW = '\\b(if|else|elif|for|while|in|break|continue|import|True|False|not|and|or|def|return)\\b';
-    const BUILTIN = '\\b(print|input|int|float|str|bool|type|len|range|list|abs|max|min|sum|round)\\b(?=\\s*\\()';
-    const COMMENT = '(#.*$)';
-    const STRING = '("[^"]*"|\'[^\']*\')';
-    const NUMBER = '\\b(\\d+\\.?\\d*)\\b';
-
-    const CC = '#5C6370';   // comment
-    const KC = '#C678DD';   // keyword
-    const BC = '#E5C07B';   // builtin
-    const SC = '#98C379';   // string
-    const NC = '#D19A66';   // number
+    // Pattern matching order matters: strings first, then comments, then keywords/numbers
+    const patterns = [
+        // 1. Strings (single, double, triple quoted)
+        { regex: /("""[\s\S]*?"""|'''[\s\S]*?'''|"[^"]*"|'[^']*')/g, cls: 'str' },
+        // 2. Comments
+        { regex: /(#.*$)/gm, cls: 'cm' },
+        // 3. Builtin functions (followed by opening paren)
+        { regex: /\b(print|input|int|float|str|bool|type|len|range|list|abs|max|min|sum|round|turtle\.\w+)(?=\s*\()/g, cls: 'bi' },
+        // 4. Keywords
+        { regex: /\b(if|elif|else|for|while|in|break|continue|import|from|def|return|and|or|not|True|False|None|as|with|try|except|class|pass|lambda|yield|global|nonlocal|del|raise|assert|is)\b/g, cls: 'kw' },
+        // 5. Numbers
+        { regex: /\b(\d+\.?\d*)\b/g, cls: 'num' },
+        // 6. Function definitions
+        { regex: /\b([a-zA-Z_]\w*)(?=\s*\()/g, cls: 'fn' },
+    ];
 
     document.querySelectorAll('#topic-content .code-block').forEach(block => {
-        // Get raw text content to avoid HTML entity issues
-        const text = block.textContent;
-        const lines = text.split('\n');
-        const result = lines.map(line => {
-            // Skip empty lines
-            if (!line.trim()) return '';
-            // Escape HTML first
-            let escaped = line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            // Mark protected regions with placeholders to prevent nested spans
-            let protected_ = [];
-            // 1. Strings
-            escaped = escaped.replace(new RegExp(STRING, 'g'), m => {
-                protected_.push('<span style="color:' + SC + '">' + m + '</span>');
-                return '\x00' + (protected_.length - 1) + '\x00';
-            });
-            // 2. Comments (after strings so # inside strings is preserved)
-            escaped = escaped.replace(new RegExp(COMMENT, 'g'), m => {
-                protected_.push('<span style="color:' + CC + ';font-style:italic">' + m + '</span>');
-                return '\x00' + (protected_.length - 1) + '\x00';
-            });
-            // 3. Builtins
-            escaped = escaped.replace(new RegExp(BUILTIN, 'g'), m => {
-                protected_.push('<span style="color:' + BC + '">' + m + '</span>');
-                return '\x00' + (protected_.length - 1) + '\x00';
-            });
-            // 4. Keywords
-            escaped = escaped.replace(new RegExp(KW, 'g'), m => {
-                protected_.push('<span style="color:' + KC + '">' + m + '</span>');
-                return '\x00' + (protected_.length - 1) + '\x00';
-            });
-            // 5. Numbers
-            escaped = escaped.replace(new RegExp(NUMBER, 'g'), m => {
-                protected_.push('<span style="color:' + NC + '">' + m + '</span>');
-                return '\x00' + (protected_.length - 1) + '\x00';
-            });
-            // Restore protected regions
-            for (let i = 0; i < protected_.length; i++) {
-                escaped = escaped.split('\x00' + i + '\x00').join(protected_[i]);
-            }
-            return escaped;
-        }).join('\n');
+        let html = block.textContent
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-        block.innerHTML = result;
+        // Apply each pattern with placeholder protection
+        const markers = [];
+        patterns.forEach(({ regex, cls }) => {
+            html = html.replace(regex, match => {
+                markers.push(`<span class="${cls}">${match}</span>`);
+                return `\x00${markers.length - 1}\x00`;
+            });
+        });
+
+        // Restore markers
+        markers.forEach((replacement, i) => {
+            html = html.split(`\x00${i}\x00`).join(replacement);
+        });
+
+        block.innerHTML = html;
     });
 }
 
