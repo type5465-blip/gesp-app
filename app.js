@@ -104,15 +104,15 @@ is_student = True</div>
 >>> print(age)
 12
 >>> print(type(age))
-<class 'int'></div>
+&lt;class 'int'&gt;</div>
 
 <h3>🔄 type() 函数</h3>
 <p><code>type()</code> 可以查看数据的类型：</p>
 
-<div class="code-block">print(type(10))      # <class 'int'>
-print(type(3.14))    # <class 'float'>
-print(type("hi"))    # <class 'str'>
-print(type(True))    # <class 'bool'></div>
+<div class="code-block">print(type(10))      # 结果: int（整数类型）
+print(type(3.14))    # 结果: float（浮点数类型）
+print(type("hi"))    # 结果: str（字符串类型）
+print(type(True))    # 结果: bool（布尔类型）</div>
 
 <div class="note-box">
     <strong>💡 注意：</strong>True 和 False <strong>首字母必须大写</strong>，这是常考易错点！
