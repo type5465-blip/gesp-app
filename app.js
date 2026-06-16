@@ -216,8 +216,10 @@ print(not (5 > 3))        # False</div>
 <p>条件判断让程序能根据不同情况做出不同反应，是程序"智能"的基础。</p>
 
 <h3>📝 if 语句基本格式</h3>
-<div class="code-block">if 条件:
-    条件成立时执行的代码  # 注意：必须缩进！</div>
+<div class="code-block"># 如果今天下雨，就带伞
+weather = "雨"
+if weather == "雨":
+    print("带伞出门")  # 注意：必须缩进！</div>
 
 <h3>📝 if-else 双分支</h3>
 <div class="code-block">score = 85
@@ -303,10 +305,13 @@ for ch in word:
 <p>while循环在<strong>条件成立时</strong>反复执行，直到条件变为False才停止。</p>
 
 <h3>📝 基本格式</h3>
-<div class="code-block">while 条件:
-    条件成立时执行的代码  # 注意缩进和条件变量更新！</div>
+<div class="code-block"># 数到3就停止
+count = 1
+while count <= 3:
+    print("第", count, "次")
+    count = count + 1  # 注意：一定要更新条件变量！</div>
 
-<h3>📊 示例</h3>
+<h3>📊 更多示例</h3>
 <div class="code-block"># 打印 1 到 5
 i = 1
 while i <= 5:
