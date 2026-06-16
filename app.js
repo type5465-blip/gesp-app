@@ -2138,39 +2138,35 @@ function escapeHtml(str) {
 
 // ==================== 语法高亮 ====================
 function highlightCodeBlocks() {
-    // Pattern matching order matters: strings first, then comments, then keywords/numbers
     const patterns = [
-        // 1. Strings (single, double, triple quoted)
         { regex: /("""[\s\S]*?"""|'''[\s\S]*?'''|"[^"]*"|'[^']*')/g, cls: 'str' },
-        // 2. Comments
         { regex: /(#.*$)/gm, cls: 'cm' },
-        // 3. Builtin functions (followed by opening paren)
         { regex: /\b(print|input|int|float|str|bool|type|len|range|list|abs|max|min|sum|round|turtle\.\w+)(?=\s*\()/g, cls: 'bi' },
-        // 4. Keywords
         { regex: /\b(if|elif|else|for|while|in|break|continue|import|from|def|return|and|or|not|True|False|None|as|with|try|except|class|pass|lambda|yield|global|nonlocal|del|raise|assert|is)\b/g, cls: 'kw' },
-        // 5. Numbers
         { regex: /\b(\d+\.?\d*)\b/g, cls: 'num' },
-        // 6. Function definitions
         { regex: /\b([a-zA-Z_]\w*)(?=\s*\()/g, cls: 'fn' },
     ];
 
     document.querySelectorAll('#topic-content .code-block').forEach(block => {
-        let html = block.textContent
-            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const lines = block.textContent.split('\n');
 
-        // Apply each pattern with placeholder protection
-        const markers = [];
-        patterns.forEach(({ regex, cls }) => {
-            html = html.replace(regex, match => {
-                markers.push(`<span class="${cls}">${match}</span>`);
-                return `\x00${markers.length - 1}\x00`;
+        const html = lines.map(line => {
+            let text = line || ' ';
+            text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+            const markers = [];
+            patterns.forEach(({ regex, cls }) => {
+                text = text.replace(regex, match => {
+                    markers.push(`<span class="${cls}">${match}</span>`);
+                    return `\x00${markers.length - 1}\x00`;
+                });
             });
-        });
+            markers.forEach((replacement, i) => {
+                text = text.split(`\x00${i}\x00`).join(replacement);
+            });
 
-        // Restore markers
-        markers.forEach((replacement, i) => {
-            html = html.split(`\x00${i}\x00`).join(replacement);
-        });
+            return `<span class="line"><span class="code-text">${text}</span></span>`;
+        }).join('');
 
         block.innerHTML = html;
     });

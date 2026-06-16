@@ -368,25 +368,43 @@ body {
     overflow-x: auto;
     font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', var(--font-mono);
     font-size: 0.82rem;
-    line-height: 1.75;
+    line-height: 1.85;
     position: relative;
     border: 1px solid #2A2F45;
     tab-size: 4;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+    padding: 0;
+    counter-reset: codeline;
 }
 
 .code-block::before {
-    content: '🐍 Python';
-    position: absolute;
-    top: 0;
-    right: 12px;
-    background: #2A2F45;
-    color: #7C8DB0;
-    font-size: 0.65rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 0 0 6px 6px;
-    letter-spacing: 0.5px;
-    font-family: var(--font-main, inherit);
+    content: '';
+    display: none;
+}
+
+.code-block .line {
+    display: contents;
+}
+
+.code-block .line::before {
+    content: counter(codeline);
+    counter-increment: codeline;
+    display: block;
+    padding: 0 14px 0 12px;
+    text-align: right;
+    color: #4A5568;
+    background: #171A27;
+    border-right: 1px solid #2A2F45;
+    min-width: 36px;
+    user-select: none;
+}
+
+.code-block .line .code-text {
+    display: block;
+    padding: 0 18px;
+    white-space: pre;
 }
 
 .code-block .kw  { color: #C9A0FF; font-weight: 500; }
