@@ -2150,7 +2150,7 @@ function escapeHtml(str) {
 }
 
 // ==================== 语法高亮 ====================
-// 纯文本 → 带行号+高亮的HTML（输入来自textContent，无HTML实体问题）
+// 纯文本 → 带行号+高亮的HTML（位置排序法，无占位符冲突）
 function highlightPython(code) {
     const patterns = [
         { regex: /("""[\s\S]*?"""|'''[\s\S]*?'''|"[^"]*"|'[^']*')/g, cls: 'str' },
@@ -2165,19 +2165,40 @@ function highlightPython(code) {
     if (codeLines.length > 1 && codeLines[codeLines.length - 1].trim() === '') codeLines.pop();
 
     return codeLines.map(line => {
-        let text = line || ' ';
-        text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        const markers = [];
+        let html = (line || ' ')
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+        // 收集所有匹配 → 按位置排序 → 合并重叠 → 从后往前替换
+        const matches = [];
         patterns.forEach(({ regex, cls }) => {
-            text = text.replace(regex, match => {
-                markers.push('<span class="' + cls + '">' + match + '</span>');
-                return '\x00' + (markers.length - 1) + '\x00';
-            });
+            let m;
+            while ((m = regex.exec(html)) !== null) {
+                matches.push({ start: m.index, end: m.index + m[0].length, cls: cls, text: m[0] });
+                if (!regex.global) break;
+            }
         });
-        markers.forEach((rep, i) => {
-            text = text.split('\x00' + i + '\x00').join(rep);
-        });
-        return '<span class="line"><span class="code-text">' + text + '</span></span>';
+        matches.sort((a, b) => a.start - b.start);
+
+        // 去重叠（保留先匹配的，即优先级高的）
+        const filtered = [];
+        let lastEnd = 0;
+        for (const m of matches) {
+            if (m.start >= lastEnd) {
+                filtered.push(m);
+                lastEnd = m.end;
+            }
+        }
+
+        // 从后往前构建，避免位置偏移
+        let result = html;
+        for (let i = filtered.length - 1; i >= 0; i--) {
+            const m = filtered[i];
+            result = result.substring(0, m.start) +
+                '<span class="' + m.cls + '">' + m.text + '</span>' +
+                result.substring(m.end);
+        }
+
+        return '<span class="line"><span class="code-text">' + result + '</span></span>';
     }).join('');
 }
 
