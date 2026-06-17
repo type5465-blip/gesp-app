@@ -2032,23 +2032,46 @@ function renderWrongBook() {
         return;
     }
 
-    container.innerHTML = data.wrongBook.map((w, i) => `
+    container.innerHTML = data.wrongBook.map((w, i) => {
+        // 构建完整的选项列表，标记对错
+        const optionsHtml = w.options ? w.options.map((opt, oi) => {
+            let cls = '';
+            let marker = '';
+            if (oi === w.answer) {
+                cls = 'wrong-option-correct';
+                marker = '✅';
+            } else if (oi === w.userChoice && w.userChoice !== w.answer) {
+                cls = 'wrong-option-wrong';
+                marker = '❌';
+            }
+            return `<div class="wrong-option ${cls}">
+                <span class="wrong-option-letter">${labels[oi]}</span>
+                <span class="wrong-option-text">${escapeHtml(opt)}</span>
+                ${marker ? `<span class="wrong-option-marker">${marker}</span>` : ''}
+            </div>`;
+        }).join('') : '';
+
+        return `
         <div class="wrong-item">
-            <div class="wrong-question">${i + 1}. ${w.q}</div>
-            ${w.code ? `<div class="wrong-code">${escapeHtml(w.code)}</div>` : ''}
-            <div class="wrong-meta">
+            <div class="wrong-header">
                 <span class="wrong-topic">${w.topicName}</span>
-                <span>你的答案: <span class="wrong-choice">${labels[w.userChoice]}. ${escapeHtml(w.options[w.userChoice] || '')}</span></span>
-                <span>正确答案: <span class="correct-choice">${labels[w.answer]}. ${escapeHtml(w.options[w.answer] || '')}</span></span>
+                <span class="wrong-index">#${i + 1}</span>
+            </div>
+            <div class="wrong-question">${w.q}</div>
+            ${w.code ? `<div class="wrong-code">${escapeHtml(w.code)}</div>` : ''}
+            <div class="wrong-options-list">${optionsHtml}</div>
+            <div class="wrong-result">
+                <span>你选了 <strong class="wrong-choice">${labels[w.userChoice]}</strong>，</span>
+                <span>正确答案是 <strong class="correct-choice">${labels[w.answer]}</strong></span>
             </div>
             <div class="wrong-explanation">
                 <strong>💡 解析：</strong>${w.explain || ''}
             </div>
             <div class="wrong-actions">
-                <button class="btn-secondary" onclick="removeWrongQuestion(${i}); renderWrongBook(); showToast('已从错题本移除')">移除</button>
+                <button class="btn-secondary" onclick="removeWrongQuestion(${i}); renderWrongBook(); showToast('已从错题本移除')">🗑 移除</button>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 // ==================== 弹窗 ====================
