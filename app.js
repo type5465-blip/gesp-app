@@ -1324,8 +1324,16 @@ function openTopic(topicId) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.getElementById('view-topic-detail').classList.add('active');
     document.getElementById('topic-detail-title').textContent = topic.icon + ' ' + topic.name;
+
+    // 1. 注入HTML内容
     document.getElementById('topic-content').innerHTML = topic.content;
-    highlightCodeBlocks();
+
+    // 2. 提取代码块的纯文本，用textContent渲染（避免HTML实体冲突）
+    document.querySelectorAll('#topic-content .code-block').forEach(block => {
+        const rawCode = block.textContent; // 浏览器已解码所有HTML实体，得到纯文本
+        block.innerHTML = highlightPython(rawCode); // 纯文本 → 高亮HTML
+    });
+
     window.scrollTo(0, 0);
 }
 
@@ -2142,40 +2150,37 @@ function escapeHtml(str) {
 }
 
 // ==================== 语法高亮 ====================
-function highlightCodeBlocks() {
+// 纯文本 → 带行号+高亮的HTML（输入来自textContent，无HTML实体问题）
+function highlightPython(code) {
     const patterns = [
         { regex: /("""[\s\S]*?"""|'''[\s\S]*?'''|"[^"]*"|'[^']*')/g, cls: 'str' },
-        { regex: /(#.*$)/gm, cls: 'cm' },
+        { regex: /(#.*)$/gm, cls: 'cm' },
         { regex: /\b(print|input|int|float|str|bool|type|len|range|list|abs|max|min|sum|round|turtle\.\w+)(?=\s*\()/g, cls: 'bi' },
-        { regex: /\b(if|elif|else|for|while|in|break|continue|import|from|def|return|and|or|not|True|False|None|as|with|try|except|class|pass|lambda|yield|global|nonlocal|del|raise|assert|is)\b/g, cls: 'kw' },
+        { regex: /\b(if|elif|else|for|while|in|break|continue|import|from|def|return|and|or|not|True|False|None)\b/g, cls: 'kw' },
         { regex: /\b(\d+\.?\d*)\b/g, cls: 'num' },
         { regex: /\b([a-zA-Z_]\w*)(?=\s*\()/g, cls: 'fn' },
     ];
 
-    document.querySelectorAll('#topic-content .code-block').forEach(block => {
-        const lines = block.textContent.split('\n');
+    const codeLines = code.split('\n');
+    if (codeLines.length > 1 && codeLines[codeLines.length - 1].trim() === '') codeLines.pop();
 
-        const html = lines.map(line => {
-            let text = line || ' ';
-            text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-            const markers = [];
-            patterns.forEach(({ regex, cls }) => {
-                text = text.replace(regex, match => {
-                    markers.push(`<span class="${cls}">${match}</span>`);
-                    return `\x00${markers.length - 1}\x00`;
-                });
+    return codeLines.map(line => {
+        let text = line || ' ';
+        text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const markers = [];
+        patterns.forEach(({ regex, cls }) => {
+            text = text.replace(regex, match => {
+                markers.push('<span class="' + cls + '">' + match + '</span>');
+                return '\x00' + (markers.length - 1) + '\x00';
             });
-            markers.forEach((replacement, i) => {
-                text = text.split(`\x00${i}\x00`).join(replacement);
-            });
-
-            return `<span class="line"><span class="code-text">${text}</span></span>`;
-        }).join('');
-
-        block.innerHTML = html;
-    });
+        });
+        markers.forEach((rep, i) => {
+            text = text.split('\x00' + i + '\x00').join(rep);
+        });
+        return '<span class="line"><span class="code-text">' + text + '</span></span>';
+    }).join('');
 }
+
 
 // ==================== 初始化 ====================
 function init() {
